@@ -4,24 +4,24 @@ import { Grids } from "@/components/grids";
 import { n2ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
 import { BtnCheckBox, BtnCheckBoxProps } from "@/components/btn-checkbox";
 import { useNotAppli } from "./use-not-appli";
-import { IHistoryN2 } from "@/stores/interfaces/history";
-import { useQuestion } from "@/lib/hooks/use-question";
+import { useQuestionStore } from "@/stores/question-store";
 
 export default function Histories2() {
   const { clearToggle, setAppliChecked, NotAppliWrapper } = useNotAppli({
     scrollId: questionIds.history.n3,
   });
-  const [n2, setN2] = useState<IHistoryN2>();
-  useQuestion({ n2 });
+  const { n2, setN2 } = useQuestionStore();
 
   useEffect(() => {
-    setN2(undefined);
+    setN2({});
   }, [clearToggle]);
 
   function handleCheckChange(key: string, value: boolean): void {
     if (value) setAppliChecked(false);
-    setN2((prev) => ({ ...prev, [key]: value }));
+    setN2({ ...n2, [key]: value });
   }
+
+  console.log("n2", JSON.stringify(n2));
 
   const checkboxes = n2ObjectList.map(({ key, title }) => (
     <TitledBtnCheckGroup

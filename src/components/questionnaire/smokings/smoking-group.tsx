@@ -1,9 +1,9 @@
 import { Description } from "@/components/description";
-import { StretchedRadioGroup } from "@/components/radio";
 import React from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
 import { ISmokingResult } from "@/stores/interfaces/smoking";
 import { InputValueType } from "kbr-nextjs-shared/types";
+import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 
 interface GroupDescription {
   headmark: string;
@@ -15,9 +15,11 @@ interface Props {
   secondDescription: GroupDescription;
   handleSmokingTermChange(result: ISmokingResult): void;
   handleSmokingYnChange(value: InputValueType): void;
+  id?: string;
 }
 
 export default function SmokingGroup({
+  id,
   blur,
   firstDescription,
   secondDescription,
@@ -27,6 +29,7 @@ export default function SmokingGroup({
   return (
     <>
       <Description
+        id={id}
         headmark={firstDescription.headmark}
         text={firstDescription.text}
       />

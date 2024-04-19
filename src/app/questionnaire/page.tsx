@@ -9,7 +9,7 @@ import { LottieScrollDown } from "@/components/lottie/lottie-scroll-down";
 
 export default function QuestionairePage() {
   return (
-    <main className="w-full">
+    <main className="w-full select-none">
       <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 md:px-20">
         <Histories />
         <Smokings />

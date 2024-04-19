@@ -1,22 +1,24 @@
 import React from "react";
 import { useQuestionStore } from "@/stores/question-store";
-import { ISmokingResult } from "@/stores/interfaces/smoking";
 import SmokingGroup from "./smoking-group";
+import { questionIds } from "@/lib/objects/questionnaire-obj";
+import { scrollById } from "@/lib/utils/scroll.util";
+import { InputValueType } from "kbr-nextjs-shared/types";
 
 export default function Smokings5() {
-  const { smoking, setSmoking } = useQuestionStore();
+  const { n5, setN5, setN5_1 } = useQuestionStore();
 
-  function handleSmokingTermChange(result: ISmokingResult): void {
-    setSmoking({ ...smoking, n5_1: result });
-  }
+  function handleSmokingYn(value: InputValueType): void {
+    const y = !!value;
 
-  function handleSmokingYnChange(value: string | number | undefined): void {
-    setSmoking({ ...smoking, n5: !!value });
+    setN5(y);
+    if (!y) scrollById(questionIds.smoke.n6);
   }
 
   return (
     <SmokingGroup
-      blur={!smoking?.n5}
+      id={questionIds.smoke.n5}
+      blur={!n5}
       firstDescription={{
         headmark: "5",
         text: "지금까지 궐련형 전자담배(가열담배, 예)아이코스, 글로, 릴 등)을 피운 적 있습니까?",
@@ -25,8 +27,8 @@ export default function Smokings5() {
         headmark: "5-1",
         text: "현재 궐련형 전자담배(가열담배) 피우십니까?",
       }}
-      handleSmokingTermChange={handleSmokingTermChange}
-      handleSmokingYnChange={handleSmokingYnChange}
+      handleSmokingYnChange={handleSmokingYn}
+      handleSmokingTermChange={setN5_1}
     />
   );
 }

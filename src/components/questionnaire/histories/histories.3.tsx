@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { Description } from "@/components/description";
 import { Grids } from "@/components/grids";
-import { TitledRadioGroup } from "@/components/radio";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { EHistoryN3 } from "@/stores/interfaces/history";
-import { useQuestion } from "@/lib/hooks/use-question";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { InputValueType } from "kbr-nextjs-shared/types";
+import { useQuestionStore } from "@/stores/question-store";
+import { TitledRadioGroup } from "@/components/radio/titled-radio-group";
 
 export default function Histories3() {
-  const [n3, setN3] = useState<EHistoryN3>();
-  useQuestion({ n3 });
+  const { n3, setN3 } = useQuestionStore();
+
   function handleValueChange(value: InputValueType): void {
-    scrollById(questionIds.smoke.head)
+    scrollById(questionIds.smoke.head);
     setN3(value as EHistoryN3);
   }
+
+  console.log("n3", JSON.stringify(n3));
 
   return (
     <>

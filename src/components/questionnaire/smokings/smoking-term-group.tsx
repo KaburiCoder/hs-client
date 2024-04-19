@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Description } from "@/components/description";
 import SmokingTerm from "./smoking-term";
-import { StretchedRadioGroup } from "@/components/radio";
 import { ISmokingResult, ISmokingTerm } from "@/stores/interfaces/smoking";
 import { BlurWrapper } from "@/components/blur-wrapper";
+import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 
 interface SmokingTermGroupProps {
   blur: boolean;

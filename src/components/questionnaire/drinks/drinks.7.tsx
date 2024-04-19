@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NumInput } from "@/components/num-input";
-import { BtnRadio, RadioGroup } from "@/components/radio";
 import { cn } from "@/lib/utils";
 import { Description } from "@/components/description";
+import { RadioGroup } from "@/components/radio/radio-group";
+import { BtnRadio } from "@/components/radio/btn-radio";
 
 enum DrinkingFreq {
   weeks = "1",
@@ -18,10 +19,13 @@ export default function Drinks7() {
 
   return (
     <>
-      <Description headmark="7" text="술을 마시는 횟수는 어느 정도입니까? (1개만 응답)" />
+      <Description
+        headmark="7"
+        text="술을 마시는 횟수는 어느 정도입니까? (1개만 응답)"
+      />
       <div className="flex flex-wrap items-center gap-2 py-2">
         <RadioGroup
-          className="flex gap-2 flex-wrap"
+          className="flex flex-wrap gap-2"
           defaultValue={defaultFreq}
           onChange={(data) => setDrinkFreq(data as DrinkingFreq)}
         >

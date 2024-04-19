@@ -13,3 +13,7 @@ const initialize: RadioContextType = {
 };
 
 export const RadioContext = createContext<RadioContextType>(initialize);
+
+export const useRadio = () => {
+  return useContext(RadioContext);
+};
