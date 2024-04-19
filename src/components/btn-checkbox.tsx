@@ -1,12 +1,11 @@
 import { cn } from "@nextui-org/react";
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useEffect, useRef } from "react";
 import { Square, SquareCheck } from "lucide-react";
+import { InputBoxWrapper, InputBoxWrapperProps } from "./input-box-wrapper";
 export interface BtnCheckBoxProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  text?: string;
-  checkValue?: string | number;
-  checked?: boolean;
-  showCheckIcon?: boolean;
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    Partial<InputBoxWrapperProps> {
+  checkValue?: string | number | readonly string[] | undefined;
   onCheckChange?: (value: boolean) => void;
   onValueChange?: (value: string) => void;
 }
@@ -15,6 +14,7 @@ export const BtnCheckBox = forwardRef<HTMLInputElement, BtnCheckBoxProps>(
   (
     {
       text,
+      checked,
       checkValue,
       showCheckIcon,
       className,
@@ -22,45 +22,29 @@ export const BtnCheckBox = forwardRef<HTMLInputElement, BtnCheckBoxProps>(
       onValueChange,
       ...props
     }: BtnCheckBoxProps,
-    ref
+    ref,
   ) => {
-    const [checked, setChecked] = useState(false);
     function handleOnChange(event: React.ChangeEvent<HTMLInputElement>): void {
-      setChecked(event.target.checked);
       onCheckChange?.(event.target.checked);
-      onValueChange?.(props.value as string);
+      onValueChange?.(event.target.value);
     }
 
-    const CheckIcon = showCheckIcon
-      ? checked
-        ? SquareCheck
-        : Square
-      : undefined;
-    const checkedResult =
-      props.type === "radio" ? props.value === checkValue : checked;
     return (
-      <label
-        className={cn(
-          "border py-4 px-2 min-w-20 rounded-lg transition-all flex items-center",
-          checkedResult ? "bg-primary text-white" : "bg-white",
-          className
-        )}
+      <InputBoxWrapper
+        text={text}
+        showCheckIcon={showCheckIcon}
+        checked={checked}
+        className={className}
       >
         <input
           ref={ref}
-          className={"no-radio hidden"}
+          className={cn("no-radio", text ? "" : "absolute")}
           type="checkbox"
-          checked={checkedResult}
+          checked={checked ?? false}
           {...props}
           onChange={handleOnChange}
         />
-        {CheckIcon && (
-          <CheckIcon
-            className={cn("mr-2", checked ? "text-white" : "text-gray-300")}
-          />
-        )}
-        {text && <span className="flex-1 text-center">{text}</span>}
-      </label>
+      </InputBoxWrapper>
     );
-  }
+  },
 );

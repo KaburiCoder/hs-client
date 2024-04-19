@@ -1,8 +1,10 @@
 import { Dispatch, SetStateAction, createContext, useContext } from "react";
 
 interface RadioContextType {
-  value?: string | number;
-  setValue: Dispatch<SetStateAction<string | undefined>>;
+  value?: string | number | readonly string[] | undefined;
+  setValue: Dispatch<
+    SetStateAction<string | number | readonly string[] | undefined>
+  >;
 }
 
 const initialize: RadioContextType = {

@@ -1,10 +1,10 @@
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 
-export function Title({ children }: ChildrenProps) {
+export function Title({ id, children }: ChildrenProps & { id?: string }) {
   return (
-    <div className="flex py-2">
-      <div className="w-1 bg-primary/50 mr-4"></div>
-      <h2 className="text-2xl py-2 font-bold text-purple-500">{children}</h2>
+    <div id={id} className="flex py-2">
+      <div className="mr-4 w-1 bg-primary/50"></div>
+      <h2 className="py-2 text-2xl font-bold text-purple-500">{children}</h2>
     </div>
   );
 }

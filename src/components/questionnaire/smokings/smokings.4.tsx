@@ -1,28 +1,32 @@
 import React from "react";
-import { Description } from "@/components/description";
-import SmokingTerm from "./smoking-term";
-import { StretchedRadioGroup } from "@/components/radio";
+import { ISmokingResult } from "@/stores/interfaces/smoking";
+import { useQuestionStore } from "@/stores/question-store";
+import SmokingGroup from "./smoking-group";
 
 export default function Smokings4() {
-  return (
-    <>
-      <StretchedRadioGroup
-        title="지금까지 평생 총 5갑(100개비) 이상의 일반담배(궐련)를
-        피운 적이 있습니까?"
-        datas={[
-          { text: "예", value: "y" },
-          { text: "아니오", value: "n" },
-        ]}
-      />
+  const { smoking, setSmoking } = useQuestionStore();
 
-      <StretchedRadioGroup
-        title="현재 일반담배(궐련)을 피우십니까?"
-        datas={[
-          { text: "현재 피움", value: "y" },
-          { text: "과거에는 피웠으나 현재 피우지 않음", value: "n" },
-        ]}
-      />
-      <SmokingTerm quitNow />
-    </>
+  function handleSmokingTermChange(result: ISmokingResult): void {
+    setSmoking({ ...smoking, n4_1: result });
+  }
+
+  function handleSmokingYnChange(value: string | number | undefined): void {
+    setSmoking({ ...smoking, n4: !!value });
+  }
+
+  return (
+    <SmokingGroup
+      blur={!smoking?.n4}
+      firstDescription={{
+        headmark: "4",
+        text: "지금까지 평생 총 5갑(100개비) 이상의 일반담배(궐련)를 피운 적이 있습니까?",
+      }}
+      secondDescription={{
+        headmark: "4-1",
+        text: "현재 일반담배(궐련)을 피우십니까?",
+      }}
+      handleSmokingTermChange={handleSmokingTermChange}
+      handleSmokingYnChange={handleSmokingYnChange}
+    />
   );
 }

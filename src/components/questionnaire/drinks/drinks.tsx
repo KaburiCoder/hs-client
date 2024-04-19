@@ -1,6 +1,6 @@
-import { Description, QuoteDescription } from "@/components/description";
+import { QuoteDescription } from "@/components/description";
 import { Title } from "@/components/title";
-import React, { useState } from "react";
+import React from "react";
 import Drinks7 from "./drinks.7";
 import Drinks7d1 from "./drinks.7_1";
 import Drinks7d2 from "./drinks.7_2";

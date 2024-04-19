@@ -14,14 +14,16 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
-    "kbr-nextjs-shared": "^0.0.3",
+    "kbr-nextjs-shared": "^0.0.4",
     "kbr-react-shared": "^0.0.50",
     "lucide-react": "^0.368.0",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-lottie-player": "^2.0.0",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20",

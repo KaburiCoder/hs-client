@@ -1,46 +1,60 @@
-import React from "react";
-import { SmokingInput } from "./smoking-input";
+import { LabeldNumInput } from "@/components/num-input";
+import { ISmokingTerm } from "@/stores/interfaces/smoking";
+import React, { useEffect, useRef, useState } from "react";
 
 interface SmokingTermProps {
   quitNow?: boolean;
+  onChange: (term: ISmokingTerm) => void;
 }
 
-export default function SmokingTerm({ quitNow }: SmokingTermProps) {
-  function handleYearsChange(value: number | undefined): void {
-    console.log("년도", value);
-  }
+export default function SmokingTerm({ quitNow, onChange }: SmokingTermProps) {
+  const [totalYears, setTotalYears] = useState<number>();
+  const [cigarettes, setCigarettes] = useState<number>();
+  const [quitYears, setQuitYears] = useState<number>();
 
-  function handleAverageChange(value: number | undefined): void {
-    console.log("개비", value);
-  }
+  const firRef = useRef<HTMLInputElement>(null);
+  const secRef = useRef<HTMLInputElement>(null);
+  const thrRef = useRef<HTMLInputElement>(null);
 
-  function handleQuitYearsChange(value: number | undefined): void {
-    console.log("끊년", value);
-  }
+  useEffect(() => {
+    onChange({ totalYears, cigarettes, quitYears });
+  }, [totalYears, cigarettes, quitYears]);
 
+  useEffect(() => {
+    if (!quitNow) {
+      setQuitYears(undefined);
+    }
+  }, [quitNow]);
+  
   return (
-    <div className="flex flex-wrap items-center gap-10 border rounded-lg p-2 pr-10 justify-end">
-      <SmokingInput
-        inputClassName="w-10"
+    <div className="flex flex-wrap items-center justify-end gap-10 rounded-lg border p-2 pr-10">
+      <LabeldNumInput
+        ref={firRef}
+        inputClassName="w-12"
         sLabel="총"
         eLabel="년"
         max={99}
-        onChange={handleYearsChange}
+        value={totalYears}
+        onChange={setTotalYears}
       />
-      <SmokingInput
+      <LabeldNumInput
+        ref={secRef}
         inputClassName="w-14"
         sLabel={"하루평균"}
         eLabel="개비"
         max={999}
-        onChange={handleAverageChange}
+        value={cigarettes}
+        onChange={setCigarettes}
       />
       {quitNow && (
-        <SmokingInput
-          inputClassName="w-10"
+        <LabeldNumInput
+          ref={thrRef}
+          inputClassName="w-12"
           sLabel="끊은지"
           eLabel="년"
           max={99}
-          onChange={handleQuitYearsChange}
+          value={quitYears}
+          onChange={setQuitYears}
         />
       )}
     </div>

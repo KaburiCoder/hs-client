@@ -8,7 +8,6 @@ export default function Histories() {
   return (
     <section>
       <Title>질환력(과거력, 가족력)</Title>
-
       <Histories1 />
       <Histories2 />
       <Histories3 />

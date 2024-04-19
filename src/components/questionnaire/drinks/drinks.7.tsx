@@ -18,10 +18,10 @@ export default function Drinks7() {
 
   return (
     <>
-      <Description text="술을 마시는 횟수는 어느 정도입니까? (1개만 응답)" />
-      <div className="flex flex-wrap items-center gap-2">
+      <Description headmark="7" text="술을 마시는 횟수는 어느 정도입니까? (1개만 응답)" />
+      <div className="flex flex-wrap items-center gap-2 py-2">
         <RadioGroup
-          className="flex gap-2"
+          className="flex gap-2 flex-wrap"
           defaultValue={defaultFreq}
           onChange={(data) => setDrinkFreq(data as DrinkingFreq)}
         >
@@ -34,7 +34,7 @@ export default function Drinks7() {
         <div
           className={cn(
             "flex items-center gap-2",
-            drinkFreq === DrinkingFreq.doNot ? "hidden" : ""
+            drinkFreq === DrinkingFreq.doNot ? "hidden" : "",
           )}
         >
           <NumInput

@@ -1,53 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Description } from "@/components/description";
 import { Grids } from "@/components/grids";
-import { TitledRadioGroup } from "@/components/radio";
+import { n2ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
+import { BtnCheckBox, BtnCheckBoxProps } from "@/components/btn-checkbox";
+import { useNotAppli } from "./use-not-appli";
+import { IHistoryN2 } from "@/stores/interfaces/history";
+import { useQuestion } from "@/lib/hooks/use-question";
 
 export default function Histories2() {
+  const { clearToggle, setAppliChecked, NotAppliWrapper } = useNotAppli({
+    scrollId: questionIds.history.n3,
+  });
+  const [n2, setN2] = useState<IHistoryN2>();
+  useQuestion({ n2 });
+
+  useEffect(() => {
+    setN2(undefined);
+  }, [clearToggle]);
+
+  function handleCheckChange(key: string, value: boolean): void {
+    if (value) setAppliChecked(false);
+    setN2((prev) => ({ ...prev, [key]: value }));
+  }
+
+  const checkboxes = n2ObjectList.map(({ key, title }) => (
+    <TitledBtnCheckGroup
+      key={key}
+      checked={(n2 && (n2 as { [key: string]: boolean })[key]) ?? false}
+      title={title}
+      onCheckChange={handleCheckChange.bind(null, key)}
+    />
+  ));
+
   return (
     <>
-      <Description
-        text="부모, 형제, 자매 중에 다음 질환을 앓았거나 해당 질환으로
-사망한 경우가 있으십니까?"
-      />
-
-      <Grids>
-        <TitledRadioGroup
-          title="뇌졸증(중풍)"
-          datas={[
-            { value: "y", text: "예" },
-            { value: "n", text: "아니오" },
-          ]}
+      <NotAppliWrapper id={questionIds.history.n2}>
+        <Description
+          headmark="2"
+          text="부모, 형제, 자매 중에 다음 질환을 앓았거나 해당 질환으로 사망한 경우가 있으십니까?"
         />
-        <TitledRadioGroup
-          title="심근경색/협심증"
-          datas={[
-            { value: "y", text: "예" },
-            { value: "n", text: "아니오" },
-          ]}
-        />
-        <TitledRadioGroup
-          title="고혈압"
-          datas={[
-            { value: "y", text: "예" },
-            { value: "n", text: "아니오" },
-          ]}
-        />
-        <TitledRadioGroup
-          title="당뇨병"
-          datas={[
-            { value: "y", text: "예" },
-            { value: "n", text: "아니오" },
-          ]}
-        />{" "}
-        <TitledRadioGroup
-          title="기타(암포함)"
-          datas={[
-            { value: "y", text: "예" },
-            { value: "n", text: "아니오" },
-          ]}
-        />
-      </Grids>
+      </NotAppliWrapper>
+      <Grids>{checkboxes}</Grids>
     </>
+  );
+}
+
+interface TitledBtnCheckGroupProps extends BtnCheckBoxProps {
+  title: string;
+}
+
+function TitledBtnCheckGroup({ title, ...props }: TitledBtnCheckGroupProps) {
+  return (
+    <div className="flex items-center justify-between bg-white px-4 py-2">
+      <h3 className="text-lg">{title}</h3>
+      <BtnCheckBox className="flex gap-2" showCheckIcon {...props} />
+    </div>
   );
 }

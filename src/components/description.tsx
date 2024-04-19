@@ -3,6 +3,8 @@ import { ClassNameProps } from "kbr-nextjs-shared/props";
 import { CircleHelp, MessageSquareQuote, Sparkles } from "lucide-react";
 
 interface DescriptionProps extends ClassNameProps, TextProps {
+  id?: string;
+  headmark?: string;
   iconClassName?: string;
   lucideIcon?: React.FC<ClassNameProps>;
 }
@@ -13,19 +15,27 @@ interface TextProps extends ClassNameProps {
 
 export function Description({
   text,
-  lucideIcon,
+  lucideIcon: LucideIcon,
   className,
   iconClassName,
+  headmark,
+  id,
 }: DescriptionProps) {
-  const LucideIcon = lucideIcon ?? CircleHelp;
   return (
-    <div className={cn("flex mt-4 mb-1", className)}>
-      <LucideIcon
-        className={cn(
-          "w-4 min-w-4 h-4 mr-1 mt-[0.29rem] text-purple-800",
-          iconClassName
-        )}
-      />
+    <div id={id} className={cn("mb-1 mt-4 flex", className)}>
+      {LucideIcon && (
+        <LucideIcon
+          className={cn(
+            "mr-1 mt-[0.29rem] h-4 w-4 min-w-4 text-purple-800",
+            iconClassName,
+          )}
+        />
+      )}
+      {headmark && (
+        <span className="mr-2 flex min-w-11 items-center justify-center rounded border border-rose-200 px-2 font-semibold text-rose-500">
+          {headmark}
+        </span>
+      )}
       {text}
     </div>
   );
@@ -34,7 +44,7 @@ export function Description({
 export function QuoteDescription({ text }: TextProps) {
   return (
     <Description
-      className="font-bold text-primary"
+      className={cn("whitespace-pre-line font-bold text-primary")}
       text={text}
       lucideIcon={MessageSquareQuote}
     />
@@ -44,7 +54,7 @@ export function QuoteDescription({ text }: TextProps) {
 export function SparkleDescription({ text, className }: TextProps) {
   return (
     <Description
-      className={cn("font-bold text-blue-500", className)}
+      className={cn("whitespace-pre-line font-bold text-blue-500", className)}
       iconClassName="text-blue-800"
       text={text}
       lucideIcon={Sparkles}
