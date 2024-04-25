@@ -1,12 +1,12 @@
 "use client";
 import { LabeldNumInput } from "@/components/num-input";
-import { ISmokingTerm } from "@/lib/interfaces/smoking";
+import { ISmokingTerm } from "health-screening-shared/interfaces";
 import React, { useEffect, useRef, useState } from "react";
 
 interface SmokingTermProps {
   value?: ISmokingTerm;
   quitNow?: boolean;
-  onChange: (term: Partial<ISmokingTerm>) => void;
+  onChange: (term: ISmokingTerm) => void;
 }
 
 export const SmokingTerm = ({ value, quitNow, onChange }: SmokingTermProps) => {

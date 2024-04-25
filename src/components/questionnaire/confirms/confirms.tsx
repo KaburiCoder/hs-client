@@ -1,9 +1,5 @@
-'use client'
-import {
-  EDrinkingFreqType,
-  IDrinkingFrequency,
-  IDrinkingKind,
-} from "@/lib/interfaces/drink";
+"use client";
+
 import { ISmokingResult } from "@/lib/interfaces/smoking";
 import { useQuestionStore } from "@/stores/question-store";
 import { Button, Input } from "@nextui-org/react";
@@ -54,7 +50,7 @@ export default function Confirms() {
     }
 
     /* n7 */
-    const doDrink = n7?.type !== 'doNot';
+    const doDrink = n7?.type !== "doNot";
     if (n7?.type === undefined) {
       alert("n7 type 누락");
       return;

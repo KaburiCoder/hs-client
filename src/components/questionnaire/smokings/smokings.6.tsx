@@ -2,7 +2,7 @@ import { BlurWrapper } from "@/components/blur-wrapper";
 import { Description } from "@/components/description";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
-import { ISmokingN6d1 } from "@/lib/interfaces/smoking";
+import { ISmokingN6d1 } from "health-screening-shared/interfaces";
 import { useQuestionStore } from "@/stores/question-store";
 import React from "react";
 import { InputValueType } from "kbr-nextjs-shared/types";

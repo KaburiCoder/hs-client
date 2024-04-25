@@ -6,7 +6,7 @@ import { RadioGroup } from "@/components/radio/radio-group";
 import { BtnRadio } from "@/components/radio/btn-radio";
 import { useQuestionStore } from "@/stores/question-store";
 import { InputValueType } from "kbr-nextjs-shared/types";
-import { EDrinkingFreqType } from "@/lib/interfaces/drink";
+import { EDrinkingFreqType } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { BlurWrapper } from "@/components/blur-wrapper";

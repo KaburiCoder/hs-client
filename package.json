@@ -14,7 +14,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
-    "health-src-shared": "^0.0.13",
+    "health-screening-shared": "^0.0.1",
     "kbr-nextjs-shared": "^0.0.4",
     "kbr-react-shared": "^0.0.50",
     "lucide-react": "^0.368.0",

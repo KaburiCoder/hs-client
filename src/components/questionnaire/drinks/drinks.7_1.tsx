@@ -5,10 +5,9 @@ import {
   EDrinkingFreqType,
   IDrinkingFrequency,
   IDrinkingKind,
-} from "@/lib/interfaces/drink";
+} from "health-screening-shared/interfaces";
 import { useQuestionStore } from "@/stores/question-store";
 import { BlurWrapper } from "@/components/blur-wrapper";
-import { NumInput } from "@/components/num-input";
 
 export default function Drinks7d1() {
   const { n7, n7_1, setN7_1 } = useQuestionStore();

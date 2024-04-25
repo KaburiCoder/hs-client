@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Description } from "@/components/description";
 import { Grids } from "@/components/grids";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
-import { EHistoryN3 } from "@/lib/interfaces/history";
+import { EHistoryN3 } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { useQuestionStore } from "@/stores/question-store";

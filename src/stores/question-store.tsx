@@ -1,12 +1,14 @@
 import { StateCreator, create } from "zustand";
-import { EHistoryN3, IHistoryN1, IHistoryN2 } from "health-src-shared";
-import { ISmokingN6d1, ISmokingResult } from "../lib/interfaces/smoking";
 import {
+  EHistoryN3,
+  IHistoryN1,
+  IHistoryN2,
   EDrinkingFreqType,
   IDrinkN7,
   IDrinkingKind,
-} from "../lib/interfaces/drink";
-import { IActivityTerm } from "../lib/interfaces/activity";
+  IActivityTerm,
+} from "health-screening-shared/interfaces";
+import { ISmokingN6d1, ISmokingResult } from "../lib/interfaces/smoking";
 import { devtools } from "zustand/middleware";
 
 type QuestionStates = {

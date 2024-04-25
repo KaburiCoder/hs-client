@@ -6,7 +6,7 @@ import {
   EDrinkingFreqType,
   IDrinkingFrequency,
   IDrinkingKind,
-} from "@/lib/interfaces/drink";
+} from "health-screening-shared/interfaces";
 import { BlurWrapper } from "@/components/blur-wrapper";
 
 export default function Drinks7d2() {
