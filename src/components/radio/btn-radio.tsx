@@ -29,4 +29,4 @@ export const BtnRadio = forwardRef<HTMLInputElement, BtnRadioProps>(
     );
   },
 );
-BtnRadio.displayName = "Radio";
+BtnRadio.displayName = "BtnRadio";

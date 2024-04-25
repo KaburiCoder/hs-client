@@ -6,11 +6,13 @@ import { RadioData } from "./interfaces";
 import { cn } from "@/lib/utils";
 
 interface StretchedRadioGroupProps extends ClassNameProps {
+  value?: InputValueType;
   datas: RadioData[];
   onChange?: (value: InputValueType) => void;
 }
 
 export function StretchedRadioGroup({
+  value,
   datas,
   className,
   onChange,
@@ -30,6 +32,7 @@ export function StretchedRadioGroup({
           "flex flex-wrap items-stretch gap-2 bg-white py-2",
           className,
         )}
+        value={value}
         onChange={onChange}
       >
         {radios}

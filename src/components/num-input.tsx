@@ -1,10 +1,12 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Input } from "@nextui-org/react";
 import { ClassNameProps } from "kbr-nextjs-shared/props";
+import { InputValueType } from "kbr-nextjs-shared/types";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 export interface NumInputProps extends ClassNameProps {
-  value?: number;
+  value?: number ;
   min?: number;
   max?: number;
   dec?: number;
@@ -26,42 +28,37 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
     },
     ref,
   ) => {
-    const [numValue, setNumValue] = useState<string>();
-    const [value, setValue] = useState<number>();
-    const prevOutValueRef = useRef<number>();
-    function handleInput(e: React.FormEvent<HTMLInputElement>): void {
-      const text = e.currentTarget.value;
+    const [value, setValue] = useState<InputValueType>(outValue?.toString());
+    const prevOutValueRef = useRef<InputValueType>();
 
-      if (text === "") {
-        setNumValue("");
-        setValue(0);
+    useEffect(() => {
+      let inputValue: InputValueType;
+      if (prevOutValueRef.current !== outValue) {
+        inputValue = outValue;
+        prevOutValueRef.current = outValue;
+      } else {
+        inputValue = value;
+      }
+      setValue(inputValue)
+    }, [outValue, value]);
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+      const value = parseFloat(e.target.value);
+
+      if (isNaN(value)) {
+        setValue(undefined);
+        onChange(undefined);
         return;
       }
 
-      let inputValue = parseFloat(text);
-
-      if (inputValue < min || inputValue > max) {
+      if (value < min || value > max) return;
+      const sosuText = e.target.value.split(".")?.[1] ?? "";
+      if (sosuText.length > dec) {
         return;
       }
-
-      const sosuText = text.split(".")?.[1] ?? "";
-      if (sosuText.length <= dec) {
-        setNumValue(inputValue.toString());
-        setValue(inputValue);
-      }
-    }
-
-    useEffect(() => {
-      if ((prevOutValueRef.current = outValue)) return;
-
-      setNumValue(outValue?.toString());
-      setValue(outValue);
-      prevOutValueRef.current = outValue;
-    }, [outValue]);
-
-    useEffect(() => {
+      setValue(value);
       onChange(value);
-    }, [value]);
+    }
 
     return (
       <Input
@@ -70,8 +67,8 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
         classNames={{ input: cn("text-right text-base", inputClassName) }}
         type="number"
         color="primary"
-        value={numValue ?? ""}
-        onInput={handleInput}
+        value={value?.toString() ?? ""}
+        onChange={handleChange}
         {...props}
       />
     );
@@ -84,11 +81,12 @@ interface LabeldNumInputProps extends NumInputProps {
   eLabel?: string;
 }
 
-export const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
+const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
   (
     {
       sLabel,
       eLabel,
+      min = 1,
       max,
       className,
       inputClassName,
@@ -103,7 +101,7 @@ export const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
         <NumInput
           ref={ref}
           className={cn("inline-block", inputClassName)}
-          min={1}
+          min={min}
           max={max}
           onChange={onChange}
           {...props}
@@ -115,3 +113,4 @@ export const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
 );
 
 LabeldNumInput.displayName = "LabeldNumInput";
+export { LabeldNumInput };

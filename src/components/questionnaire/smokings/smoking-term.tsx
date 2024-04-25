@@ -1,13 +1,15 @@
+"use client";
 import { LabeldNumInput } from "@/components/num-input";
-import { ISmokingTerm } from "@/stores/interfaces/smoking";
+import { ISmokingTerm } from "@/lib/interfaces/smoking";
 import React, { useEffect, useRef, useState } from "react";
 
 interface SmokingTermProps {
+  value?: ISmokingTerm;
   quitNow?: boolean;
-  onChange: (term: ISmokingTerm) => void;
+  onChange: (term: Partial<ISmokingTerm>) => void;
 }
 
-export default function SmokingTerm({ quitNow, onChange }: SmokingTermProps) {
+export const SmokingTerm = ({ value, quitNow, onChange }: SmokingTermProps) => {
   const [totalYears, setTotalYears] = useState<number>();
   const [cigarettes, setCigarettes] = useState<number>();
   const [quitYears, setQuitYears] = useState<number>();
@@ -20,12 +22,20 @@ export default function SmokingTerm({ quitNow, onChange }: SmokingTermProps) {
     onChange({ totalYears, cigarettes, quitYears });
   }, [totalYears, cigarettes, quitYears]);
 
+  console.log("value", value);
+
+  useEffect(() => {
+    setTotalYears(value?.totalYears);
+    setCigarettes(value?.cigarettes);
+    setQuitYears(value?.quitYears);
+  }, [value]);
+
   useEffect(() => {
     if (!quitNow) {
       setQuitYears(undefined);
     }
   }, [quitNow]);
-  
+
   return (
     <div className="flex flex-wrap items-center justify-end gap-10 rounded-lg border p-2 pr-10">
       <LabeldNumInput
@@ -59,4 +69,4 @@ export default function SmokingTerm({ quitNow, onChange }: SmokingTermProps) {
       )}
     </div>
   );
-}
+};

@@ -5,7 +5,8 @@ import Histories from "@/components/questionnaire/histories/histories";
 import Smokings from "@/components/questionnaire/smokings/smokings";
 import Drinks from "@/components/questionnaire/drinks/drinks";
 import Activities from "@/components/questionnaire/activities/activities";
-import { LottieScrollDown } from "@/components/lottie/lottie-scroll-down";
+import Confirms from "@/components/questionnaire/confirms/confirms";
+import ScrollDownAnimation from "@/components/questionnaire/scroll-down-animation/scroll-down-animation";
 
 export default function QuestionairePage() {
   return (
@@ -15,7 +16,8 @@ export default function QuestionairePage() {
         <Smokings />
         <Drinks />
         <Activities />
-        <LottieScrollDown className="fixed bottom-1 w-20 left-1/2 -translate-x-1/2" />
+        <Confirms />
+        <ScrollDownAnimation />
       </div>
     </main>
   );

@@ -1,36 +1,35 @@
 import React, { useState } from "react";
 import { Center } from "./center";
 import { NumInput } from "@/components/num-input";
+import { IDrinkingFrequency } from "@/lib/interfaces/drink";
+import { Input } from "@nextui-org/react";
 
 interface Props {
   header: string;
+  onChange: (freq: IDrinkingFrequency) => void;
+  value?: IDrinkingFrequency;
 }
 
-interface DrinksCc {
-  cup?: number;
-  bottle?: number;
-  can?: number;
-  cc?: number;
-}
-export default function DrinksCcInputs({ header }: Props) {
-  const [data, setData] = useState<DrinksCc>();
+export default function DrinksCcInputs({ value, header, onChange }: Props) {
+  const [data, setData] = useState<IDrinkingFrequency>();
 
-  function setDrinksCc(obj: DrinksCc) {
-    const nonData = Object.values(obj).every((o) => !o);
-    if (nonData) return;
-
-    setData(obj);
+  function setDrinksCc(obj: IDrinkingFrequency) {
+    // const nonData = Object.values(obj).every((o) => !o);
+      onChange(obj);
+    //   if (nonData) return;
+    // setData(obj);
   }
+
   return (
     <>
       <Center>{header}</Center>
-      <NumInputX value={data?.cup} onChange={(cup) => setDrinksCc({ cup })} />
+      <NumInputX value={value?.cup} onChange={(cup) => setDrinksCc({ cup })} />
       <NumInputX
-        value={data?.bottle}
+        value={value?.bottle}
         onChange={(bottle) => setDrinksCc({ bottle })}
       />
-      <NumInputX value={data?.can} onChange={(can) => setDrinksCc({ can })} />
-      <NumInputX value={data?.cc} onChange={(cc) => setDrinksCc({ cc })} />
+      <NumInputX value={value?.can} onChange={(can) => setDrinksCc({ can })} />
+      <NumInputX value={value?.cc} onChange={(cc) => setDrinksCc({ cc })} />
     </>
   );
 }

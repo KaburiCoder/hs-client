@@ -4,19 +4,19 @@ import { InputValueType } from "kbr-nextjs-shared/types";
 import { useEffect, useRef, useState } from "react";
 
 interface RadioGroupProps extends ChildrenClassNameProps {
+  value?: InputValueType;
   defaultValue?: InputValueType;
   onChange?: (value: InputValueType) => void;
 }
 
 export function RadioGroup({
+  value: outValue,
   children,
   className,
   defaultValue,
   onChange,
 }: RadioGroupProps) {
-  const [value, setValue] = useState<
-    string | number | readonly string[] | undefined
-  >();
+  const [value, setValue] = useState<InputValueType>();
   const setDefaultRef = useRef<boolean>(true);
 
   useEffect(() => {
@@ -35,6 +35,10 @@ export function RadioGroup({
 
     onChange?.(value);
   }, [value, defaultValue]);
+
+  useEffect(() => {
+    setValue(outValue);
+  }, [outValue]);
 
   return (
     <RadioContext.Provider value={{ value, setValue }}>

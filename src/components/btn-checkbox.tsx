@@ -48,3 +48,5 @@ export const BtnCheckBox = forwardRef<HTMLInputElement, BtnCheckBoxProps>(
     );
   },
 );
+
+BtnCheckBox.displayName = "BtnCheckBox";

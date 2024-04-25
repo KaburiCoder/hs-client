@@ -14,6 +14,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
+    "health-src-shared": "^0.0.13",
     "kbr-nextjs-shared": "^0.0.4",
     "kbr-react-shared": "^0.0.50",
     "lucide-react": "^0.368.0",
@@ -23,6 +24,7 @@
     "react-lottie-player": "^2.0.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.3",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

@@ -3,14 +3,17 @@ import { InputValueType } from "kbr-nextjs-shared/types";
 import { BtnRadio } from "./btn-radio";
 import { RadioGroup } from "./radio-group";
 import { RadioData } from "./interfaces";
+import { EHistoryN3 } from "@/lib/interfaces/history";
 
 interface TitledRadioGroupProps extends ClassNameProps {
   title: React.ReactNode;
   datas: RadioData[];
+  value?: InputValueType;
   onChange?: (value: InputValueType) => void;
 }
 
 export function TitledRadioGroup({
+  value,
   title,
   datas,
   onChange,
@@ -21,7 +24,7 @@ export function TitledRadioGroup({
   return (
     <div className="flex items-center justify-between bg-white px-4 py-2">
       <h3 className="text-lg">{title}</h3>
-      <RadioGroup className="flex gap-2" onChange={onChange}>
+      <RadioGroup value={value} className="flex gap-2" onChange={onChange}>
         {radios}
       </RadioGroup>
     </div>

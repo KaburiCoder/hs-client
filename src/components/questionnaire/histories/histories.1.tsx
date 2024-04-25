@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Description } from "@/components/description";
 import { Grids } from "@/components/grids";
 import { BtnCheckBox } from "@/components/btn-checkbox";
-import { IHistoryN1Result } from "@/stores/interfaces/history";
+import { IHistoryN1Result } from "@/lib/interfaces/history";
 import { useQuestionStore } from "@/stores/question-store";
 import { useNotAppli } from "./use-not-appli";
 import { n1ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
