@@ -11,8 +11,6 @@ import { TitledRadioGroup } from "@/components/radio/titled-radio-group";
 export default function Histories3() {
   const { n3, setN3 } = useQuestionStore();
 
-  console.log("n3", n3);
-
   function handleValueChange(value: InputValueType): void {
     scrollById(questionIds.smoke.head);
     setN3(value as EHistoryN3);

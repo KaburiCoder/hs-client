@@ -1,7 +1,7 @@
 import React from "react";
 import { Center } from "./center";
 import DrinksCcInputs from "./drinks-cc-inputs";
-import { IDrinkingFrequency, IDrinkingKind } from "@/lib/interfaces/drink";
+import { IDrinkingFrequency, IDrinkingKind } from "health-screening-shared/interfaces";
 
 interface Props {
   value?: IDrinkingKind;

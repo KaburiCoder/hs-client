@@ -21,8 +21,6 @@ export default function Histories2() {
     setN2({ ...n2, [key]: value });
   }
 
-  console.log("n2", JSON.stringify(n2));
-
   const checkboxes = n2ObjectList.map(({ key, title }) => (
     <TitledBtnCheckGroup
       key={key}

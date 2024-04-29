@@ -8,7 +8,10 @@ import {
   IDrinkingKind,
   IActivityTerm,
 } from "health-screening-shared/interfaces";
-import { ISmokingN6d1, ISmokingResult } from "../lib/interfaces/smoking";
+import {
+  ISmokingN6d1,
+  ISmokingResult,
+} from "health-screening-shared/interfaces";
 import { devtools } from "zustand/middleware";
 
 type QuestionStates = {

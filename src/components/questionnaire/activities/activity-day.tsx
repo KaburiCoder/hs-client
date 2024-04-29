@@ -1,6 +1,6 @@
 import { Description } from "@/components/description";
 import { LabeldNumInput } from "@/components/num-input";
-import { IActivityTerm } from "@/lib/interfaces/activity";
+import { IActivityTerm } from "health-screening-shared/interfaces";
 import React from "react";
 
 interface Props {

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Center } from "./center";
 import { NumInput } from "@/components/num-input";
-import { IDrinkingFrequency } from "@/lib/interfaces/drink";
-import { Input } from "@nextui-org/react";
+import { IDrinkingFrequency } from "health-screening-shared/interfaces";
 
 interface Props {
   header: string;
@@ -15,7 +14,7 @@ export default function DrinksCcInputs({ value, header, onChange }: Props) {
 
   function setDrinksCc(obj: IDrinkingFrequency) {
     // const nonData = Object.values(obj).every((o) => !o);
-      onChange(obj);
+    onChange(obj);
     //   if (nonData) return;
     // setData(obj);
   }

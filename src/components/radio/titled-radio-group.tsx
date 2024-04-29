@@ -2,8 +2,7 @@ import { ClassNameProps } from "kbr-nextjs-shared/props";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { BtnRadio } from "./btn-radio";
 import { RadioGroup } from "./radio-group";
-import { RadioData } from "./interfaces";
-import { EHistoryN3 } from "@/lib/interfaces/history";
+import { RadioData } from "./interfaces"; 
 
 interface TitledRadioGroupProps extends ClassNameProps {
   title: React.ReactNode;

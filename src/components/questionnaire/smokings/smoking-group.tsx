@@ -1,7 +1,7 @@
 import { Description } from "@/components/description";
 import React from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
-import { ISmokingResult } from "@/lib/interfaces/smoking";
+import { ISmokingResult } from "health-screening-shared/interfaces";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { convertBoolToInt } from "@/lib/utils/convert.util";

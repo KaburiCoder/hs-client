@@ -1,6 +1,6 @@
 "use client";
 
-import { ISmokingResult } from "@/lib/interfaces/smoking";
+import { ISmokingResult } from "health-screening-shared/interfaces";
 import { useQuestionStore } from "@/stores/question-store";
 import { Button, Input } from "@nextui-org/react";
 import React from "react";

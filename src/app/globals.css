@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 286 88% 72%;
+    --primary: 145.763 79% 44%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -76,12 +76,12 @@
     @apply bg-background text-foreground;
   }
 
-  .drag-lock{
+  .drag-lock {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-use-select: none;
     user-select: none;
-   }
+  }
 }
 
 input {
@@ -103,6 +103,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

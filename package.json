@@ -5,16 +5,19 @@
   "scripts": {
     "dev": "next dev -p 3020",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3020",
     "lint": "next lint"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
     "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-query": "^5.32.0",
+    "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
-    "health-screening-shared": "^0.0.1",
+    "health-screening-shared": "^0.0.2",
+    "joi": "^17.13.0",
     "kbr-nextjs-shared": "^0.0.4",
     "kbr-react-shared": "^0.0.50",
     "lucide-react": "^0.368.0",
