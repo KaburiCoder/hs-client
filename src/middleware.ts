@@ -30,7 +30,6 @@ function notAuthPaths(pathname: string) {
 }
 
 function allowPaths(pathname: string) {
-  return false;
   return pathname.startsWith("/images") ;
 }
 
