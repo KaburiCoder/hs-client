@@ -5,13 +5,19 @@ import { NextUIProvider } from "@nextui-org/react";
 import { WindowScrollProvider } from "./window-scroll.context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SocketIOProvider } from "kbr-nextjs-shared";
+import { useMobileVh } from "kbr-react-hooks";
 
 const queryClient = new QueryClient();
-export function Providers({ children }: { children: React.ReactNode }) {  
+export function Providers({ children }: { children: React.ReactNode }) {
+  useMobileVh();
+
   return (
     <NextUIProvider className="min-h-screen bg-background font-sans antialiased">
       <QueryClientProvider client={queryClient}>
-        <SocketIOProvider uri={process.env.NEXT_PUBLIC_BACKEND_URL!} path="/api/socket.io">
+        <SocketIOProvider
+          uri={process.env.NEXT_PUBLIC_BACKEND_URL!}
+          path="/api/socket.io"
+        >
           <WindowScrollProvider>{children}</WindowScrollProvider>
         </SocketIOProvider>
       </QueryClientProvider>

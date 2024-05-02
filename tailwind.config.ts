@@ -20,6 +20,9 @@ const config = {
         "2xl": "1400px",
       },
     },
+    height: {
+      screen: "calc(var(--vh) * 100)",
+    },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

@@ -38,6 +38,9 @@ importers:
       kbr-nextjs-shared:
         specifier: ^0.0.24
         version: 0.0.24(@types/react@18.2.78)(tailwindcss@3.4.3)
+      kbr-react-hooks:
+        specifier: ^0.0.1
+        version: 0.0.1
       lucide-react:
         specifier: ^0.368.0
         version: 0.368.0(react@18.2.0)
@@ -1984,6 +1987,9 @@ packages:
 
   kbr-nextjs-shared@0.0.24:
     resolution: {integrity: sha512-7jj1zUvjnoHzk01I+9RWLCKHBI+x3D/u2eW8JyJrgaWofjxtzB9scyyBt9ktlJlh1ONONnCutKy1XIF4SBEt0A==}
+
+  kbr-react-hooks@0.0.1:
+    resolution: {integrity: sha512-VjpR2RDWfj8syaoelNn7cFYCUtvmlMlwheMpYukQTc6L0bTMIkFyEzMZK/5A28xOd614wlHULAMQcE70vmQK3g==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -5618,6 +5624,11 @@ snapshots:
       - supports-color
       - tailwindcss
       - utf-8-validate
+
+  kbr-react-hooks@0.0.1:
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   keyv@4.5.4:
     dependencies:
