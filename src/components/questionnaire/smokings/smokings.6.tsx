@@ -23,6 +23,11 @@ export default function Smokings6() {
     if (!y) scrollById(questionIds.drink.head);
   }
 
+  function handleRadioSelected(value: InputValueType): void {
+    setN6_1(value as ISmokingN6d1);
+    if (value) scrollById(questionIds.drink.head);
+  }
+
   return (
     <>
       <QuestionnaireErrorBox errorKeys={["smoking.n6"]}>
@@ -57,7 +62,7 @@ export default function Smokings6() {
               { text: "월 10~29일", value: ISmokingN6d1.MONTH_10_29 },
               { text: "매일", value: ISmokingN6d1.EVERY_DAY },
             ]}
-            onChange={(v) => setN6_1(v as ISmokingN6d1)}
+            onChange={handleRadioSelected}
           />
         </QuestionnaireErrorBox>
       </BlurWrapper>

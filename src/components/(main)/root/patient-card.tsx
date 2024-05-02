@@ -3,7 +3,7 @@ import * as sock from "health-screening-shared/interfaces.socket";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { Button, Card } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { BookCheck } from "lucide-react";
+import { Check, ThumbsUp } from "lucide-react";
 interface PatientCardProps {
   data: sock.ReceptionPatient;
 }
@@ -28,9 +28,10 @@ export function PatientCard({ data }: PatientCardProps) {
       <div className="flex flex-col gap-2">
         {kinds.map((k, i) => (
           <Button
+            className="text-white"
             key={i}
-            startContent={k.written ? <BookCheck /> : undefined}
-            color="primary"
+            startContent={k.written ? <ThumbsUp /> : undefined}
+            color={k.written ? "success" : "primary"}
             onClick={handlePush.bind(null, paths.questionnaire)}
           >
             건강검진 문진표

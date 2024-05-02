@@ -19,14 +19,14 @@ export default function Histories3() {
   }
 
   return (
-    <>
+    <QuestionnaireErrorBox errorKeys={["history.n3"]}>
       <Description
         id={questionIds.history.n3}
         headmark="3"
         text="B형간염 바이러스 보유자입니까?"
       />
       <Grids>
-        <QuestionnaireErrorBox errorKeys={["history.n3"]}>
+        
           <TitledRadioGroup
             value={n3}
             title="기타(암포함)"
@@ -36,9 +36,8 @@ export default function Histories3() {
               { value: EHistoryN3.doNotKnown, text: "모름" },
             ]}
             onChange={handleValueChange}
-          />
-        </QuestionnaireErrorBox>
+          /> 
       </Grids>
-    </>
+    </QuestionnaireErrorBox>
   );
 }

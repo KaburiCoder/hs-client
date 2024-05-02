@@ -21,8 +21,9 @@ const _QuestionnaireErrorBox = ({
   );
 
   return (
-    <div className={isError ? "border-2 border-rose-300 p-1" : ""}>
+    <div className={isError ? "border-2 border-rose-300 px-1 pb-2 pt-0" : ""}>
       {children}
+      {/* {isError && <div className="text-rose-500">{(error as any)[errorKey]}</div>} */}
     </div>
   );
 };
