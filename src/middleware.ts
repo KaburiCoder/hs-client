@@ -30,7 +30,8 @@ function notAuthPaths(pathname: string) {
 }
 
 function allowPaths(pathname: string) {
-  return  pathname.startsWith("/images") ;
+  return false;
+  return pathname.startsWith("/images") ;
 }
 
 export const config = {
