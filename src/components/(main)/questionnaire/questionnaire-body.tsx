@@ -1,5 +1,4 @@
 "use client";
-import "kbr-react-shared/styles";
 import React, { useEffect, useState } from "react";
 import Histories from "@/components/questionnaire/histories/histories";
 import Smokings from "@/components/questionnaire/smokings/smokings";

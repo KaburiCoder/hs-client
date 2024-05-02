@@ -21,7 +21,6 @@
     "health-screening-shared": "^0.0.45",
     "joi": "^17.13.0",
     "kbr-nextjs-shared": "^0.0.23",
-    "kbr-react-shared": "^0.0.50",
     "lucide-react": "^0.368.0",
     "next": "14.2.3",
     "react": "^18",
