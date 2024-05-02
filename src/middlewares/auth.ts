@@ -9,22 +9,21 @@ export async function withAuth(req: NextRequest) {
     const url = req.nextUrl.clone();
     url.pathname = paths.login;
 
-    return NextResponse.next();
-    // let user: User | undefined;
-    // const cookieUser = await UserCookie.getUser(req);
-    // user = cookieUser ?? (await fetchCurrentUser());
+    let user: User | undefined;
+    const cookieUser = await UserCookie.getUser(req);
+    user = cookieUser ?? (await fetchCurrentUser());
 
-    // const res: NextResponse = user
-    //   ? NextResponse.next()
-    //   : NextResponse.redirect(url);
+    const res: NextResponse = user
+      ? NextResponse.next()
+      : NextResponse.redirect(url);
 
-    // if (!cookieUser && user) {
-    //   await UserCookie.setUser(res, user);
-    // } else if (!user) {
-    //   await UserCookie.deleteUser(res);
-    // }
+    if (!cookieUser && user) {
+      await UserCookie.setUser(res, user);
+    } else if (!user) {
+      await UserCookie.deleteUser(res);
+    }
 
-    // return res;
+    return res;
   } catch (error) {
     // throw new Error(`Couldn't check authentication`);
   }
