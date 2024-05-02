@@ -36,7 +36,6 @@ export async function setUser(res: NextResponse, user: User) {
   res.cookies.set(key, JSON.stringify(user), {
     expires: expDate,
     httpOnly: true,
-    domain: "hs.click-soft.co.kr",
     secure: process.env.NODE_ENV === "production",
   });
 }
