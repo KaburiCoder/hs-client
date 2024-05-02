@@ -36,5 +36,6 @@ export async function setUser(res: NextResponse, user: User) {
   res.cookies.set(key, JSON.stringify(user), {
     expires: expDate,
     httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
   });
 }
