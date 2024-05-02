@@ -7,5 +7,7 @@ export function getServerHeaders() {
   for (const [key, value] of headersArray) {
     copyHeaders[key] = value;
   }
+  
+  copyHeaders['host']= process.env.NEXT_PUBLIC_DOMAIN!;
   return copyHeaders;
 }
