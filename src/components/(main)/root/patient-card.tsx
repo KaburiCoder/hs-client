@@ -3,7 +3,8 @@ import * as sock from "health-screening-shared/interfaces.socket";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { Button, Card } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { Check, ThumbsUp } from "lucide-react";
+import { ThumbsUp } from "lucide-react";
+
 interface PatientCardProps {
   data: sock.ReceptionPatient;
 }

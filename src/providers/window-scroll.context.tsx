@@ -27,10 +27,14 @@ export const WindowScrollProvider = ({ children }: ChildrenProps) => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
 
+      const vh = getComputedStyle(document.documentElement).getPropertyValue(
+        "--vh",
+      );
+      const clientHeight = vh ? +vh?.replace("px", "") * 100 : document.documentElement.clientHeight;
       const bottomTerm = 50;
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
+      // const clientHeight = document.documentElement.clientHeight;
 
       // 스크롤 위치가 최하단인지 확인
       setIsBottom(scrollHeight - scrollTop <= clientHeight + bottomTerm);

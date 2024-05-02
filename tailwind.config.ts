@@ -20,10 +20,10 @@ const config = {
         "2xl": "1400px",
       },
     },
-    height: {
-      screen: "calc(var(--vh) * 100)",
-    },
     extend: {
+      height: {
+        screen: "calc(var(--vh) * 100)",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
