@@ -7,11 +7,12 @@ import { useQuestionStore } from "@/stores/question-store";
 import { useNotAppli } from "./use-not-appli";
 import { n1ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
 
-export default function Histories1() {
+export const Histories1 = () => {
   const { clearToggle, setAppliChecked, NotAppliWrapper } = useNotAppli({
     scrollId: questionIds.history.n2,
   });
-  const { n1, setN1 } = useQuestionStore();
+  const n1 = useQuestionStore((state) => state.n1);
+  const setN1 = useQuestionStore((state) => state.setN1);
 
   useEffect(() => {
     setN1({});
@@ -54,7 +55,7 @@ export default function Histories1() {
       </Grids>
     </>
   );
-}
+};
 
 interface CheckBoxesProps {
   title: string;

@@ -6,18 +6,22 @@ import { scrollById } from "@/lib/utils/scroll.util";
 import { InputValueType } from "kbr-nextjs-shared/types";
 
 export default function Smokings5() {
-  const { n5, n5_1, setN5, setN5_1 } = useQuestionStore();
+  const n5 = useQuestionStore((state) => state.n5);
+  const n5_1 = useQuestionStore((state) => state.n5_1);
+  const setN5 = useQuestionStore((state) => state.setN5);
+  const setN5_1 = useQuestionStore((state) => state.setN5_1);
 
   function handleSmokingYn(value: InputValueType): void {
     const y = !!value;
 
     setN5(y);
-    if (!y) scrollById(questionIds.smoke.n6);
+    if (!y) scrollById(questionIds.smoking.n6);
   }
 
   return (
     <SmokingGroup
-      id={questionIds.smoke.n5}
+      id={questionIds.smoking.n5}
+      groupId={questionIds.smoking.n5_1}
       value={{ yn: n5, result: n5_1 }}
       firstDescription={{
         headmark: "5",
@@ -27,6 +31,15 @@ export default function Smokings5() {
         headmark: "5-1",
         text: "현재 궐련형 전자담배(가열담배) 피우십니까?",
       }}
+      ynErrorKeys={["smoking.n5"]}
+      subErrorKeys={[
+        "smoking.n5_1",
+        "smoking.n5_1.smoking",
+        "smoking.n5_1.term",
+        "smoking.n5_1.term.totalYears",
+        "smoking.n5_1.term.cigarettes",
+        "smoking.n5_1.term.quitYears",
+      ]}
       handleSmokingYnChange={handleSmokingYn}
       handleSmokingTermChange={setN5_1}
     />

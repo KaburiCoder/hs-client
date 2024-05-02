@@ -5,7 +5,7 @@ export const questionIds = {
     n2: "history_2",
     n3: "history_3",
   },
-  smoke: {
+  smoking: {
     head: "smokeHead",
     n4: "smoke_4",
     n4_1: "smoke_4-1",

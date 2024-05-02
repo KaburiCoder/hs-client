@@ -6,6 +6,7 @@ import React from "react";
 interface Props {
   headmark: string;
   text: string;
+  id?: string;
   value?: number;
   onChange: (value: number | undefined) => void;
 }
@@ -14,6 +15,7 @@ export default function ActivityWeek({
   value,
   headmark,
   text,
+  id,
   onChange,
 }: Props) {
   return (
@@ -21,6 +23,7 @@ export default function ActivityWeek({
       <Description headmark={headmark} text={text} />
 
       <LabeldNumInput
+        id={id}
         value={value}
         className="ml-auto"
         inputClassName="w-12"

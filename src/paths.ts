@@ -5,4 +5,11 @@ export const paths = {
   signup: "/signup",
   signout: "/signout",
   findPw: "/find-pw",
+
+  questionnaire: "/questionnaire",
+  questionnaireSuccess: "/questionnaire/success",
+
+  images: {
+    mainLogo: "/images/main_logo.png",
+  },
 };

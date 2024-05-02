@@ -22,8 +22,6 @@ export const SmokingTerm = ({ value, quitNow, onChange }: SmokingTermProps) => {
     onChange({ totalYears, cigarettes, quitYears });
   }, [totalYears, cigarettes, quitYears]);
 
-  console.log("value", value);
-
   useEffect(() => {
     setTotalYears(value?.totalYears);
     setCigarettes(value?.cigarettes);

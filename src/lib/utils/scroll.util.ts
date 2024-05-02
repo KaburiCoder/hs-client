@@ -1,5 +1,6 @@
-export function scrollById(id: string) {
+export function scrollById(id: string, minusTop: number = 10) {
   const elem = document.getElementById(id);
-  const rect = elem?.getBoundingClientRect();
-  window?.scrollBy({ top: rect!.top - 65, behavior: "smooth" });
+  if (!elem) return;
+  const rect = elem.getBoundingClientRect();
+  window?.scrollBy({ top: rect.top - minusTop, behavior: "smooth" });
 }

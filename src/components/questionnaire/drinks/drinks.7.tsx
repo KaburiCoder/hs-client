@@ -10,9 +10,11 @@ import { EDrinkingFreqType } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { BlurWrapper } from "@/components/blur-wrapper";
+import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 
 export default function Drinks7() {
-  const { n7, setN7 } = useQuestionStore();
+  const n7 = useQuestionStore((state) => state.n7);
+  const setN7 = useQuestionStore((state) => state.setN7);
   const { min, max } = GetMinMaxFreq(n7?.type);
 
   function handleSelect(_value: InputValueType): void {
@@ -28,8 +30,9 @@ export default function Drinks7() {
   }
 
   return (
-    <>
+    <QuestionnaireErrorBox errorKeys={['drink.n7', "drink.n7.frequency"]}>
       <Description
+        id={questionIds.drink.n7}
         headmark="7"
         text="술을 마시는 횟수는 어느 정도입니까? (1개만 응답)"
       />
@@ -59,7 +62,7 @@ export default function Drinks7() {
           <div>번</div>
         </BlurWrapper>
       </div>
-    </>
+    </QuestionnaireErrorBox>
   );
 }
 

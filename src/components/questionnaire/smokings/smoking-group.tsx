@@ -1,10 +1,12 @@
 import { Description } from "@/components/description";
-import React from "react";
+import React, { memo } from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
 import { ISmokingResult } from "health-screening-shared/interfaces";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
+import { QuestionnaireErrorBox } from "../questionnaire-error-box";
+import { QuestionnaireErrorResult } from "@/stores/question-error-store";
 
 interface GroupDescription {
   headmark: string;
@@ -20,13 +22,19 @@ interface Props {
     result?: ISmokingResult;
   };
   id?: string;
+  groupId?: string;
+  ynErrorKeys: (keyof QuestionnaireErrorResult)[];
+  subErrorKeys: (keyof QuestionnaireErrorResult)[];
 }
 
-export default function SmokingGroup({
+function SmokingGroup({
   value,
   id,
+  groupId,
   firstDescription,
   secondDescription,
+  ynErrorKeys,
+  subErrorKeys,
   handleSmokingTermChange,
   handleSmokingYnChange,
 }: Props) {
@@ -37,24 +45,31 @@ export default function SmokingGroup({
         headmark={firstDescription.headmark}
         text={firstDescription.text}
       />
-      <StretchedRadioGroup
-        value={convertBoolToInt(value?.yn)}
-        datas={[
-          { text: "예", value: 1 },
-          { text: "아니오", value: 0 },
-        ]}
-        onChange={handleSmokingYnChange}
-      />
+      <QuestionnaireErrorBox errorKeys={ynErrorKeys}>
+        <StretchedRadioGroup
+          value={convertBoolToInt(value?.yn)}
+          datas={[
+            { text: "예", value: 1 },
+            { text: "아니오", value: 0 },
+          ]}
+          onChange={handleSmokingYnChange}
+        />
+      </QuestionnaireErrorBox>
 
-      <SmokingTermGroup
-        value={{ yn: value?.result?.smoking, term: value?.result?.term }}
-        blur={!value?.yn}
-        description={{
-          headmark: secondDescription.headmark,
-          text: secondDescription.text,
-        }}
-        onChange={handleSmokingTermChange}
-      />
+      <QuestionnaireErrorBox errorKeys={subErrorKeys}>
+        <SmokingTermGroup
+          id={groupId}
+          value={{ yn: value?.result?.smoking, term: value?.result?.term }}
+          blur={!value?.yn}
+          description={{
+            headmark: secondDescription.headmark,
+            text: secondDescription.text,
+          }}
+          onChange={handleSmokingTermChange}
+        />
+      </QuestionnaireErrorBox>
     </>
   );
 }
+
+export default memo(SmokingGroup);

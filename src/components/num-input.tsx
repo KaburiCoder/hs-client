@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import { Input } from "@nextui-org/react";
 import { ClassNameProps } from "kbr-nextjs-shared/props";
 import { InputValueType } from "kbr-nextjs-shared/types";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, memo, useEffect, useRef, useState } from "react";
 
 export interface NumInputProps extends ClassNameProps {
-  value?: number ;
+  value?: number;
   min?: number;
   max?: number;
   dec?: number;
@@ -39,7 +39,7 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
       } else {
         inputValue = value;
       }
-      setValue(inputValue)
+      setValue(inputValue);
     }, [outValue, value]);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -77,13 +77,15 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
 
 NumInput.displayName = "NumInput";
 interface LabeldNumInputProps extends NumInputProps {
+  id?: string;
   sLabel?: string;
   eLabel?: string;
 }
 
-const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
+const _LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
   (
     {
+      id,
       sLabel,
       eLabel,
       min = 1,
@@ -96,7 +98,7 @@ const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
     ref,
   ) => {
     return (
-      <div className={cn("flex items-center gap-2", className)}>
+      <div id={id} className={cn("flex items-center gap-2", className)}>
         {sLabel && <span className="whitespace-nowrap">{sLabel}</span>}
         <NumInput
           ref={ref}
@@ -112,5 +114,5 @@ const LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
   },
 );
 
-LabeldNumInput.displayName = "LabeldNumInput";
-export { LabeldNumInput };
+_LabeldNumInput.displayName = "LabeldNumInput";
+export const LabeldNumInput = memo(_LabeldNumInput);

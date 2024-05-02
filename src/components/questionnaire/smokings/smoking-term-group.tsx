@@ -19,6 +19,7 @@ interface SmokingTermGroupProps {
     yn?: boolean;
     term?: ISmokingTerm;
   };
+  id?: string;
   onChange: (result: ISmokingResult) => void;
 }
 
@@ -26,6 +27,7 @@ export function SmokingTermGroup({
   blur,
   description,
   value,
+  id,
   onChange,
 }: SmokingTermGroupProps) {
   const [smoking, setSmoking] = useState<boolean>();
@@ -35,19 +37,15 @@ export function SmokingTermGroup({
     onChange({ smoking, term });
   }, [smoking, term]);
 
-  useEffect(() => {
-    setSmoking(value?.yn);
-  }, [value?.yn]);
-
-  useEffect(() => {
-    setTerm(value?.term);
-  }, [value?.term]);
-
   return (
     <BlurWrapper blur={blur}>
-      <Description headmark={description.headmark} text={description.text} />
+      <Description
+        id={id}
+        headmark={description.headmark}
+        text={description.text}
+      />
       <StretchedRadioGroup
-        value={convertBoolToInt(smoking)}
+        value={convertBoolToInt(value?.yn)}
         datas={[
           { text: "현재 피움", value: 1 },
           { text: "과거에는 피웠으나 현재 피우지 않음", value: 0 },

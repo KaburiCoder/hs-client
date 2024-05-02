@@ -10,13 +10,8 @@ interface Props {
 }
 
 export default function DrinksCcInputs({ value, header, onChange }: Props) {
-  const [data, setData] = useState<IDrinkingFrequency>();
-
   function setDrinksCc(obj: IDrinkingFrequency) {
-    // const nonData = Object.values(obj).every((o) => !o);
     onChange(obj);
-    //   if (nonData) return;
-    // setData(obj);
   }
 
   return (

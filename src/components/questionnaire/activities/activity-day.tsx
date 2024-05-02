@@ -6,6 +6,7 @@ import React from "react";
 interface Props {
   headmark: string;
   text: string;
+  id?: string;
   value?: IActivityTerm;
   onHoursChange: (value: number | undefined) => void;
   onMinutesChange: (value: number | undefined) => void;
@@ -13,13 +14,14 @@ interface Props {
 
 export default function ActivityDay({
   headmark,
+  id,
   text,
   value,
   onHoursChange,
   onMinutesChange,
 }: Props) {
   return (
-    <div className="flex w-fit flex-col">
+    <div id={id} className="flex w-fit flex-col">
       <Description headmark={headmark} text={text} />
 
       <div className="ml-auto flex">

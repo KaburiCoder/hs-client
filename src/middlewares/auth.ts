@@ -25,7 +25,7 @@ export async function withAuth(req: NextRequest) {
 
     return res;
   } catch (error) {
-    throw new Error(`Couldn't check authentication`);
+    // throw new Error(`Couldn't check authentication`);
   }
 }
 
@@ -39,6 +39,6 @@ export async function withoutAuth(req: NextRequest) {
     if (user) return NextResponse.redirect(url);
     if (!user) return NextResponse.next();
   } catch (error) {
-    throw new Error(`Couldn't check authentication`);
+    // throw new Error(`Couldn't check authentication`);
   }
 }

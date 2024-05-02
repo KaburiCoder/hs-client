@@ -22,7 +22,7 @@ export default function AccountHero({
           {formIn}
         </form>
       </Card>
-      <Card className="my-4 flex flex-col items-center gap-2 px-8 py-4 text-sm">
+      <Card className="my-4 mb-12 flex flex-col items-center gap-2 px-8 py-4 text-sm">
         {bottomIn}
       </Card>
     </main>

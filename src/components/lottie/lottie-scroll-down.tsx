@@ -1,3 +1,4 @@
+"use client";
 import { ClassNameProps } from "kbr-nextjs-shared/props";
 import React from "react";
 import Lottie from "react-lottie-player";

@@ -17,20 +17,22 @@ export default function SignupPage() {
   const [roomKey, setRoomKey] = useState<string>("");
   const [accountKey, setAccountKey] = useState<string>("");
   const { push } = useRouter();
-  const { mutate, isPending, error } = useMutation({
+  const { data, mutate, isPending, error } = useMutation({
     mutationKey: [paths.signup],
     mutationFn: signup,
     onSuccess(data) {
-      if (data?.status === 201) push(paths.root);
+      if (data?.status === 201) push(paths.login);
     },
   });
-  const { validateError, validate } = useValidate<Signup, Signup>({ error });
+  const { validateError, validateAndGetResult } = useValidate<Signup, Signup>({
+    error,
+  });
 
   async function handleSignup(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data: Signup = { userId, password, roomKey, accountKey };
     if (
-      validate(signupSchema, {
+      validateAndGetResult(signupSchema, {
         ...data,
         confirmPassword,
       })

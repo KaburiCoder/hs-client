@@ -13,7 +13,7 @@ export interface ErrorsResult {
 }
 
 export function parseAxError<T extends { [key: string]: any }>(
-  error: Error | null,
+  error?: Error | null,
 ): ErrorResult<T> | undefined {
   if (!error) return;
   if (error instanceof AxiosError) {

@@ -10,7 +10,10 @@ export default function Histories2() {
   const { clearToggle, setAppliChecked, NotAppliWrapper } = useNotAppli({
     scrollId: questionIds.history.n3,
   });
-  const { n2, setN2 } = useQuestionStore();
+  const n2 = useQuestionStore((state) => state.n2);
+  const setN2 = useQuestionStore((state) => state.setN2);
+
+  console.log("n2");
 
   useEffect(() => {
     setN2({});

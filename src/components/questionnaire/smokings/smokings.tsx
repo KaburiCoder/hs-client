@@ -8,7 +8,7 @@ import { questionIds } from "@/lib/objects/questionnaire-obj";
 export default function Smokings() {
   return (
     <section>
-      <Title id={questionIds.smoke.head}>{"흡연 및 전자담배"}</Title>
+      <Title id={questionIds.smoking.head}>{"흡연 및 전자담배"}</Title>
       <Smokings4 />
       <Smokings5 />
       <Smokings6 />

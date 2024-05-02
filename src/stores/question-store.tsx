@@ -52,6 +52,7 @@ type Actions = {
   setN9_1: (n9_1?: number) => void;
   setN9_2: (n9_2?: IActivityTerm) => void;
   setN10: (n10?: number) => void;
+  clearQuestionnaire: () => void;
 };
 
 const initialState: QuestionStates = {
@@ -104,6 +105,7 @@ const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
   setN9_1: (n9_1) => set(() => ({ n9_1 })),
   setN9_2: (n9_2) => set(() => ({ n9_2 })),
   setN10: (n10) => set(() => ({ n10 })),
+  clearQuestionnaire: () => set(initialState),
 });
 
 export const useQuestionStore = create(devtools(stateCreator));
