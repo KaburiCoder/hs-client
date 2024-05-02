@@ -33,9 +33,11 @@ export async function deleteUser(res?: NextResponse): Promise<void> {
 
 export async function setUser(res: NextResponse, user: User) {
   const expDate = new Date((user?.exp ?? 0) * 1000);
-  res.cookies.set(key, JSON.stringify(user), {
-    expires: expDate,
-    httpOnly: true,
-    secure: true,
-  });
+  res.cookies.set(key, JSON.stringify(user)
+  // , {
+  //   expires: expDate,
+  //   httpOnly: true,
+  //   secure: true,
+  // }
+);
 }
