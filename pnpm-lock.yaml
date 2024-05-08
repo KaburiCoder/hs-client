@@ -30,8 +30,8 @@ importers:
         specifier: ^11.0.28
         version: 11.0.28(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       health-screening-shared:
-        specifier: ^0.0.45
-        version: 0.0.45
+        specifier: ^0.0.46
+        version: 0.0.46
       joi:
         specifier: ^17.13.0
         version: 17.13.0
@@ -1799,8 +1799,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  health-screening-shared@0.0.45:
-    resolution: {integrity: sha512-9ZDvv3VOb79bIV39VrXHlzpq4MdUzcDygyU6Fz5wlmn76rAHbbA09NQrJFazCIv+uOqKwSQ1h6nm0Wt3y20+Hw==}
+  health-screening-shared@0.0.46:
+    resolution: {integrity: sha512-vHG5pgYLS8L9BjktRNFYWB6YAhFuLOJ60RGsuAZTLHbdfmPs0JylWuatxRkTE55Os1bGGN+13NeWW9SEZHeF0w==}
 
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
@@ -5412,7 +5412,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  health-screening-shared@0.0.45:
+  health-screening-shared@0.0.46:
     dependencies:
       joi: 17.13.0
 

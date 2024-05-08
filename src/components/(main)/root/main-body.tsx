@@ -43,7 +43,9 @@ export default function MainBody() {
     if (user) emitAck({ key: user.roomKey });
   }
 
-  const cards = patients?.map((d) => <PatientCard key={d.eiAuto} data={d} />);
+  const cards = patients?.map((d) => (
+    <PatientCard key={`${d.eiAuto},${d.ejAuto}`} data={d} />
+  ));
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>): void {
     setSearchText(e.target.value);

@@ -18,7 +18,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
-    "health-screening-shared": "^0.0.45",
+    "health-screening-shared": "^0.0.46",
     "joi": "^17.13.0",
     "kbr-nextjs-shared": "^0.0.24",
     "kbr-react-hooks": "^0.0.1",

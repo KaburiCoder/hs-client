@@ -6,22 +6,11 @@ import * as UserCookie from "@/server/cookies/user-cookie";
 
 export async function withAuth(req: NextRequest) {
   try {
-    const url = req.nextUrl.clone();
-    url.pathname = paths.login;
-
-    let user: User | undefined;
-    const cookieUser = await UserCookie.getUser(req);
-    user = cookieUser ?? (await fetchCurrentUser());
+    const user = await UserCookie.getUser(req);
 
     const res: NextResponse = user
       ? NextResponse.next()
-      : NextResponse.redirect(url);
-
-    if (!cookieUser && user) {
-      await UserCookie.setUser(res, user);
-    } else if (!user) {
-      await UserCookie.deleteUser(res);
-    }
+      : NextResponse.redirect(new URL(paths.login, req.nextUrl));
 
     return res;
   } catch (error) {
@@ -31,12 +20,9 @@ export async function withAuth(req: NextRequest) {
 
 export async function withoutAuth(req: NextRequest) {
   try {
-    const url = req.nextUrl.clone();
-    url.pathname = paths.root;
+    const user = await UserCookie.getUser(req);
 
-    const user = await fetchCurrentUser();
-
-    if (user) return NextResponse.redirect(url);
+    if (user) return NextResponse.redirect(new URL(paths.root, req.nextUrl));
     if (!user) return NextResponse.next();
   } catch (error) {
     // throw new Error(`Couldn't check authentication`);

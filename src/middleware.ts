@@ -3,13 +3,8 @@ import { paths } from "./paths";
 import { withAuth, withoutAuth } from "./middlewares/auth";
 
 export async function middleware(request: NextRequest) {
-  if (request.body !== null) {
-    // 라우팅 외의 작업은 빠져나가도록
-    return NextResponse.next();
-  }
-
   const pathname = request.nextUrl.pathname;
-
+  
   if (notAuthPaths(pathname)) {
     return withoutAuth(request);
   }
@@ -30,18 +25,10 @@ function notAuthPaths(pathname: string) {
 }
 
 function allowPaths(pathname: string) {
-  return pathname.startsWith("/images") ;
+  return pathname.startsWith("/images");
 }
 
+// Routes Middleware should not run on
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-  ],
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
 };
