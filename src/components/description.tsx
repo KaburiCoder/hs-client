@@ -42,15 +42,17 @@ export function Description({
 }
 
 interface DescriptionWrapperProps extends DescriptionProps, ChildrenProps {
+  wrapperId?: string;
   wrapperClassName?: string;
 }
 export function DescriptionWrapper({
   children,
+  wrapperId,
   wrapperClassName,
   ...props
 }: DescriptionWrapperProps) {
   return (
-    <div className={cn("flex flex-col gap-4", wrapperClassName)}>
+    <div id={wrapperId} className={cn("flex flex-col gap-4", wrapperClassName)}>
       <Description {...props} />
       {children}
     </div>

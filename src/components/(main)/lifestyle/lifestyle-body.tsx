@@ -15,7 +15,7 @@ import Nutrition from "./nutrition";
 import { useLsNutritionStore } from "@/stores/lifestyle/ls-nutrition-store";
 import Overweight from "./overweight";
 import { useLsOverweightStore } from "@/stores/lifestyle/ls-overweight-store";
-import { questionIds } from "@/lib/objects/questionnaire-obj";
+import { useLsErrorStore } from "@/stores/lifestyle/ls-error-store";
 
 export default function LifestyleBody() {
   const { index, lastIndex, carouselItems, handlePrev, handleNext } =
@@ -43,6 +43,8 @@ const useLifestyleController = () => {
   const validateExercise = useLsExerciseStore((state) => state.validate);
   const validateNutrition = useLsNutritionStore((state) => state.validate);
   const validateOverweight = useLsOverweightStore((state) => state.validate);
+  const setError = useLsErrorStore((state) => state.setError);
+  const clearError = useLsErrorStore((state) => state.clearError);
   const lastIndex = selectedItems.length - 1;
   const selectedKey = useMemo(() => selectedItems[index], [index]);
   const carouselItems = selectedItems.map((item) => {
@@ -64,8 +66,9 @@ const useLifestyleController = () => {
 
     const flattenError = flattenJoiError(error);
     const errorKey = Object.keys(flattenError)[0];
-    questionIds;
-    scrollById(`${selectedKey}_${errorKey}`, 100);
+
+    setError(selectedKey, flattenError);
+    scrollById(`${selectedKey}_${errorKey}`, 150);
 
     return;
   }
@@ -90,7 +93,7 @@ const useLifestyleController = () => {
   function handleNext() {
     const { error, value } = validate();
     if (error) return errorToFocus(error);
-
+    clearError();
     setIndex((prev) => (prev === lastIndex ? lastIndex : ++prev));
   }
 
@@ -124,9 +127,9 @@ const itemGroup: {
   overweight: Overweight,
 };
 const selectedItems: LifestyleKeys[] = [
+  "nutrition",
+  "overweight",
+  "drinking",
   "smoking",
   "exercise",
-  "drinking",
-  "overweight",
-  "nutrition",
 ];

@@ -7,7 +7,6 @@ export const useResize = () => {
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        const ddd: DOMRectReadOnly = entry.contentRect;
         setRect(entry.contentRect);
       }
     });

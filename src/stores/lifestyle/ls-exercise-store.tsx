@@ -2,8 +2,9 @@ import Joi from "joi";
 import { StateCreator, create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { validateSchema } from "../utils/validate-utli";
+import { inputMessage, selectMessage } from "./joi-messages";
 
-interface State {
+export interface LsExerciseState {
   n1_1: string | undefined;
   n1_2: number | undefined;
   n1_3h: number | undefined;
@@ -68,12 +69,12 @@ interface Actions {
   setN10: (n10: string | undefined) => void;
   setN11: (n11: string | undefined) => void;
   setN12: (n12: string | undefined) => void;
-  validate: () => Joi.ValidationResult<State>;
+  validate: () => Joi.ValidationResult<LsExerciseState>;
   clear: () => void;
 }
 
 // 초기 상태 정의
-const initialState: State = {
+const initialState: LsExerciseState = {
   n1_1: undefined,
   n1_2: undefined,
   n1_3h: undefined,
@@ -112,7 +113,7 @@ const test = {
   c: null,
 };
 
-const stateCreator: StateCreator<State & Actions> = (set, get) => ({
+const stateCreator: StateCreator<LsExerciseState & Actions> = (set, get) => ({
   ...initialState,
   setN1_1: (n1_1) => set(() => ({ n1_1 })),
   setN1_2: (n1_2) => set(() => ({ n1_2 })),
@@ -150,84 +151,140 @@ const stateCreator: StateCreator<State & Actions> = (set, get) => ({
 
 export const useLsExerciseStore = create(devtools(stateCreator));
 
-const schema = Joi.object<State>({
-  n1_1: Joi.string().required(),
+const schema = Joi.object<LsExerciseState>({
+  n1_1: Joi.string().required().messages(selectMessage("1")),
   n1_2: Joi.number()
     .min(0)
     .max(7)
-    .when("n1_1", { is: "1", then: Joi.required() }),
+    .when("n1_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-2")),
+    }),
   n1_3h: Joi.number()
     .min(0)
     .max(23)
-    .when("n1_1", { is: "1", then: Joi.required() }),
+    .when("n1_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-3", "시간")),
+    }),
   n1_3m: Joi.number()
     .min(0)
     .max(59)
-    .when("n1_1", { is: "1", then: Joi.required() }),
+    .when("n1_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-3", "분")),
+    }),
 
-  n1_4: Joi.string().required(),
+  n1_4: Joi.string().required().messages(selectMessage("1-4")),
   n1_5: Joi.number()
     .min(0)
     .max(7)
-    .when("n1_4", { is: "1", then: Joi.required() }),
+    .when("n1_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-5")),
+    }),
   n1_6h: Joi.number()
     .min(0)
     .max(23)
-    .when("n1_4", { is: "1", then: Joi.required() }),
+    .when("n1_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-6", "시간")),
+    }),
   n1_6m: Joi.number()
     .min(0)
     .max(59)
-    .when("n1_4", { is: "1", then: Joi.required() }),
+    .when("n1_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("1-6", "분")),
+    }),
 
-  n2_1: Joi.string().required(),
+  n2_1: Joi.string().required().messages(selectMessage("2-1")),
   n2_2: Joi.number()
     .min(0)
     .max(7)
-    .when("n2_1", { is: "1", then: Joi.required() }),
+    .when("n2_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("2-2")),
+    }),
   n2_3h: Joi.number()
     .min(0)
     .max(23)
-    .when("n2_1", { is: "1", then: Joi.required() }),
+    .when("n2_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("2-3", "시간")),
+    }),
   n2_3m: Joi.number()
     .min(0)
     .max(59)
-    .when("n2_1", { is: "1", then: Joi.required() }),
+    .when("n2_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("2-3", "분")),
+    }),
 
-  n3_1: Joi.string().required(),
+  n3_1: Joi.string().required().messages(selectMessage("3-1")),
   n3_2: Joi.number()
     .min(0)
     .max(7)
-    .when("n3_1", { is: "1", then: Joi.required() }),
+    .when("n3_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-2")),
+    }),
   n3_3h: Joi.number()
     .min(0)
     .max(23)
-    .when("n3_1", { is: "1", then: Joi.required() }),
+    .when("n3_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-3", "시간")),
+    }),
   n3_3m: Joi.number()
     .min(0)
     .max(59)
-    .when("n3_1", { is: "1", then: Joi.required() }),
+    .when("n3_1", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-3", "분")),
+    }),
 
-  n3_4: Joi.string().required(),
+  n3_4: Joi.string().required().messages(selectMessage("3-4")),
   n3_5: Joi.number()
     .min(0)
     .max(7)
-    .when("n3_4", { is: "1", then: Joi.required() }),
+    .when("n3_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-5")),
+    }),
   n3_6h: Joi.number()
     .min(0)
     .max(23)
-    .when("n3_4", { is: "1", then: Joi.required() }),
+    .when("n3_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-6", "시간")),
+    }),
   n3_6m: Joi.number()
     .min(0)
     .max(59)
-    .when("n3_4", { is: "1", then: Joi.required() }),
-  n4_1h: Joi.number().min(0).max(23).required(),
-  n4_1m: Joi.number().min(0).max(59).required(),
-  n5: Joi.string().valid("1", "2", "3", "4", "5", "6").required(),
-  n6: Joi.string().valid("1", "2").required(),
-  n7: Joi.string().valid("1", "2").required(),
-  n8: Joi.string().valid("1", "2").required(),
-  n9: Joi.string().valid("1", "2").required(),
-  n10: Joi.string().valid("1", "2").required(),
-  n11: Joi.string().valid("1", "2").required(),
-  n12: Joi.string().valid("1", "2").required(),
+    .when("n3_4", {
+      is: "1",
+      then: Joi.required().messages(inputMessage("3-6", "분")),
+    }),
+  n4_1h: Joi.number()
+    .min(0)
+    .max(23)
+    .required()
+    .messages(inputMessage("4-1", "시간")),
+  n4_1m: Joi.number()
+    .min(0)
+    .max(59)
+    .required()
+    .messages(inputMessage("4-1", "분")),
+  n5: Joi.string()
+    .valid("1", "2", "3", "4", "5", "6")
+    .required()
+    .messages(selectMessage("5")),
+  n6: Joi.string().valid("1", "2").required().messages(selectMessage("6")),
+  n7: Joi.string().valid("1", "2").required().messages(selectMessage("7")),
+  n8: Joi.string().valid("1", "2").required().messages(selectMessage("8")),
+  n9: Joi.string().valid("1", "2").required().messages(selectMessage("9")),
+  n10: Joi.string().valid("1", "2").required().messages(selectMessage("10")),
+  n11: Joi.string().valid("1", "2").required().messages(selectMessage("11")),
+  n12: Joi.string().valid("1", "2").required().messages(selectMessage("12")),
 });

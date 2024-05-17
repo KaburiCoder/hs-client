@@ -12,15 +12,27 @@ export function CarouselX({ index, children }: CarouselXProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (containerRef.current) {
-      // 선택된 인덱스의 자식 요소의 높이를 측정하여 설정
+    const container = containerRef.current;
+    if (container) {
       const selectedChild =
-        containerRef.current.children?.[index]?.querySelector("section");
+        container.children?.[index]?.querySelector("section");
+      if (selectedChild) {
+        const updateHeight = () => setHeight(selectedChild.offsetHeight ?? 0);
 
-      setHeight(selectedChild?.offsetHeight ?? 0);
+        updateHeight();
+
+        const resizeObserver = new ResizeObserver(() => {
+          updateHeight();
+        });
+
+        resizeObserver.observe(selectedChild);
+
+        return () => {
+          resizeObserver.unobserve(selectedChild);
+        };
+      }
     }
   }, [index]);
-
   return (
     <div
       className={cn("transform overflow-hidden")}
