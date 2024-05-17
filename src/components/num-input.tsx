@@ -11,6 +11,7 @@ export interface NumInputProps extends ClassNameProps {
   max?: number;
   dec?: number;
   inputClassName?: string;
+  isDisabled?: boolean;
   onChange: (value: number | undefined) => void;
 }
 
@@ -20,6 +21,7 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
       value: outValue,
       className,
       inputClassName,
+      isDisabled,
       onChange,
       min = 1,
       max = 99,
@@ -64,6 +66,7 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
       <Input
         ref={ref}
         className={className}
+        isDisabled={isDisabled}
         classNames={{ input: cn("text-right text-base", inputClassName) }}
         type="number"
         color="primary"
@@ -80,6 +83,7 @@ interface LabeldNumInputProps extends NumInputProps {
   id?: string;
   sLabel?: string;
   eLabel?: string;
+  isDisabled?: boolean;
 }
 
 const _LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
@@ -92,6 +96,7 @@ const _LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
       max,
       className,
       inputClassName,
+      isDisabled,
       onChange,
       ...props
     }: LabeldNumInputProps,
@@ -105,6 +110,7 @@ const _LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
           className={cn("inline-block", inputClassName)}
           min={min}
           max={max}
+          isDisabled={isDisabled}
           onChange={onChange}
           {...props}
         />

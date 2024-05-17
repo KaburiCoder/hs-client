@@ -1,7 +1,8 @@
+import { DisabledProps } from "./(main)/lifestyle/lifestyle-body";
 import { CustomRadioGroup } from "./custom-radio-group";
 import { DescriptionWrapper } from "./description";
 
-interface DescRadioGroupProps {
+interface DescRadioGroupProps extends DisabledProps {
   id: string;
   headmark: string;
   text: string;
@@ -16,6 +17,7 @@ export function DescRadioGroup({
   text,
   value,
   items,
+  isDisabled,
   onValueChange,
 }: DescRadioGroupProps) {
   return (
@@ -25,6 +27,7 @@ export function DescRadioGroup({
         minWidth
         value={value}
         onValueChange={onValueChange}
+        isDisabled={isDisabled}
         items={items}
       />
     </DescriptionWrapper>

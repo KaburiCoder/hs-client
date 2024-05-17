@@ -1,5 +1,5 @@
-import { Button } from "@nextui-org/react";
-import React, { useState } from "react";
+import ButtonL from "@/components/ui/button-l";
+import React from "react";
 
 interface LsNextButtons {
   index: number;
@@ -20,13 +20,13 @@ export default function LsNextButtons({
   return (
     <div className="mb-8 flex gap-4">
       {!isFirstPage && (
-        <Button className="flex-1" onClick={onPrev}>
+        <ButtonL className="flex-1" variant={"outline"} onClick={onPrev}>
           이전
-        </Button>
+        </ButtonL>
       )}
-      <Button className="flex-1 text-white" color="success" onClick={onNext}>
+      <ButtonL className="flex-1 text-white" color="success" onClick={onNext}>
         {isLastPage ? "확인" : "다음"}
-      </Button>
+      </ButtonL>
     </div>
   );
 }

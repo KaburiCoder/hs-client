@@ -7,8 +7,9 @@ import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsDrinkingStore } from "@/stores/lifestyle/ls-drinking-store";
 import React from "react";
+import { DisabledProps } from "./lifestyle-body";
 
-export default function Drinking() {
+export default function Drinking({ isDisabled }: DisabledProps) {
   const {
     n1,
     n2_1,
@@ -40,6 +41,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n1"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n1")}
           headmark={"1"}
           text={"술을 마시는 횟수는 어느 정도입니까?"}
@@ -56,6 +58,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n2_1"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n2_1")}
           headmark={"2-1"}
           text={"술(소주)을 마시는 날은 보통 몇잔을 마십니까?"}
@@ -73,6 +76,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n2_2"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n2_2")}
           headmark={"2-2"}
           text={
@@ -92,6 +96,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n3"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n3")}
           headmark={"3"}
           text={
@@ -105,6 +110,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n4"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n4")}
           headmark={"4"}
           text={
@@ -118,6 +124,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n5"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n5")}
           headmark={"5"}
           text={"지난 1년간,음주때문에 일상생활에 지장을 받은 적이 있습니까?"}
@@ -129,6 +136,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n6"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n6")}
           headmark={"6"}
           text={
@@ -142,6 +150,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n7"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n7")}
           headmark={"7"}
           text={"지난 1년간, 음주 후 술을 마신것에 대해 후회한 적이 있습니까?"}
@@ -153,6 +162,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n8"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n8")}
           headmark={"8"}
           text={
@@ -166,6 +176,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n9"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n9")}
           headmark={"9"}
           text={
@@ -179,6 +190,7 @@ export default function Drinking() {
 
       <LsErrorBox selectedKey="drinking" errorKeys={["n10"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.drinking("n10")}
           headmark={"10"}
           text={

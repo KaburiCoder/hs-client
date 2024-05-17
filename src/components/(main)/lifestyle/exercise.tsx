@@ -8,9 +8,10 @@ import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";
-import React from "react";
+import React, { useState } from "react";
+import { DisabledProps } from "./lifestyle-body";
 
-export default function Exercise() {
+export default function Exercise({ isDisabled }: DisabledProps) {
   const {
     n1_1,
     n1_2,
@@ -73,13 +74,13 @@ export default function Exercise() {
     setN11,
     setN12,
   } = useLsExerciseStore();
-
   return (
     <section className="flex flex-col gap-4">
       <Title>운동</Title>
-      {/* 1-1 ~ 1-3 */}
 
+      {/* 1-1 ~ 1-3 */}
       <QuestionGroup
+        isDisabled={isDisabled}
         wrapper1={{
           id: lifestyleIds.exercise("n1_1"),
           headmark: "1-1",
@@ -124,6 +125,7 @@ export default function Exercise() {
       {/* 1-4 ~ 1-6 */}
 
       <QuestionGroup
+        isDisabled={isDisabled}
         wrapper1={{
           id: lifestyleIds.exercise("n1_4"),
           headmark: "1-4",
@@ -167,6 +169,7 @@ export default function Exercise() {
 
       {/* 2-1 ~ 2-3 */}
       <QuestionGroup
+        isDisabled={isDisabled}
         wrapper1={{
           id: lifestyleIds.exercise("n2_1"),
           headmark: "2-1",
@@ -210,6 +213,7 @@ export default function Exercise() {
 
       {/* 3-1 ~ 3-3 */}
       <QuestionGroup
+        isDisabled={isDisabled}
         wrapper1={{
           id: lifestyleIds.exercise("n3_1"),
           headmark: "3-1",
@@ -253,6 +257,7 @@ export default function Exercise() {
 
       {/* 3-4 ~ 3-6 */}
       <QuestionGroup
+        isDisabled={isDisabled}
         wrapper1={{
           id: lifestyleIds.exercise("n3_4"),
           headmark: "3-4",
@@ -305,6 +310,7 @@ export default function Exercise() {
           className="my-0"
         >
           <TimeControl
+            isDisabled={isDisabled}
             hour={n4_1h}
             minute={n4_1m}
             onHourChange={setN4_1h}
@@ -316,6 +322,7 @@ export default function Exercise() {
       {/* 5 */}
       <LsErrorBox selectedKey="exercise" errorKeys={["n5"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n5")}
           headmark="5"
           text="최근 1주일 동안 팔굽혀펴기,윗몸일으키기,아령,역기,철봉 등의 근력 운동을 한날은 며칠입니까?"
@@ -334,6 +341,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n6"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n6")}
           headmark="6"
           text="심장에 문제가 있어서 운동을 할 경우 의사의 권고에 의해서만 하라고 들은 적이 있습니까?"
@@ -345,6 +353,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n7"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n7")}
           headmark="7"
           text="운동을 할 때 가슴에 통증을 느낀 적이 있습니까?"
@@ -356,6 +365,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n8"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n8")}
           headmark="8"
           text="지난달에 운동을 하지 않고 있는 동안에도 가슴에 통증을 느낀 적이 있습니까?"
@@ -367,6 +377,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n9"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n9")}
           headmark="9"
           text="어지러움증이나 의식소실로 인해 균형을 잃은 적이 있습니까?"
@@ -378,6 +389,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n10"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n10")}
           headmark="10"
           text="운동을 바꾼 후에 뼈나 관절에 문제가 생긴적이 있습니까?"
@@ -389,6 +401,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n11"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n11")}
           headmark="11"
           text="현재 혈압이나 심장문제로 의사로부터 처방을 받고 있습니까?"
@@ -400,6 +413,7 @@ export default function Exercise() {
 
       <LsErrorBox selectedKey="exercise" errorKeys={["n12"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.exercise("n12")}
           headmark="12"
           text="운동을 하면 안 되는 다른 이유가 있습니까?"
@@ -417,6 +431,7 @@ interface TimeControlProps {
   minute: number | undefined;
   onHourChange: (h: number | undefined) => void;
   onMinuteChange: (m: number | undefined) => void;
+  isDisabled?: boolean;
 }
 
 function TimeControl({
@@ -424,6 +439,7 @@ function TimeControl({
   minute,
   onHourChange,
   onMinuteChange,
+  isDisabled,
 }: TimeControlProps) {
   return (
     <div className="ml-auto flex py-1">
@@ -433,6 +449,7 @@ function TimeControl({
         value={hour}
         min={0}
         max={23}
+        isDisabled={isDisabled}
         onChange={onHourChange}
       />
       <LabeldNumInput
@@ -442,6 +459,7 @@ function TimeControl({
         value={minute}
         min={0}
         max={59}
+        isDisabled={isDisabled}
         onChange={onMinuteChange}
       />
     </div>
@@ -451,8 +469,9 @@ function TimeControl({
 interface DayControlProps {
   day: number | undefined;
   onChange: (day: number | undefined) => void;
+  isDisabled?: boolean;
 }
-function DayControl({ day, onChange }: DayControlProps) {
+function DayControl({ day, isDisabled, onChange }: DayControlProps) {
   return (
     <div className="ml-auto flex py-1">
       <LabeldNumInput
@@ -462,6 +481,7 @@ function DayControl({ day, onChange }: DayControlProps) {
         value={day}
         min={0}
         max={7}
+        isDisabled={isDisabled}
         onChange={onChange}
       />
     </div>
@@ -493,9 +513,15 @@ interface QuestionGroupProps {
     onMinuteChange: (m: number | undefined) => void;
     wrapperCallback: (component: React.ReactNode) => JSX.Element;
   };
+  isDisabled?: boolean;
 }
 
-function QuestionGroup({ wrapper1, wrapper2, wrapper3 }: QuestionGroupProps) {
+function QuestionGroup({
+  wrapper1,
+  wrapper2,
+  wrapper3,
+  isDisabled,
+}: QuestionGroupProps) {
   let component1 = wrapper1.wrapperCallback(
     <DescriptionWrapper
       id={wrapper1.id}
@@ -507,6 +533,7 @@ function QuestionGroup({ wrapper1, wrapper2, wrapper3 }: QuestionGroupProps) {
         minWidth
         value={wrapper1.value}
         onValueChange={wrapper1.onValueChange}
+        isDisabled={isDisabled}
         items={{
           "1": "예",
           "2": "아니오",
@@ -523,7 +550,11 @@ function QuestionGroup({ wrapper1, wrapper2, wrapper3 }: QuestionGroupProps) {
       wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem] mb-4"
       className="my-0"
     >
-      <DayControl day={wrapper2.day} onChange={wrapper2.onDayChange} />
+      <DayControl
+        day={wrapper2.day}
+        onChange={wrapper2.onDayChange}
+        isDisabled={isDisabled}
+      />
     </DescriptionWrapper>,
   );
 
@@ -541,6 +572,7 @@ function QuestionGroup({ wrapper1, wrapper2, wrapper3 }: QuestionGroupProps) {
         minute={wrapper3.minute}
         onHourChange={wrapper3.onHourChange}
         onMinuteChange={wrapper3.onMinuteChange}
+        isDisabled={isDisabled}
       />
     </DescriptionWrapper>,
   );

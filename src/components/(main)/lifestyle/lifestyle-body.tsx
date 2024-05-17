@@ -47,12 +47,12 @@ const useLifestyleController = () => {
   const clearError = useLsErrorStore((state) => state.clearError);
   const lastIndex = selectedItems.length - 1;
   const selectedKey = useMemo(() => selectedItems[index], [index]);
-  const carouselItems = selectedItems.map((item) => {
-    const Item = (itemGroup as any)[item] as React.ComponentType<any>;
+  const carouselItems = selectedItems.map((item, i) => {
+    const Item = (itemGroup as any)[item] as React.ComponentType<DisabledProps>;
 
     return (
       <CarouselItemX key={item}>
-        <Item />
+        <Item isDisabled={index !== i} />
       </CarouselItemX>
     );
   });
@@ -110,6 +110,10 @@ const useLifestyleController = () => {
   };
 };
 
+export interface DisabledProps {
+  isDisabled?: boolean;
+}
+
 export type LifestyleKeys =
   | "smoking"
   | "drinking"
@@ -118,7 +122,7 @@ export type LifestyleKeys =
   | "overweight";
 
 const itemGroup: {
-  [key in LifestyleKeys]: () => JSX.Element;
+  [key in LifestyleKeys]: (props: DisabledProps) => React.JSX.Element;
 } = {
   smoking: Smoking,
   drinking: Drinking,
@@ -126,10 +130,11 @@ const itemGroup: {
   nutrition: Nutrition,
   overweight: Overweight,
 };
+
 const selectedItems: LifestyleKeys[] = [
-  "nutrition",
   "overweight",
+  "exercise",
+  "nutrition",
   "drinking",
   "smoking",
-  "exercise",
 ];

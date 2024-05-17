@@ -1,5 +1,11 @@
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ChildrenClassNameProps, ChildrenProps } from "kbr-nextjs-shared/props";
 
 interface CarouselXProps extends ChildrenProps {

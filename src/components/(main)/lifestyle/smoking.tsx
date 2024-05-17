@@ -1,18 +1,15 @@
 "use client";
 import { CustomRadioGroup } from "@/components/custom-radio-group";
-import { Description, DescriptionWrapper } from "@/components/description";
+import { DescriptionWrapper } from "@/components/description";
 import { Title } from "@/components/title";
 import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import React from "react";
-import LsNextButtons from "./ls-next-buttons";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
-import {
-  LsErrorBox,
-  QuestionnaireErrorBox,
-} from "@/components/questionnaire/questionnaire-error-box";
+import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
+import { DisabledProps } from "./lifestyle-body";
 
-export default function Smoking() {
+export default function Smoking({ isDisabled }: DisabledProps) {
   const {
     n1,
     n2,
@@ -42,6 +39,7 @@ export default function Smoking() {
           text={"앞으로 1개월 이내에 담배를 끊을 계획이 있으십니까?"}
         >
           <CustomRadioGroup
+            isDisabled={isDisabled}
             value={n1}
             onValueChange={setN1}
             items={{
@@ -63,6 +61,7 @@ export default function Smoking() {
           }
         >
           <CustomRadioGroup
+            isDisabled={isDisabled}
             row
             value={n2}
             onValueChange={setN2}
@@ -82,6 +81,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n3"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n3")}
           headmark={"3"}
           text={"아침에 일어나서 얼마 만에 첫 번째 담배를 피십니까?"}
@@ -98,6 +98,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n4"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n4")}
           headmark={"4"}
           text={
@@ -111,6 +112,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n5"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n5")}
           headmark={"5"}
           text={"어떤 경우의 담배가 가장 포기하기 싫으시겠습니까?"}
@@ -125,6 +127,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n6"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n6")}
           headmark={"6"}
           text={"하루에 담배를 몇 개비나 피우십니까?"}
@@ -141,6 +144,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n7"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n7")}
           headmark={"7"}
           text={
@@ -154,6 +158,7 @@ export default function Smoking() {
 
       <LsErrorBox selectedKey="smoking" errorKeys={["n8"]}>
         <DescRadioGroup
+          isDisabled={isDisabled}
           id={lifestyleIds.smoking("n8")}
           headmark={"8"}
           text={
