@@ -18,7 +18,7 @@ export const CustomRadioGroup = ({
     <CustomRadio
       key={key}
       value={key}
-      classNames={{ base: minWidth ? "min-w-48" : minWidth }}
+      classNames={{ base: minWidth ? "min-w-40" : minWidth }}
     >
       {items[key]}
     </CustomRadio>

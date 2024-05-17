@@ -1,9 +1,11 @@
 "use client";
 import { BlurWrapper } from "@/components/blur-wrapper";
 import { CustomRadioGroup } from "@/components/custom-radio-group";
+import { DescRadioGroup } from "@/components/desc-radio-group";
 import { DescriptionWrapper } from "@/components/description";
 import { LabeldNumInput } from "@/components/num-input";
 import { Title } from "@/components/title";
+import { lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";
 import React from "react";
 
@@ -226,145 +228,84 @@ export default function Exercise() {
       </DescriptionWrapper>
 
       {/* 5 */}
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="5"
         text="최근 1주일 동안 팔굽혀펴기,윗몸일으키기,아령,역기,철봉 등의 근력 운동을 한날은 며칠입니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n5}
-          onValueChange={setN5}
-          items={{
-            "1": "전혀 하지 않음",
-            "2": "1일",
-            "3": "2일",
-            "4": "3일",
-            "5": "4일",
-            "6": "5일 이상",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n5}
+        onValueChange={setN5}
+        items={{
+          "1": "전혀 하지 않음",
+          "2": "1일",
+          "3": "2일",
+          "4": "3일",
+          "5": "4일",
+          "6": "5일 이상",
+        }}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="6"
         text="심장에 문제가 있어서 운동을 할 경우 의사의 권고에 의해서만 하라고 들은 적이 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n6}
-          onValueChange={setN6}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n6}
+        onValueChange={setN6}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="7"
         text="운동을 할 때 가슴에 통증을 느낀 적이 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n7}
-          onValueChange={setN7}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n7}
+        onValueChange={setN7}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="8"
         text="지난달에 운동을 하지 않고 있는 동안에도 가슴에 통증을 느낀 적이 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n8}
-          onValueChange={setN8}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n8}
+        onValueChange={setN8}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="9"
         text="어지러움증이나 의식소실로 인해 균형을 잃은 적이 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n9}
-          onValueChange={setN9}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n9}
+        onValueChange={setN9}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="10"
         text="운동을 바꾼 후에 뼈나 관절에 문제가 생긴적이 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n10}
-          onValueChange={setN10}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n10}
+        onValueChange={setN10}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="11"
         text="현재 혈압이나 심장문제로 의사로부터 처방을 받고 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n11}
-          onValueChange={setN11}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n11}
+        onValueChange={setN11}
+        items={lsYnItems}
+      />
 
-      <DescriptionWrapper
+      <DescRadioGroup
         id=""
         headmark="12"
         text="운동을 하면 안 되는 다른 이유가 있습니까?"
-      >
-        <CustomRadioGroup
-          row
-          minWidth
-          value={n12}
-          onValueChange={setN12}
-          items={{
-            "1": "예",
-            "2": "아니오",
-          }}
-        />
-      </DescriptionWrapper>
+        value={n12}
+        onValueChange={setN12}
+        items={lsYnItems}
+      />
     </section>
   );
 }

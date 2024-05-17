@@ -123,8 +123,9 @@ const itemGroup: {
   overweight: Overweight,
 };
 const selectedItems: LifestyleKeys[] = [
-  "nutrition",
-  "exercise",
   "smoking",
+  "exercise",
   "drinking",
+  "overweight",
+  "nutrition",
 ];
