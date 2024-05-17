@@ -19,8 +19,8 @@ export default function Drinks7() {
 
   function handleSelect(_value: InputValueType): void {
     const value = _value as EDrinkingFreqType;
-    setN7({ type: value });
-    if (value === EDrinkingFreqType.DO_NOT) {
+    setN7({ ...n7, type: value });
+    if (value === EDrinkingFreqType.DO_NOT && n7?.type !== value) {
       scrollById(questionIds.activity.head);
     }
   }

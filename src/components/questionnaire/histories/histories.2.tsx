@@ -16,6 +16,7 @@ export default function Histories2() {
   console.log("n2");
 
   useEffect(() => {
+    if (clearToggle === null) return;
     setN2({});
   }, [clearToggle]);
 

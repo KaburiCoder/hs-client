@@ -15,6 +15,7 @@ export const Histories1 = () => {
   const setN1 = useQuestionStore((state) => state.setN1);
 
   useEffect(() => {
+    if(clearToggle === null) return;
     setN1({});
   }, [clearToggle]);
 

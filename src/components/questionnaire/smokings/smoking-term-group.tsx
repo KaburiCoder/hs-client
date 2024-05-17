@@ -20,7 +20,8 @@ interface SmokingTermGroupProps {
     term?: ISmokingTerm;
   };
   id?: string;
-  onChange: (result: ISmokingResult) => void;
+  onTermYnChange: (yn: boolean) => void;
+  onTermChange: (term: keyof ISmokingTerm, value: number | undefined) => void;
 }
 
 export function SmokingTermGroup({
@@ -28,15 +29,9 @@ export function SmokingTermGroup({
   description,
   value,
   id,
-  onChange,
+  onTermYnChange,
+  onTermChange,
 }: SmokingTermGroupProps) {
-  const [smoking, setSmoking] = useState<boolean>();
-  const [term, setTerm] = useState<ISmokingTerm>();
-
-  useEffect(() => {
-    onChange({ smoking, term });
-  }, [smoking, term]);
-
   return (
     <BlurWrapper blur={blur}>
       <Description
@@ -50,12 +45,12 @@ export function SmokingTermGroup({
           { text: "현재 피움", value: 1 },
           { text: "과거에는 피웠으나 현재 피우지 않음", value: 0 },
         ]}
-        onChange={(v) => setSmoking(!!v)}
+        onChange={(v) => onTermYnChange(!!v)}
       />
       <SmokingTerm
         value={value?.term}
-        quitNow={smoking === false}
-        onChange={setTerm}
+        quitNow={value?.yn === false}
+        onChange={onTermChange}
       />
     </BlurWrapper>
   );

@@ -10,6 +10,7 @@ import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { useQuestionStore } from "@/stores/question-store";
 import { useRouter } from "next/navigation";
 import { paths } from "@/paths";
+import AddExams from "@/components/questionnaire/add-exams/add-exams";
 
 export default function QuestionaireBody() {
   const clearPatient = useSelectionPatientStore((state) => state.clearPatient);
@@ -36,6 +37,7 @@ export default function QuestionaireBody() {
         <Smokings />
         <Drinks />
         <Activities />
+        <AddExams/>
         <Confirms />
         <ScrollDownAnimation />
       </div>

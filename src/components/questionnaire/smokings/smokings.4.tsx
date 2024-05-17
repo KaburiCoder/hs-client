@@ -4,7 +4,10 @@ import SmokingGroup from "./smoking-group";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
-import { ISmokingResult } from "health-screening-shared/interfaces";
+import {
+  ISmokingResult,
+  ISmokingTerm,
+} from "health-screening-shared/interfaces";
 
 export default function Smokings4() {
   const n4 = useQuestionStore((state) => state.n4);
@@ -16,11 +19,24 @@ export default function Smokings4() {
     const y = !!value;
 
     setN4(y);
-    if (!y) scrollById(questionIds.smoking.n5);
+    if (!y && n4 !== y) scrollById(questionIds.smoking.n5);
   }
 
-  function handleSmokingTermChange(result: ISmokingResult): void {
-    setN4_1(result);
+  function handleTermYnChange(yn: boolean): void {
+    setN4_1({ ...n4_1, smoking: yn });
+  }
+
+  function handleTermChange(
+    key: keyof ISmokingTerm,
+    value: number | undefined,
+  ): void {
+    setN4_1({
+      ...n4_1,
+      term: {
+        ...n4_1?.term,
+        [key]: value,
+      },
+    });
   }
 
   return (
@@ -45,8 +61,9 @@ export default function Smokings4() {
         "smoking.n4_1.term.cigarettes",
         "smoking.n4_1.term.quitYears",
       ]}
-      handleSmokingYnChange={handleSmokingYn}
-      handleSmokingTermChange={handleSmokingTermChange}
+      onTermYnChange={handleTermYnChange}
+      onTermChange={handleTermChange}
+      onSmokingYnChange={handleSmokingYn}
     />
   );
 }

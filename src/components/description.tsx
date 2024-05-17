@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ClassNameProps } from "kbr-nextjs-shared/props";
+import { ChildrenProps, ClassNameProps } from "kbr-nextjs-shared/props";
 import { CircleHelp, MessageSquareQuote, Sparkles } from "lucide-react";
 
 interface DescriptionProps extends ClassNameProps, TextProps {
@@ -37,6 +37,22 @@ export function Description({
         </span>
       )}
       {text}
+    </div>
+  );
+}
+
+interface DescriptionWrapperProps extends DescriptionProps, ChildrenProps {
+  wrapperClassName?: string;
+}
+export function DescriptionWrapper({
+  children,
+  wrapperClassName,
+  ...props
+}: DescriptionWrapperProps) {
+  return (
+    <div className={cn("flex flex-col gap-4", wrapperClassName)}>
+      <Description {...props} />
+      {children}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Description } from "@/components/description";
 import { Grids } from "@/components/grids";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
@@ -14,7 +14,9 @@ export default function Histories3() {
   const setN3 = useQuestionStore((state) => state.setN3);
 
   function handleValueChange(value: InputValueType): void {
-    scrollById(questionIds.smoking.head);
+    if (value !== n3) 
+      scrollById(questionIds.smoking.head);
+
     setN3(value as EHistoryN3);
   }
 
@@ -26,17 +28,16 @@ export default function Histories3() {
         text="B형간염 바이러스 보유자입니까?"
       />
       <Grids>
-        
-          <TitledRadioGroup
-            value={n3}
-            title="기타(암포함)"
-            datas={[
-              { value: EHistoryN3.yes, text: "예" },
-              { value: EHistoryN3.no, text: "아니오" },
-              { value: EHistoryN3.doNotKnown, text: "모름" },
-            ]}
-            onChange={handleValueChange}
-          /> 
+        <TitledRadioGroup
+          value={n3}
+          title="기타(암포함)"
+          datas={[
+            { value: EHistoryN3.yes, text: "예" },
+            { value: EHistoryN3.no, text: "아니오" },
+            { value: EHistoryN3.doNotKnown, text: "모름" },
+          ]}
+          onChange={handleValueChange}
+        />
       </Grids>
     </QuestionnaireErrorBox>
   );

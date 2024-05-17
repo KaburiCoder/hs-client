@@ -1,7 +1,10 @@
 import { Description } from "@/components/description";
 import React, { memo } from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
-import { ISmokingResult } from "health-screening-shared/interfaces";
+import {
+  ISmokingResult,
+  ISmokingTerm,
+} from "health-screening-shared/interfaces";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
@@ -15,8 +18,7 @@ interface GroupDescription {
 interface Props {
   firstDescription: GroupDescription;
   secondDescription: GroupDescription;
-  handleSmokingTermChange(result: ISmokingResult): void;
-  handleSmokingYnChange(value: InputValueType): void;
+  onSmokingYnChange(value: InputValueType): void;
   value?: {
     yn?: boolean;
     result?: ISmokingResult;
@@ -25,6 +27,8 @@ interface Props {
   groupId?: string;
   ynErrorKeys: (keyof QuestionnaireErrorResult)[];
   subErrorKeys: (keyof QuestionnaireErrorResult)[];
+  onTermYnChange: (yn: boolean) => void;
+  onTermChange: (term: keyof ISmokingTerm, value: number | undefined) => void;
 }
 
 function SmokingGroup({
@@ -35,8 +39,9 @@ function SmokingGroup({
   secondDescription,
   ynErrorKeys,
   subErrorKeys,
-  handleSmokingTermChange,
-  handleSmokingYnChange,
+  onTermYnChange,
+  onTermChange,
+  onSmokingYnChange,
 }: Props) {
   return (
     <>
@@ -52,7 +57,7 @@ function SmokingGroup({
             { text: "예", value: 1 },
             { text: "아니오", value: 0 },
           ]}
-          onChange={handleSmokingYnChange}
+          onChange={onSmokingYnChange}
         />
       </QuestionnaireErrorBox>
 
@@ -65,7 +70,8 @@ function SmokingGroup({
             headmark: secondDescription.headmark,
             text: secondDescription.text,
           }}
-          onChange={handleSmokingTermChange}
+          onTermYnChange={onTermYnChange}
+          onTermChange={onTermChange}
         />
       </QuestionnaireErrorBox>
     </>

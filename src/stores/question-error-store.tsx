@@ -51,4 +51,14 @@ export interface QuestionnaireErrorResult {
   "activity.n9_2.hours"?: string;
   "activity.n9_2.minutes"?: string;
   "activity.n10"?: string;
+  "addExam.n11"?: string;
+  "addExam.n12"?: string;
+  "addExam.n13_1"?: string;
+  "addExam.n13_2"?: string;
+  "addExam.n13_3"?: string;
+  "addExam.n13_4"?: string;
+  "addExam.n13_5"?: string;
+  "addExam.n13_6"?: string;
+  "addExam.n14"?: string;
+  "addExam.n15"?: string;
 }

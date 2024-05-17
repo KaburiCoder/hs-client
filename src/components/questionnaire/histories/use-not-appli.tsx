@@ -8,7 +8,7 @@ interface Args {
   scrollId: string;
 }
 export const useNotAppli = ({ scrollId }: Args) => {
-  const [clearToggle, setClearToggle] = useState(false);
+  const [clearToggle, setClearToggle] = useState<boolean | null>(null);
   const notAppliRef = useRef<NotAppliWrapperRef>(null);
 
   function handleNotApplicable(value: boolean): void {

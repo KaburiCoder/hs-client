@@ -52,29 +52,33 @@ export default function MainBody() {
   }
 
   return (
-    <main className="mx-auto flex max-w-screen-lg flex-col justify-between space-y-4 px-6 py-6">
-      <div>
-        <div className="flex items-center justify-between">
-          <h2 className="mb-2 mt-4 text-2xl font-bold">
-            검진 접수 환자 리스트
-          </h2>
-          <div className="flex gap-2">
-            <Input
-              startContent={<Search />}
-              className="text-base"
-              placeholder="이름 검색"
-              onChange={handleSearch}
-            />
-            <Button
-              variant="bordered"
-              startContent={<RefreshCw />}
-              onClick={handleReload}
-            ></Button>
+    <>
+      <div className="sticky top-0 z-10 bg-white ">
+        <div>
+          <div className="flex items-center justify-between max-w-screen-lg mx-auto">
+            <h2 className="mb-2 mt-4 text-2xl font-bold">
+              검진 접수 환자 리스트
+            </h2>
+            <div className="flex gap-2">
+              <Input
+                startContent={<Search />}
+                className="text-base"
+                placeholder="이름 검색"
+                onChange={handleSearch}
+              />
+              <Button
+                variant="bordered"
+                startContent={<RefreshCw />}
+                onClick={handleReload}
+              ></Button>
+            </div>
           </div>
         </div>
         <Divider className="my-2" />
       </div>
-      {cards}
-    </main>
+      <main className="mx-auto flex max-w-screen-lg flex-col justify-between space-y-4 px-6 py-6">
+        {cards}
+      </main>
+    </>
   );
 }

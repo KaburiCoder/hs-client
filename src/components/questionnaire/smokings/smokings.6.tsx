@@ -20,12 +20,12 @@ export default function Smokings6() {
     const y = !!value;
 
     setN6(y);
-    if (!y) scrollById(questionIds.drink.head);
+    if (!y && n6 !== y) scrollById(questionIds.drink.head);
   }
 
-  function handleRadioSelected(value: InputValueType): void {
+  function handleRadioSelected(value: InputValueType): void {    
     setN6_1(value as ISmokingN6d1);
-    if (value) scrollById(questionIds.drink.head);
+    if (value && n6_1 !== value) scrollById(questionIds.drink.head);
   }
 
   return (

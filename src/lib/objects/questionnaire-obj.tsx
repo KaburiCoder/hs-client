@@ -28,6 +28,21 @@ export const questionIds = {
     n9_2: "activity_9-2",
     n10: "activity_10",
   },
+  addExam: {
+    head: "addExamHead",
+    n11: "addExam_11",
+    n12: "addExam_12",
+    n13: "addExam_13",
+    n13_1: "addExam_13-1",
+    n13_2: "addExam_13-2",
+    n13_3: "addExam_13-3",
+    n13_4: "addExam_13-4",
+    n13_5: "addExam_13-5",
+    n13_6: "addExam_13-6",
+    n14: "addExam_14",
+    n15: "addExam_15",
+  },
+  confirm: "btn-confirm",
 };
 
 interface IKeyTitle {

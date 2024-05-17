@@ -32,6 +32,16 @@ type QuestionStates = {
   n9_1?: number;
   n9_2?: IActivityTerm;
   n10?: number;
+  n11?: boolean;
+  n12?: boolean;
+  n13_1?: boolean;
+  n13_2?: boolean;
+  n13_3?: boolean;
+  n13_4?: boolean;
+  n13_5?: boolean;
+  n13_6?: boolean;
+  n14?: boolean;
+  n15?: boolean;
 };
 
 type Actions = {
@@ -52,6 +62,18 @@ type Actions = {
   setN9_1: (n9_1?: number) => void;
   setN9_2: (n9_2?: IActivityTerm) => void;
   setN10: (n10?: number) => void;
+  setN11: (n11?: boolean) => void;
+  setN12: (n12?: boolean) => void;
+  setN13_1: (n13_1?: boolean) => void;
+  setN13_2: (n13_2?: boolean) => void;
+  setN13_3: (n13_3?: boolean) => void;
+  setN13_4: (n13_4?: boolean) => void;
+  setN13_5: (n13_5?: boolean) => void;
+  setN13_6: (n13_6?: boolean) => void;
+  setN14: (n14?: boolean) => void;
+  setN15: (n15?: boolean) => void;
+  setGenState: (state: QuestionStates) => void;
+
   clearQuestionnaire: () => void;
 };
 
@@ -73,6 +95,16 @@ const initialState: QuestionStates = {
   n9_1: undefined,
   n9_2: undefined,
   n10: undefined,
+  n11: undefined,
+  n12: undefined,
+  n13_1: undefined,
+  n13_2: undefined,
+  n13_3: undefined,
+  n13_4: undefined,
+  n13_5: undefined,
+  n13_6: undefined,
+  n14: undefined,
+  n15: undefined,
 };
 
 const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
@@ -105,7 +137,61 @@ const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
   setN9_1: (n9_1) => set(() => ({ n9_1 })),
   setN9_2: (n9_2) => set(() => ({ n9_2 })),
   setN10: (n10) => set(() => ({ n10 })),
+  setN11: (n11) => set(() => ({ n11 })),
+  setN12: (n12) => set(() => ({ n12 })),
+  setN13_1: (n13_1) => set(() => ({ n13_1 })),
+  setN13_2: (n13_2) => set(() => ({ n13_2 })),
+  setN13_3: (n13_3) => set(() => ({ n13_3 })),
+  setN13_4: (n13_4) => set(() => ({ n13_4 })),
+  setN13_5: (n13_5) => set(() => ({ n13_5 })),
+  setN13_6: (n13_6) => set(() => ({ n13_6 })),
+  setN14: (n14) => set(() => ({ n14 })),
+  setN15: (n15) => set(() => ({ n15 })),
+  setGenState: (state) =>
+    set(() => {
+      deleteZeroOrNull(state);
+
+      return {
+        ...state,
+        n4: state.n4,
+        n4_1: state.n4 ? state.n4_1 : undefined,
+        n5: state.n5,
+        n5_1: state.n5 ? state.n5_1 : undefined,
+        n6: state.n6,
+        n6_1: state.n6 ? state.n6_1 : undefined,
+        n7: {
+          type: state.n7?.type,
+          frequency:
+            state.n7?.type === EDrinkingFreqType.DO_NOT
+              ? undefined
+              : state.n7?.frequency,
+        },
+        n7_1:
+          !state.n7 || state.n7.type === EDrinkingFreqType.DO_NOT
+            ? undefined
+            : state.n7_1,
+        n7_2:
+          !state.n7 || state.n7.type === EDrinkingFreqType.DO_NOT
+            ? undefined
+            : state.n7_2,
+      };
+    }),
   clearQuestionnaire: () => set(initialState),
 });
+
+function deleteZeroOrNull(obj: any) {
+  if (typeof obj === "object") {
+    for (const key in obj) {
+      const inObj = obj[key];
+      if (inObj === 0 || inObj === null) {
+        delete obj[key];
+      }
+
+      if (typeof inObj === "object") {
+        deleteZeroOrNull(inObj);
+      }
+    }
+  }
+}
 
 export const useQuestionStore = create(devtools(stateCreator));
