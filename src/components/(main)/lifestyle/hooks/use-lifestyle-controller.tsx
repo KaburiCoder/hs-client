@@ -10,10 +10,11 @@ import Exercise from "../exercise";
 import Nutrition from "../nutrition";
 import Overweight from "../overweight";
 import { useLifestyleStoreController } from "./use-lifestyle-store-controller";
+import { LifestyleKeys } from "@/stores/lifestyle/ls-selection-store";
 
 export const useLifestyleController = () => {
   const [index, setIndex] = useState(0);
-  const { validate, setError, clearError, clearAll } =
+  const { selectedItems, validate, setError, clearError, clearAll } =
     useLifestyleStoreController();
 
   const lastIndex = selectedItems.length - 1;
@@ -58,7 +59,7 @@ export const useLifestyleController = () => {
       clearAll();
     };
   }, []);
-  
+
   return {
     index,
     lastIndex,
@@ -67,13 +68,6 @@ export const useLifestyleController = () => {
     handleNext,
   };
 };
-
-export type LifestyleKeys =
-  | "smoking"
-  | "drinking"
-  | "exercise"
-  | "nutrition"
-  | "overweight";
 
 const itemGroup: {
   [key in LifestyleKeys]: (props: DisabledProps) => React.JSX.Element;
@@ -84,11 +78,3 @@ const itemGroup: {
   nutrition: Nutrition,
   overweight: Overweight,
 };
-
-const selectedItems: LifestyleKeys[] = [
-  "overweight",
-  "exercise",
-  "nutrition",
-  "drinking",
-  "smoking",
-];

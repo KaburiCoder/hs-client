@@ -5,7 +5,7 @@ import { useLsExerciseStore } from '@/stores/lifestyle/ls-exercise-store';
 import { useLsNutritionStore } from '@/stores/lifestyle/ls-nutrition-store';
 import { useLsOverweightStore } from '@/stores/lifestyle/ls-overweight-store';
 import { useLsSmokingStore } from '@/stores/lifestyle/ls-smoking-store';
-import { LifestyleKeys } from './use-lifestyle-controller';
+import { LifestyleKeys, useLsSelectionStore } from '@/stores/lifestyle/ls-selection-store';
 
 export const useLifestyleStoreController = () => {
   const validateSmoking = useLsSmokingStore((state) => state.validate);
@@ -20,6 +20,8 @@ export const useLifestyleStoreController = () => {
   const clearOverweight = useLsOverweightStore((state) => state.clear);
   const setError = useLsErrorStore((state) => state.setError);
   const clearError = useLsErrorStore((state) => state.clearError);
+  const clearSelectedItems = useLsSelectionStore(state => state.clearSelectedItems)
+  const selectedItems = useLsSelectionStore(state => state.selectedItems)
 
   function clearAll() {
     clearSmoking();
@@ -28,6 +30,7 @@ export const useLifestyleStoreController = () => {
     clearNutrition();
     clearOverweight();
     clearError();
+    clearSelectedItems();
   }
 
   function validate(selectedKey: LifestyleKeys) {
@@ -48,6 +51,7 @@ export const useLifestyleStoreController = () => {
   }
 
   return {
+    selectedItems,
     validate,
     setError,
     clearError,

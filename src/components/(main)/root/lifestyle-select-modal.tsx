@@ -11,30 +11,29 @@ import {
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import BigCheckBox from "@/components/big-check-box";
 import sock from "health-screening-shared/interfaces.socket";
+import {
+  LifestyleKeys,
+  useLsSelectionStore,
+} from "@/stores/lifestyle/ls-selection-store";
 
 interface Props extends ChildrenProps {
   diagnose: sock.QuestionnaireDiagnose;
   isOpen: boolean;
   onOpenChange: () => void;
-}
-
-function GetDiagnoseArray(diagnose: sock.QuestionnaireDiagnose) {
-  const keys: string[] = [];
-  for (const key in diagnose) {
-    if ((diagnose as any)[key]) {
-      keys.push(key);
-    }
-  }
-
-  return keys;
+  onSelect: (value: LifestyleKeys[]) => void;
 }
 
 export default function LifestyleSelectModal({
   diagnose,
   isOpen,
   onOpenChange,
+  onSelect,
 }: Props) {
   const diagnoses = GetDiagnoseArray(diagnose);
+  const [selected, setSelected] = React.useState<LifestyleKeys[]>(
+    diagnoses as LifestyleKeys[],
+  );
+
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
@@ -45,7 +44,10 @@ export default function LifestyleSelectModal({
             </ModalHeader>
             <ModalBody>
               <div>작성할 문진표를 선택하세요.</div>
-              <CheckboxGroup defaultValue={diagnoses}>
+              <CheckboxGroup
+                value={selected}
+                onValueChange={(value) => setSelected(value as LifestyleKeys[])}
+              >
                 <BigCheckBox value={"smoking"} isDisabled={!diagnose.smoking}>
                   흡연
                 </BigCheckBox>
@@ -61,7 +63,13 @@ export default function LifestyleSelectModal({
               <Button color="danger" variant="light" onPress={onClose}>
                 닫기
               </Button>
-              <Button color="primary" onPress={onClose}>
+              <Button
+                color="primary"
+                onPress={() => {
+                  onSelect(selected);
+                  onClose();
+                }}
+              >
                 선택
               </Button>
             </ModalFooter>
@@ -70,4 +78,15 @@ export default function LifestyleSelectModal({
       </ModalContent>
     </Modal>
   );
+}
+
+function GetDiagnoseArray(diagnose: sock.QuestionnaireDiagnose) {
+  const keys: string[] = [];
+  for (const key in diagnose) {
+    if ((diagnose as any)[key]) {
+      keys.push(key);
+    }
+  }
+
+  return keys;
 }

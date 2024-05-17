@@ -10,6 +10,10 @@ import { EvPaths } from "@/socket-io/ev-paths";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { IQuestionnaire } from "health-screening-shared/interfaces";
 import LifestyleSelectModal from "./lifestyle-select-modal";
+import {
+  LifestyleKeys,
+  useLsSelectionStore,
+} from "@/stores/lifestyle/ls-selection-store";
 
 interface PatientCardProps {
   data: sock.ReceptionPatient;
@@ -18,9 +22,12 @@ interface PatientCardProps {
 export function PatientCard({ data }: PatientCardProps) {
   const { name, birthday, targetName, kinds, diagnose } = data;
   const setPatient = useSelectionPatientStore((state) => state.setPatient);
+  const setSelectedItems = useLsSelectionStore(
+    (state) => state.setSelectedItems,
+  );
   const { nav } = useNavQuestionnaire();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+  const { push } = useRouter();
   function handlePush(k: sock.QuestionnaireKind): void {
     setPatient(data);
     if (
@@ -49,12 +56,18 @@ export function PatientCard({ data }: PatientCardProps) {
     }
   }
 
+  function handleLifestyleSelect(value: LifestyleKeys[]): void {
+    setSelectedItems(value);
+    push(paths.lifestyle);
+  }
+
   return (
     <Card className="flex flex-col justify-between gap-4 p-4">
       <LifestyleSelectModal
         diagnose={diagnose}
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        onSelect={handleLifestyleSelect}
       />
       <div className="flex items-center gap-4">
         <h2 className="text-xl font-bold">{name}</h2>
