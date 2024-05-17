@@ -5,7 +5,7 @@ import { LsExerciseState } from "./ls-exercise-store";
 import { LsNutritionState } from "./ls-nutrition-store";
 import { LsOverweightState } from "./ls-overweight-store";
 import { LsSmokingState } from "./ls-smoking-store";
-import { LifestyleKeys } from "@/components/(main)/lifestyle/lifestyle-body";
+import { LifestyleKeys } from "@/components/(main)/lifestyle/hooks/use-lifestyle-controller";
 
 interface State {
   selectedKey?: LifestyleKeys;

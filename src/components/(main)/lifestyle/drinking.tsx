@@ -1,7 +1,5 @@
 "use client";
-import { CustomRadioGroup } from "@/components/custom-radio-group";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { Description } from "@/components/description";
 import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
