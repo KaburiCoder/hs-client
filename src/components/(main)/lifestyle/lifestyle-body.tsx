@@ -15,6 +15,7 @@ import Nutrition from "./nutrition";
 import { useLsNutritionStore } from "@/stores/lifestyle/ls-nutrition-store";
 import Overweight from "./overweight";
 import { useLsOverweightStore } from "@/stores/lifestyle/ls-overweight-store";
+import { questionIds } from "@/lib/objects/questionnaire-obj";
 
 export default function LifestyleBody() {
   const { index, lastIndex, carouselItems, handlePrev, handleNext } =
@@ -63,7 +64,7 @@ const useLifestyleController = () => {
 
     const flattenError = flattenJoiError(error);
     const errorKey = Object.keys(flattenError)[0];
-
+    questionIds;
     scrollById(`${selectedKey}_${errorKey}`, 100);
 
     return;
@@ -106,7 +107,7 @@ const useLifestyleController = () => {
   };
 };
 
-type LifestyleKeys =
+export type LifestyleKeys =
   | "smoking"
   | "drinking"
   | "exercise"

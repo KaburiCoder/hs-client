@@ -5,7 +5,7 @@ interface DescRadioGroupProps {
   id: string;
   headmark: string;
   text: string;
-  value: string | null | undefined;
+  value: string | undefined;
   items: { [key: string]: string };
   onValueChange: (value: string) => void;
 }
