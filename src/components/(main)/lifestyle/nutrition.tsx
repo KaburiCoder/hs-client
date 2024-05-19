@@ -1,11 +1,12 @@
 "use client";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
+import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsNutritionStore } from "@/stores/lifestyle/ls-nutrition-store";
 import React from "react";
 import { DisabledProps } from "./lifestyle-body";
+import { useFocus } from "./_hooks/use-focus";
 
 export default function Nutrition({ isDisabled }: DisabledProps) {
   const {
@@ -32,6 +33,7 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
     setN10,
     setN11,
   } = useLsNutritionStore();
+  const { setValue } = useFocus();
 
   return (
     <section className="flex flex-col gap-4">
@@ -44,7 +46,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="우유나 칼슘강화두유, 기타 유제품(요구르트 등)을 매일 1컵(200ml)이상 마신다."
           items={baseItems}
           value={n1}
-          onValueChange={setN1}
+          onValueChange={setValue.bind(
+            null,
+            n1,
+            setN1,
+            lifestyleIds.nutrition("n2"),
+          )}
         />
       </LsErrorBox>
 
@@ -56,7 +63,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="육류, 생선, 달걀, 콩, 두부 등으로 된 음식을 매일 3회이상 먹는다."
           items={baseItems}
           value={n2}
-          onValueChange={setN2}
+          onValueChange={setValue.bind(
+            null,
+            n2,
+            setN2,
+            lifestyleIds.nutrition("n3"),
+          )}
         />
       </LsErrorBox>
 
@@ -68,7 +80,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="김치 이외의 채소를 식사할 때마다 먹는다."
           items={baseItems}
           value={n3}
-          onValueChange={setN3}
+          onValueChange={setValue.bind(
+            null,
+            n3,
+            setN3,
+            lifestyleIds.nutrition("n4"),
+          )}
         />
       </LsErrorBox>
 
@@ -80,7 +97,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="과일(1개)을 매일 먹는다.(갈아먹는 형태 포함)"
           items={baseItems}
           value={n4}
-          onValueChange={setN4}
+          onValueChange={setValue.bind(
+            null,
+            n4,
+            setN4,
+            lifestyleIds.nutrition("n5"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n5"]}>
@@ -91,7 +113,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="튀김이나 볶음 요리를 얼마나 자주 먹습니까?"
           items={baseItems2}
           value={n5}
-          onValueChange={setN5}
+          onValueChange={setValue.bind(
+            null,
+            n5,
+            setN5,
+            lifestyleIds.nutrition("n6"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n6"]}>
@@ -102,7 +129,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="콜레스테롤이 많은 식품(삽겹살, 달걀노른자, 오징어 등)을 얼마나 자주 먹습니까?"
           items={baseItems2}
           value={n6}
-          onValueChange={setN6}
+          onValueChange={setValue.bind(
+            null,
+            n6,
+            setN6,
+            lifestyleIds.nutrition("n7"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n7"]}>
@@ -113,7 +145,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="아이스크림, 케이크, 과자, 음료수(믹스커피, 콜라, 식혜 등)중 1가지를 매일 먹는다."
           items={baseItems}
           value={n7}
-          onValueChange={setN7}
+          onValueChange={setValue.bind(
+            null,
+            n7,
+            setN7,
+            lifestyleIds.nutrition("n8"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n8"]}>
@@ -124,7 +161,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="젓갈, 장아찌, 자반 등을 매일 먹는다."
           items={baseItems}
           value={n8}
-          onValueChange={setN8}
+          onValueChange={setValue.bind(
+            null,
+            n8,
+            setN8,
+            lifestyleIds.nutrition("n9"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n9"]}>
@@ -135,7 +177,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
           text="식사를 매일 정해진 시간에 한다."
           items={baseItems}
           value={n9}
-          onValueChange={setN9}
+          onValueChange={setValue.bind(
+            null,
+            n9,
+            setN9,
+            lifestyleIds.nutrition("n10"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n10"]}>
@@ -150,7 +197,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             "3": "3종류 이하",
           }}
           value={n10}
-          onValueChange={setN10}
+          onValueChange={setValue.bind(
+            null,
+            n10,
+            setN10,
+            lifestyleIds.nutrition("n11"),
+          )}
         />
       </LsErrorBox>
       <LsErrorBox selectedKey="nutrition" errorKeys={["n11"]}>
@@ -165,7 +217,12 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             "3": "주 1회 이하",
           }}
           value={n11}
-          onValueChange={setN11}
+          onValueChange={setValue.bind(
+            null,
+            n11,
+            setN11,
+            lifestyleIds.nutrition("n11"),
+          )}
         />
       </LsErrorBox>
     </section>

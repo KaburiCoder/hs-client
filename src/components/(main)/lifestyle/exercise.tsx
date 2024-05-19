@@ -4,12 +4,13 @@ import { CustomRadioGroup } from "@/components/custom-radio-group";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { DescriptionWrapper } from "@/components/description";
 import { LabeldNumInput } from "@/components/num-input";
-import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
+import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";
 import React, { useState } from "react";
 import { DisabledProps } from "./lifestyle-body";
+import { useFocus } from "./_hooks/use-focus";
 
 export default function Exercise({ isDisabled }: DisabledProps) {
   const {
@@ -74,6 +75,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
     setN11,
     setN12,
   } = useLsExerciseStore();
+  const { conditions, setValue, setValueTrg, setNumValueTrg } = useFocus();
   return (
     <section className="flex flex-col gap-4">
       <Title>운동</Title>
@@ -86,7 +88,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "1-1",
           text: "본인의 일은 최소 10분 이상 계속 숨이 많이 차거나 심장이 매우 빠르게 뛰는 고강도 신체 활동을 포함하고 있습니까?",
           value: n1_1,
-          onValueChange: setN1_1,
+          onValueChange: setValueTrg.bind(null, n1_1, setN1_1, {
+            focus: { id: lifestyleIds.exercise("n1_2"), trigger: "1" },
+            scroll: { id: lifestyleIds.exercise("n1_4"), trigger: "2" },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_1"]}>
               {c}
@@ -98,7 +103,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "1-2",
           text: "평소 일주일 동안,일과 관련된 고강도 신체 활동을 며칠을 하십니까?",
           day: n1_2,
-          onDayChange: setN1_2,
+          onDayChange: setNumValueTrg.bind(null, n1_2, setN1_2, {
+            focus: {
+              id: lifestyleIds.exercise("n1_3h"),
+              condition: conditions.weekday,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_2"]}>
               {c}
@@ -112,8 +122,18 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           text: "평소 하루에 일과 관련된 고강도 신체 활동을 몇 시간 하십니까?",
           hour: n1_3h,
           minute: n1_3m,
-          onHourChange: setN1_3h,
-          onMinuteChange: setN1_3m,
+          onHourChange: setNumValueTrg.bind(null, n1_3h, setN1_3h, {
+            focus: {
+              id: lifestyleIds.exercise("n1_3m"),
+              condition: conditions.hour,
+            },
+          }),
+          onMinuteChange: setNumValueTrg.bind(null, n1_3m, setN1_3m, {
+            scroll: {
+              id: lifestyleIds.exercise("n1_4"),
+              condition: conditions.minute,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_3h", "n1_3m"]}>
               {c}
@@ -131,7 +151,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "1-4",
           text: "본인의 일은 최소 10분 이상 계속 숨이 약간 차거나 심장이 약간 빠르게 뛰는 중강도 신체 활동을 포함하고 있습니까?",
           value: n1_4,
-          onValueChange: setN1_4,
+          onValueChange: setValueTrg.bind(null, n1_4, setN1_4, {
+            focus: { id: lifestyleIds.exercise("n1_5"), trigger: "1" },
+            scroll: { id: lifestyleIds.exercise("n2_1"), trigger: "2" },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_4"]}>
               {c}
@@ -143,7 +166,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "1-5",
           text: "평소 일주일 동안,일과 관련된 중강도 신체 활동을 며칠을 하십니까?",
           day: n1_5,
-          onDayChange: setN1_5,
+          onDayChange: setNumValueTrg.bind(null, n1_5, setN1_5, {
+            focus: {
+              id: lifestyleIds.exercise("n1_6h"),
+              condition: conditions.weekday,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_5"]}>
               {c}
@@ -157,8 +185,18 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           text: "평소 하루에 일과 관련된 중강도 신체 활동을 몇 시간 하십니까?",
           hour: n1_6h,
           minute: n1_6m,
-          onHourChange: setN1_6h,
-          onMinuteChange: setN1_6m,
+          onHourChange: setNumValueTrg.bind(null, n1_6h, setN1_6h, {
+            focus: {
+              id: lifestyleIds.exercise("n1_6m"),
+              condition: conditions.hour,
+            },
+          }),
+          onMinuteChange: setNumValueTrg.bind(null, n1_6m, setN1_6m, {
+            scroll: {
+              id: lifestyleIds.exercise("n2_1"),
+              condition: conditions.minute,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n1_6h", "n1_6m"]}>
               {c}
@@ -175,7 +213,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "2-1",
           text: "평소 장소를 이동할 때 10분 이상 계속 걷거나 자전거 이용 하십니까?",
           value: n2_1,
-          onValueChange: setN2_1,
+          onValueChange: setValueTrg.bind(null, n2_1, setN2_1, {
+            focus: { id: lifestyleIds.exercise("n2_2"), trigger: "1" },
+            scroll: { id: lifestyleIds.exercise("n3_1"), trigger: "2" },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n2_1"]}>
               {c}
@@ -187,7 +228,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "2-2",
           text: "평소 일주일 동안,장소를 이동할 때 최소 10분 이상 계속 걷거나 자전거 이용을 며칠 하십니까?",
           day: n2_2,
-          onDayChange: setN2_2,
+          onDayChange: setNumValueTrg.bind(null, n2_2, setN2_2, {
+            focus: {
+              id: lifestyleIds.exercise("n2_3h"),
+              condition: conditions.weekday,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n2_2"]}>
               {c}
@@ -201,8 +247,18 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           text: "평소 하루에 장소를 이동할 때 걷거나 자전거 이용을 몇 시간 하십니까?",
           hour: n2_3h,
           minute: n2_3m,
-          onHourChange: setN2_3h,
-          onMinuteChange: setN2_3m,
+          onHourChange: setNumValueTrg.bind(null, n2_3h, setN2_3h, {
+            focus: {
+              id: lifestyleIds.exercise("n2_3m"),
+              condition: conditions.hour,
+            },
+          }),
+          onMinuteChange: setNumValueTrg.bind(null, n2_3m, setN2_3m, {
+            scroll: {
+              id: lifestyleIds.exercise("n3_1"),
+              condition: conditions.minute,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n2_3h", "n2_3m"]}>
               {c}
@@ -219,7 +275,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "3-1",
           text: "평소 최소 10분 이상 계속 숨이 많이 차거나 심장이 매우 빠르게 뛰는 고강도의 스포츠,운동 및 여가 활동을 하십니까?",
           value: n3_1,
-          onValueChange: setN3_1,
+          onValueChange: setValueTrg.bind(null, n3_1, setN3_1, {
+            focus: { id: lifestyleIds.exercise("n3_2"), trigger: "1" },
+            scroll: { id: lifestyleIds.exercise("n3_4"), trigger: "2" },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_1"]}>
               {c}
@@ -231,7 +290,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "3-2",
           text: "평소 일주일 동안 고강도의 스포츠,운동 및 여가 활동을 며칠 하십니까?",
           day: n3_2,
-          onDayChange: setN3_2,
+          onDayChange: setNumValueTrg.bind(null, n3_2, setN3_2, {
+            focus: {
+              id: lifestyleIds.exercise("n3_3h"),
+              condition: conditions.weekday,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_2"]}>
               {c}
@@ -245,8 +309,18 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           text: "평소 하루에 고강도의 스포츠,운동 및 여가 활동을 몇 시간 하십니까?",
           hour: n3_3h,
           minute: n3_3m,
-          onHourChange: setN3_3h,
-          onMinuteChange: setN3_3m,
+          onHourChange: setNumValueTrg.bind(null, n3_3h, setN3_3h, {
+            focus: {
+              id: lifestyleIds.exercise("n3_3m"),
+              condition: conditions.hour,
+            },
+          }),
+          onMinuteChange: setNumValueTrg.bind(null, n3_3m, setN3_3m, {
+            scroll: {
+              id: lifestyleIds.exercise("n3_4"),
+              condition: conditions.minute,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_3h", "n3_3m"]}>
               {c}
@@ -263,7 +337,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "3-4",
           text: "평소 최소 10분 이상 계속 숨이 약간 차거나 심장이 약간 빠르게 뛰는 중강도의 스포츠,운동 및 여가 활동을 하십니까?",
           value: n3_4,
-          onValueChange: setN3_4,
+          onValueChange: setValueTrg.bind(null, n3_4, setN3_4, {
+            focus: { id: lifestyleIds.exercise("n3_5"), trigger: "1" },
+            scroll: { id: lifestyleIds.exercise("n4_1h"), trigger: "2" },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_4"]}>
               {c}
@@ -275,7 +352,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark: "3-5",
           text: "평소 일주일 동안,중강도의 스포츠,운동 및 여가 활동을 며칠 하십니까??",
           day: n3_5,
-          onDayChange: setN3_5,
+          onDayChange: setNumValueTrg.bind(null, n3_5, setN3_5, {
+            focus: {
+              id: lifestyleIds.exercise("n3_6h"),
+              condition: conditions.weekday,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_5"]}>
               {c}
@@ -289,8 +371,22 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           text: "평소 하루에 중강도의 스포츠,운동 및 여가 활동을 몇 시간 하십니까?",
           hour: n3_6h,
           minute: n3_6m,
-          onHourChange: setN3_6h,
-          onMinuteChange: setN3_6m,
+          onHourChange: setNumValueTrg.bind(null, n3_6h, setN3_6h, {
+            focus: {
+              id: lifestyleIds.exercise("n3_6m"),
+              condition: conditions.hour,
+            },
+          }),
+          onMinuteChange: setNumValueTrg.bind(null, n3_6m, setN3_6m, {
+            focus: {
+              id: lifestyleIds.exercise("n4_1h"),
+              condition: conditions.minute,
+            },
+            scroll: {
+              id: lifestyleIds.exercise("n4_1h"),
+              condition: conditions.minute,
+            },
+          }),
           wrapperCallback: (c) => (
             <LsErrorBox selectedKey="exercise" errorKeys={["n3_6h", "n3_6m"]}>
               {c}
@@ -302,19 +398,29 @@ export default function Exercise({ isDisabled }: DisabledProps) {
       {/* 4-1 */}
       <LsErrorBox selectedKey="exercise" errorKeys={["n4_1h", "n4_1m"]}>
         <DescriptionWrapper
-          id={lifestyleIds.exercise("n4_1h")}
-          wrapperId={lifestyleIds.exercise("n4_1m")}
           headmark={"4-1"}
           text={"평소 하루에 앉아 있거나,누워 있는 시간이 몇 시간 입니까?"}
           wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem] mb-4"
           className="my-0"
         >
           <TimeControl
+            hId={lifestyleIds.exercise("n4_1h")}
+            mId={lifestyleIds.exercise("n4_1m")}
             isDisabled={isDisabled}
             hour={n4_1h}
             minute={n4_1m}
-            onHourChange={setN4_1h}
-            onMinuteChange={setN4_1m}
+            onHourChange={setNumValueTrg.bind(null, n4_1h, setN4_1h, {
+              focus: {
+                id: lifestyleIds.exercise("n4_1m"),
+                condition: conditions.hour,
+              },
+            })}
+            onMinuteChange={setNumValueTrg.bind(null, n4_1m, setN4_1m, {
+              scroll: {
+                id: lifestyleIds.exercise("n5"),
+                condition: conditions.minute,
+              },
+            })}
           />
         </DescriptionWrapper>
       </LsErrorBox>
@@ -327,7 +433,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="5"
           text="최근 1주일 동안 팔굽혀펴기,윗몸일으키기,아령,역기,철봉 등의 근력 운동을 한날은 며칠입니까?"
           value={n5}
-          onValueChange={setN5}
+          onValueChange={setValue.bind(
+            null,
+            n5,
+            setN5,
+            lifestyleIds.exercise("n6"),
+          )}
           items={{
             "1": "전혀 하지 않음",
             "2": "1일",
@@ -346,7 +457,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="6"
           text="심장에 문제가 있어서 운동을 할 경우 의사의 권고에 의해서만 하라고 들은 적이 있습니까?"
           value={n6}
-          onValueChange={setN6}
+          onValueChange={setValue.bind(
+            null,
+            n6,
+            setN6,
+            lifestyleIds.exercise("n7"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -358,7 +474,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="7"
           text="운동을 할 때 가슴에 통증을 느낀 적이 있습니까?"
           value={n7}
-          onValueChange={setN7}
+          onValueChange={setValue.bind(
+            null,
+            n7,
+            setN7,
+            lifestyleIds.exercise("n8"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -370,7 +491,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="8"
           text="지난달에 운동을 하지 않고 있는 동안에도 가슴에 통증을 느낀 적이 있습니까?"
           value={n8}
-          onValueChange={setN8}
+          onValueChange={setValue.bind(
+            null,
+            n8,
+            setN8,
+            lifestyleIds.exercise("n9"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -382,7 +508,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="9"
           text="어지러움증이나 의식소실로 인해 균형을 잃은 적이 있습니까?"
           value={n9}
-          onValueChange={setN9}
+          onValueChange={setValue.bind(
+            null,
+            n9,
+            setN9,
+            lifestyleIds.exercise("n10"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -394,7 +525,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="10"
           text="운동을 바꾼 후에 뼈나 관절에 문제가 생긴적이 있습니까?"
           value={n10}
-          onValueChange={setN10}
+          onValueChange={setValue.bind(
+            null,
+            n10,
+            setN10,
+            lifestyleIds.exercise("n11"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -406,7 +542,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="11"
           text="현재 혈압이나 심장문제로 의사로부터 처방을 받고 있습니까?"
           value={n11}
-          onValueChange={setN11}
+          onValueChange={setValue.bind(
+            null,
+            n11,
+            setN11,
+            lifestyleIds.exercise("n12"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -418,7 +559,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           headmark="12"
           text="운동을 하면 안 되는 다른 이유가 있습니까?"
           value={n12}
-          onValueChange={setN12}
+          onValueChange={setValue.bind(
+            null,
+            n12,
+            setN12,
+            lifestyleIds.exercise("n12"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -431,10 +577,14 @@ interface TimeControlProps {
   minute: number | undefined;
   onHourChange: (h: number | undefined) => void;
   onMinuteChange: (m: number | undefined) => void;
+  hId?: string;
+  mId?: string;
   isDisabled?: boolean;
 }
 
 function TimeControl({
+  hId,
+  mId,
   hour,
   minute,
   onHourChange,
@@ -444,6 +594,7 @@ function TimeControl({
   return (
     <div className="ml-auto flex py-1">
       <LabeldNumInput
+        id={hId}
         inputClassName="w-12"
         eLabel="시간"
         value={hour}
@@ -453,6 +604,7 @@ function TimeControl({
         onChange={onHourChange}
       />
       <LabeldNumInput
+        id={mId}
         className="ml-2"
         inputClassName="w-12"
         eLabel="분"
@@ -469,12 +621,14 @@ function TimeControl({
 interface DayControlProps {
   day: number | undefined;
   onChange: (day: number | undefined) => void;
+  id?: string;
   isDisabled?: boolean;
 }
-function DayControl({ day, isDisabled, onChange }: DayControlProps) {
+function DayControl({ id, day, isDisabled, onChange }: DayControlProps) {
   return (
     <div className="ml-auto flex py-1">
       <LabeldNumInput
+        id={id}
         className="ml-2"
         inputClassName="w-12"
         eLabel="일"
@@ -544,13 +698,13 @@ function QuestionGroup({
 
   const component2 = wrapper2.wrapperCallback(
     <DescriptionWrapper
-      id={wrapper2.id}
       headmark={wrapper2.headmark}
       text={wrapper2.text}
       wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem] mb-4"
       className="my-0"
     >
       <DayControl
+        id={wrapper2.id}
         day={wrapper2.day}
         onChange={wrapper2.onDayChange}
         isDisabled={isDisabled}
@@ -560,14 +714,14 @@ function QuestionGroup({
 
   const component3 = wrapper3.wrapperCallback(
     <DescriptionWrapper
-      id={wrapper3.id}
-      wrapperId={wrapper3.id2}
       headmark={wrapper3.headmark}
       text={wrapper3.text}
       wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem]"
       className="my-0"
     >
       <TimeControl
+        hId={wrapper3.id}
+        mId={wrapper3.id2}
         hour={wrapper3.hour}
         minute={wrapper3.minute}
         onHourChange={wrapper3.onHourChange}

@@ -11,10 +11,7 @@ import {
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import BigCheckBox from "@/components/big-check-box";
 import sock from "health-screening-shared/interfaces.socket";
-import {
-  LifestyleKeys,
-  useLsSelectionStore,
-} from "@/stores/lifestyle/ls-selection-store";
+import { LifestyleKeys } from "@/stores/condition-store";
 
 interface Props extends ChildrenProps {
   diagnose: sock.QuestionnaireDiagnose;

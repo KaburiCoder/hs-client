@@ -1,5 +1,5 @@
 import Joi from "joi";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { flattenJoiError } from "health-screening-shared/joi";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { CarouselItemX } from "@/components/carousel-x/carousel-x";
@@ -10,11 +10,22 @@ import Exercise from "../exercise";
 import Nutrition from "../nutrition";
 import Overweight from "../overweight";
 import { useLifestyleStoreController } from "./use-lifestyle-store-controller";
-import { LifestyleKeys } from "@/stores/lifestyle/ls-selection-store";
+import { EvPaths } from "@/socket-io/ev-paths";
+import { useEmitX } from "@/lib/hooks/use-emit-x";
+import { LsSmokingState } from "@/stores/lifestyle/ls-smoking-store";
+import { LsDrinkingState } from "@/stores/lifestyle/ls-drinking-store";
+import { LsExerciseState } from "@/stores/lifestyle/ls-exercise-store";
+import { LsNutritionState } from "@/stores/lifestyle/ls-nutrition-store";
+import { LsOverweightState } from "@/stores/lifestyle/ls-overweight-store";
+import { LifestyleKeys } from "@/stores/condition-store";
 
 export const useLifestyleController = () => {
   const [index, setIndex] = useState(0);
-  const { selectedItems, validate, setError, clearError, clearAll } =
+  const argsRef = useRef<SaveQuestionnaireArgs>({});
+  const { data, emitAck } = useEmitX<SaveQuestionnaireArgs, any>({
+    ev: EvPaths.SaveLifestyle,
+  });
+  const { selectedItems, validate, setError, clearError } =
     useLifestyleStoreController();
 
   const lastIndex = selectedItems.length - 1;
@@ -43,22 +54,26 @@ export const useLifestyleController = () => {
     return;
   }
 
+  function save() {
+    emitAck(argsRef.current);
+  }
+
   function handleNext() {
     const { error, value } = validate(selectedKey);
     if (error) return errorToFocus(error);
     clearError();
+
+    argsRef.current = { ...argsRef.current, [selectedKey]: value };
+    if (index === lastIndex) {
+      return save();
+    }
+
     setIndex((prev) => (prev === lastIndex ? lastIndex : ++prev));
   }
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [index]);
-
-  useEffect(() => {
-    return () => {
-      clearAll();
-    };
-  }, []);
 
   return {
     index,
@@ -78,3 +93,12 @@ const itemGroup: {
   nutrition: Nutrition,
   overweight: Overweight,
 };
+
+interface SaveQuestionnaireArgs {
+  history?: History;
+  drinking?: LsDrinkingState;
+  exercise?: LsExerciseState;
+  nutrition?: LsNutritionState;
+  overweight?: LsOverweightState;
+  smoking?: LsSmokingState;
+}

@@ -3,18 +3,12 @@ import * as sock from "health-screening-shared/interfaces.socket";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { Button, Card, useDisclosure } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { useConditionStore } from "@/stores/condition-store";
+import { LifestyleKeys, useConditionStore } from "@/stores/condition-store";
 import { useQuestionStore } from "@/stores/question-store";
 import { useEmit } from "@/socket-io/hooks/use-emit";
 import { EvPaths } from "@/socket-io/ev-paths";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
-import { IQuestionnaire } from "health-screening-shared/interfaces";
 import LifestyleSelectModal from "./lifestyle-select-modal";
-import {
-  LifestyleKeys,
-  useLsSelectionStore,
-} from "@/stores/lifestyle/ls-selection-store";
-
 interface PatientCardProps {
   data: sock.ReceptionPatient;
 }
@@ -22,8 +16,8 @@ interface PatientCardProps {
 export function PatientCard({ data }: PatientCardProps) {
   const { name, birthday, targetName, kinds, diagnose } = data;
   const setPatient = useSelectionPatientStore((state) => state.setPatient);
-  const setSelectedItems = useLsSelectionStore(
-    (state) => state.setSelectedItems,
+  const setSelectedItems = useConditionStore(
+    (state) => state.setSelectedLifestyles,
   );
   const { nav } = useNavQuestionnaire();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

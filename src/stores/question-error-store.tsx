@@ -7,6 +7,7 @@ interface State {
 
 interface Actions {
   setError: (error?: QuestionnaireErrorResult) => void;
+  clearError: () => void;
 }
 
 const initialState: State = {
@@ -16,6 +17,7 @@ const initialState: State = {
 const stateCreator: StateCreator<State & Actions> = (set) => ({
   ...initialState,
   setError: (error) => set(() => ({ error })),
+  clearError: () => set(initialState),
 });
 
 export const useQuestionErrorStore = create(devtools(stateCreator));

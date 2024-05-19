@@ -6,6 +6,7 @@ import { InputValueType } from "kbr-nextjs-shared/types";
 import React, { forwardRef, memo, useEffect, useRef, useState } from "react";
 
 export interface NumInputProps extends ClassNameProps {
+  id?: string;
   value?: number;
   min?: number;
   max?: number;
@@ -18,6 +19,7 @@ export interface NumInputProps extends ClassNameProps {
 export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
   (
     {
+      id,
       value: outValue,
       className,
       inputClassName,
@@ -64,6 +66,7 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
 
     return (
       <Input
+        id={id}
         ref={ref}
         className={className}
         isDisabled={isDisabled}
@@ -103,9 +106,10 @@ const _LabeldNumInput = forwardRef<HTMLInputElement, LabeldNumInputProps>(
     ref,
   ) => {
     return (
-      <div id={id} className={cn("flex items-center gap-2", className)}>
+      <div className={cn("flex items-center gap-2", className)}>
         {sLabel && <span className="whitespace-nowrap">{sLabel}</span>}
         <NumInput
+          id={id}
           ref={ref}
           className={cn("inline-block", inputClassName)}
           min={min}

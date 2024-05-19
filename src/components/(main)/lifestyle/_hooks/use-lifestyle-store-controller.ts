@@ -5,7 +5,7 @@ import { useLsExerciseStore } from '@/stores/lifestyle/ls-exercise-store';
 import { useLsNutritionStore } from '@/stores/lifestyle/ls-nutrition-store';
 import { useLsOverweightStore } from '@/stores/lifestyle/ls-overweight-store';
 import { useLsSmokingStore } from '@/stores/lifestyle/ls-smoking-store';
-import { LifestyleKeys, useLsSelectionStore } from '@/stores/lifestyle/ls-selection-store';
+import { LifestyleKeys, useConditionStore } from '@/stores/condition-store';
 
 export const useLifestyleStoreController = () => {
   const validateSmoking = useLsSmokingStore((state) => state.validate);
@@ -13,25 +13,9 @@ export const useLifestyleStoreController = () => {
   const validateExercise = useLsExerciseStore((state) => state.validate);
   const validateNutrition = useLsNutritionStore((state) => state.validate);
   const validateOverweight = useLsOverweightStore((state) => state.validate);
-  const clearSmoking = useLsSmokingStore((state) => state.clear);
-  const clearDrinking = useLsDrinkingStore((state) => state.clear);
-  const clearExercise = useLsExerciseStore((state) => state.clear);
-  const clearNutrition = useLsNutritionStore((state) => state.clear);
-  const clearOverweight = useLsOverweightStore((state) => state.clear);
-  const setError = useLsErrorStore((state) => state.setError);
   const clearError = useLsErrorStore((state) => state.clearError);
-  const clearSelectedItems = useLsSelectionStore(state => state.clearSelectedItems)
-  const selectedItems = useLsSelectionStore(state => state.selectedItems)
-
-  function clearAll() {
-    clearSmoking();
-    clearDrinking();
-    clearExercise();
-    clearNutrition();
-    clearOverweight();
-    clearError();
-    clearSelectedItems();
-  }
+  const setError = useLsErrorStore((state) => state.setError);
+  const selectedItems = useConditionStore(state => state.selectedLifestyles)
 
   function validate(selectedKey: LifestyleKeys) {
     switch (selectedKey) {
@@ -55,6 +39,5 @@ export const useLifestyleStoreController = () => {
     validate,
     setError,
     clearError,
-    clearAll,
   }
 }

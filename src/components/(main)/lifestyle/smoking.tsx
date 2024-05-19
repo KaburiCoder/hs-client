@@ -6,8 +6,10 @@ import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import React from "react";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
-import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
+import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { DisabledProps } from "./lifestyle-body";
+import { scrollById } from "@/lib/utils/scroll.util";
+import { useFocus } from "./_hooks/use-focus";
 
 export default function Smoking({ isDisabled }: DisabledProps) {
   const {
@@ -28,6 +30,7 @@ export default function Smoking({ isDisabled }: DisabledProps) {
     setN7,
     setN8,
   } = useLsSmokingStore();
+  const { setValue } = useFocus();
 
   return (
     <section className="flex flex-col gap-4">
@@ -41,7 +44,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           <CustomRadioGroup
             isDisabled={isDisabled}
             value={n1}
-            onValueChange={setN1}
+            onValueChange={setValue.bind(
+              null,
+              n1,
+              setN1,
+              lifestyleIds.smoking("n2"),
+            )}
             items={{
               "1": "1개월 안에 금연할 계획이 있다.",
               "2": "6개월 안에 금연할 계획이 있다.",
@@ -64,7 +72,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             isDisabled={isDisabled}
             row
             value={n2}
-            onValueChange={setN2}
+            onValueChange={setValue.bind(
+              null,
+              n2,
+              setN2,
+              lifestyleIds.smoking("n3"),
+            )}
             items={{
               "1": "0 (전혀아님)",
               "2": "1",
@@ -86,7 +99,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           headmark={"3"}
           text={"아침에 일어나서 얼마 만에 첫 번째 담배를 피십니까?"}
           value={n3}
-          onValueChange={setN3}
+          onValueChange={setValue.bind(
+            null,
+            n3,
+            setN3,
+            lifestyleIds.smoking("n4"),
+          )}
           items={{
             "1": "5분 이내",
             "2": "6-30분 사이",
@@ -105,7 +123,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "당신은 금연구역, 예를 들면 교회, 극장, 도서관 등에서 흡연을 참기가 어렵습니까?"
           }
           value={n4}
-          onValueChange={setN4}
+          onValueChange={setValue.bind(
+            null,
+            n4,
+            setN4,
+            lifestyleIds.smoking("n5"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -117,7 +140,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           headmark={"5"}
           text={"어떤 경우의 담배가 가장 포기하기 싫으시겠습니까?"}
           value={n5}
-          onValueChange={setN5}
+          onValueChange={setValue.bind(
+            null,
+            n5,
+            setN5,
+            lifestyleIds.smoking("n6"),
+          )}
           items={{
             "1": "아침 첫 담배",
             "2": "다른 나머지",
@@ -132,7 +160,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           headmark={"6"}
           text={"하루에 담배를 몇 개비나 피우십니까?"}
           value={n6}
-          onValueChange={setN6}
+          onValueChange={setValue.bind(
+            null,
+            n6,
+            setN6,
+            lifestyleIds.smoking("n7"),
+          )}
           items={{
             "1": "10개비 이하",
             "2": "11-20개비",
@@ -151,7 +184,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "아침에 일어나서 첫 몇시간 동안에, 하루 중 다른 시간보다 더 자주 담배를 피우십니까?"
           }
           value={n7}
-          onValueChange={setN7}
+          onValueChange={setValue.bind(
+            null,
+            n7,
+            setN7,
+            lifestyleIds.smoking("n8"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>
@@ -165,7 +203,12 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "하루 중 대부분을 누워 지낼 만큼 몹시 아프다면 담배를 피우시겠습니까?"
           }
           value={n8}
-          onValueChange={setN8}
+          onValueChange={setValue.bind(
+            null,
+            n8,
+            setN8,
+            lifestyleIds.smoking("n8"),
+          )}
           items={lsYnItems}
         />
       </LsErrorBox>

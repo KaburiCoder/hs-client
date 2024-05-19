@@ -2,12 +2,12 @@ import { useSocketIO } from "kbr-nextjs-shared/hooks";
 import { EvPaths } from "../ev-paths";
 import { useState } from "react";
 
-interface Args<TResult> {
+export interface UseEmitArgs<TResult> {
   ev: EvPaths;
   onSuccess?: (value: TResult) => void;
 }
 
-export const useEmit = <TArgs, TResult>({ ev, onSuccess }: Args<TResult>) => {
+export const useEmit = <TArgs, TResult>({ ev, onSuccess }: UseEmitArgs<TResult>) => {
   const { socket, isConnected } = useSocketIO();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<TResult>();

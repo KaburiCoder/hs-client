@@ -1,31 +1,34 @@
-import { create } from "zustand";
+import { StateCreator, create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-type LifeStyleType =
+export type LifestyleKeys =
   | "smoking"
   | "drinking"
   | "exercise"
   | "nutrition"
   | "overweight";
 
-interface States {
+interface State {
   isAddExam?: boolean;
-  lifestyles?: LifeStyleType[];
+  selectedLifestyles: LifestyleKeys[];
 }
-
 interface Actions {
   setIsAddExam: (isAddExam?: boolean) => void;
-  setLifeStyle: (lifestyles?: LifeStyleType[]) => void;
+  setSelectedLifestyles: (selectedLifestyles?: LifestyleKeys[]) => void;
   clear: () => void;
 }
 
-const initialState: States = {
+const initialState: State = {
   isAddExam: false,
-  lifestyles: undefined,
+  selectedLifestyles: [],
 };
 
-export const useConditionStore = create<States & Actions>((set) => ({
+const stateCreator: StateCreator<State & Actions> = (set) => ({
   ...initialState,
   setIsAddExam: (isAddExam) => set(() => ({ isAddExam })),
-  setLifeStyle: (lifestyles) => set(() => ({ lifestyles })),
+  setSelectedLifestyles: (selectedLifestyles) =>
+    set(() => ({ selectedLifestyles })),
   clear: () => set(initialState),
-}));
+});
+
+export const useConditionStore = create(devtools(stateCreator));

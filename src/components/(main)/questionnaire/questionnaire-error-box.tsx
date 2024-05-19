@@ -8,8 +8,8 @@ import {
 } from "@/stores/question-error-store";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import { memo } from "react";
-import ErrorBox from "../error-box";
-import { LifestyleKeys } from "../(main)/lifestyle/hooks/use-lifestyle-controller";
+import ErrorBox from "../../error-box";
+import { LifestyleKeys } from "@/stores/condition-store";
 
 interface ErrorBoxProps<T> extends ChildrenProps {
   errorKeys: (keyof T)[];

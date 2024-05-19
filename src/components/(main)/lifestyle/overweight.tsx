@@ -1,13 +1,15 @@
 "use client";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { LsErrorBox } from "@/components/questionnaire/questionnaire-error-box";
+import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsOverweightStore } from "@/stores/lifestyle/ls-overweight-store";
 import React from "react";
+import { useFocus } from "./_hooks/use-focus";
 
 export default function Overweight() {
   const { n1, n2, n3, setN1, setN2, setN3 } = useLsOverweightStore();
+  const { setValue } = useFocus();
 
   return (
     <section className="flex flex-col gap-4">
@@ -20,7 +22,12 @@ export default function Overweight() {
           text="현재 체중이 10대후반이나 20대 초반이었을때와 비교하여 10kg이상 늘었습니까?"
           items={lsYnItems}
           value={n1}
-          onValueChange={setN1}
+          onValueChange={setValue.bind(
+            null,
+            n1,
+            setN1,
+            lifestyleIds.smoking("n2"),
+          )}
         />
       </LsErrorBox>
 
@@ -36,7 +43,12 @@ export default function Overweight() {
             "4": "항상 노력하고 있다",
           }}
           value={n2}
-          onValueChange={setN2}
+          onValueChange={setValue.bind(
+            null,
+            n2,
+            setN2,
+            lifestyleIds.smoking("n3"),
+          )}
         />
       </LsErrorBox>
 
@@ -51,7 +63,12 @@ export default function Overweight() {
             "3": "매우 관심이 있다",
           }}
           value={n3}
-          onValueChange={setN3}
+          onValueChange={setValue.bind(
+            null,
+            n3,
+            setN3,
+            lifestyleIds.smoking("n3"),
+          )}
         />
       </LsErrorBox>
     </section>

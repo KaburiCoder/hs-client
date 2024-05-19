@@ -1,24 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Histories from "@/components/questionnaire/histories/histories";
-import Smokings from "@/components/questionnaire/smokings/smokings";
-import Drinks from "@/components/questionnaire/drinks/drinks";
-import Activities from "@/components/questionnaire/activities/activities";
-import Confirms from "@/components/questionnaire/confirms/confirms";
-import ScrollDownAnimation from "@/components/questionnaire/scroll-down-animation/scroll-down-animation";
+import Histories from "@/components/(main)/questionnaire/histories/histories";
+import Smokings from "@/components/(main)/questionnaire/smokings/smokings";
+import Drinks from "@/components/(main)/questionnaire/drinks/drinks";
+import Activities from "@/components/(main)/questionnaire/activities/activities";
+import Confirms from "@/components/(main)/questionnaire/confirms/confirms";
+import ScrollDownAnimation from "@/components/(main)/questionnaire/scroll-down-animation/scroll-down-animation";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { useQuestionStore } from "@/stores/question-store";
 import { useRouter } from "next/navigation";
 import { paths } from "@/paths";
-import AddExams from "@/components/questionnaire/add-exams/add-exams";
+import AddExams from "@/components/(main)/questionnaire/add-exams/add-exams";
+import { useQnClear } from "./_hooks/use-qn-clear";
 
-export default function QuestionaireBody() {
+export default function QuestionaireBody() {  
   const clearPatient = useSelectionPatientStore((state) => state.clearPatient);
   const clearQuestionnaire = useQuestionStore(
     (state) => state.clearQuestionnaire,
   );
   const { push } = useRouter();
   const patient = useSelectionPatientStore((state) => state.patient);
+  useQnClear();
 
   useEffect(() => {
     if (!patient) push(paths.root);
@@ -37,7 +39,7 @@ export default function QuestionaireBody() {
         <Smokings />
         <Drinks />
         <Activities />
-        <AddExams/>
+        <AddExams />
         <Confirms />
         <ScrollDownAnimation />
       </div>

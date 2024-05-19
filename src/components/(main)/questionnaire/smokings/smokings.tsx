@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "../../title";
+import { Title } from "../../../title";
 import Smokings4 from "./smokings.4";
 import Smokings5 from "./smokings.5";
 import Smokings6 from "./smokings.6";
