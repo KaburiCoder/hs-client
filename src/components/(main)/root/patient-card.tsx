@@ -1,27 +1,23 @@
-import { paths } from "@/paths";
+"use client";
 import * as sock from "health-screening-shared/interfaces.socket";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { Button, Card, useDisclosure } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-import { LifestyleKeys, useConditionStore } from "@/stores/condition-store";
-import { useQuestionStore } from "@/stores/question-store";
-import { useEmit } from "@/socket-io/hooks/use-emit";
-import { EvPaths } from "@/socket-io/ev-paths";
-import { useServerCookie } from "@/lib/hooks/use-server-cookie";
-import LifestyleSelectModal from "./lifestyle-select-modal";
+import { useNavQuestionnaire } from "./_hooks/use-nav-questionnaire";
+import { useNavLifestyle } from "./_hooks/use-nav-lifestyle";
 interface PatientCardProps {
   data: sock.ReceptionPatient;
 }
 
 export function PatientCard({ data }: PatientCardProps) {
-  const { name, birthday, targetName, kinds, diagnose } = data;
+  const { name, birthday, targetName, kinds, diagnose, status } = data;
   const setPatient = useSelectionPatientStore((state) => state.setPatient);
-  const setSelectedItems = useConditionStore(
-    (state) => state.setSelectedLifestyles,
-  );
   const { nav } = useNavQuestionnaire();
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { push } = useRouter();
+  const { isLoading, lifestyleModal, openLifestyleModal } = useNavLifestyle({
+    eiAuto: data.eiAuto,
+    status,
+    diagnose,
+  });
+
   function handlePush(k: sock.QuestionnaireKind): void {
     setPatient(data);
     if (
@@ -40,7 +36,7 @@ export function PatientCard({ data }: PatientCardProps) {
       if (!gen?.written) {
         return alert("일반검진 문진표를 먼저 작성해야합니다.");
       }
-      onOpen();
+      openLifestyleModal();
     }
 
     if (
@@ -50,19 +46,9 @@ export function PatientCard({ data }: PatientCardProps) {
     }
   }
 
-  function handleLifestyleSelect(value: LifestyleKeys[]): void {
-    setSelectedItems(value);
-    push(paths.lifestyle);
-  }
-
   return (
     <Card className="flex flex-col justify-between gap-4 p-4">
-      <LifestyleSelectModal
-        diagnose={diagnose}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        onSelect={handleLifestyleSelect}
-      />
+      {lifestyleModal}
       <div className="flex items-center gap-4">
         <h2 className="text-xl font-bold">{name}</h2>
         <div>
@@ -72,6 +58,7 @@ export function PatientCard({ data }: PatientCardProps) {
       </div>
       <div className="flex flex-col gap-2">
         {kinds.map((k, i) => {
+          const written = getWritten(k, status);
           return (
             <div
               key={i}
@@ -82,11 +69,12 @@ export function PatientCard({ data }: PatientCardProps) {
                 {k.addExam ? "-추가" : ""}
               </h3>
               <Button
-                color={k.written ? "success" : "primary"}
+                isLoading={isLoading}
+                color={written ? "success" : "primary"}
                 variant="flat"
                 onClick={handlePush.bind(null, k)}
               >
-                {k.written ? "수정" : "작성"}
+                {written ? "수정" : "작성"}
               </Button>
             </div>
           );
@@ -96,37 +84,17 @@ export function PatientCard({ data }: PatientCardProps) {
   );
 }
 
-const useNavQuestionnaire = () => {
-  const { setIsAddExam } = useConditionStore();
-  const { push } = useRouter();
-  const { setGenState } = useQuestionStore();
-  const { user } = useServerCookie();
-  const { emitAck } = useEmit<any, any>({
-    ev: EvPaths.GetQuestionnaire,
-    onSuccess: ({ data }) => {
-      setGenState({
-        ...data.history,
-        ...data.smoking,
-        ...data.drink,
-        ...data.activity,
-        ...data.addExam,
-      });
-      push(paths.questionnaire);
-    },
-  });
-
-  function nav(eiAuto: number, k: sock.QuestionnaireKind) {
-    if (!k.written) return push(paths.questionnaire);
-
-    setIsAddExam(k.addExam);
-    emitAck({
-      key: user?.roomKey,
-      eiAuto: eiAuto,
-      addExam: k.addExam,
-      kind: k.kind,
-      type: k.type,
-    });
+function getWritten(
+  k: sock.QuestionnaireKind,
+  status: sock.QuestionnaireStatus,
+): boolean {
+  if (k.kind === sock.EQuestionnaireKind.일반검진) {
+    return status.generalQn;
   }
 
-  return { nav };
-};
+  if (k.kind === sock.EQuestionnaireKind.생활습관) {
+    return Object.values(status.lifestyle).some((x) => x);
+  }
+
+  return false;
+}

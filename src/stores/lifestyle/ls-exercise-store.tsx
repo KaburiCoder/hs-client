@@ -3,6 +3,7 @@ import { StateCreator, create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { validateSchema } from "../utils/validate-utli";
 import { inputMessage, selectMessage } from "./joi-messages";
+import { deleteObject } from "@/lib/utils/object.util";
 
 export interface LsExerciseState {
   n1_1: string | undefined;
@@ -69,6 +70,7 @@ interface Actions {
   setN10: (n10: string | undefined) => void;
   setN11: (n11: string | undefined) => void;
   setN12: (n12: string | undefined) => void;
+  setState: (state: LsExerciseState) => void;
   validate: () => Joi.ValidationResult<LsExerciseState>;
   clear: () => void;
 }
@@ -113,25 +115,47 @@ const test = {
   c: null,
 };
 
+const noToUndefiend = (yn: string | undefined, value: number | undefined) =>
+  yn === "2" ? undefined : value;
+
+const remakeGroupValue = (
+  state: { [key: string]: any },
+  ynValue: string | undefined,
+  firstNum: number,
+  secNum: number,
+): any => {
+  const ynKey = `n${firstNum}_${secNum}`;
+  const dayKey = `n${firstNum}_${secNum + 1}`;
+  const hourKey = `n${firstNum}_${secNum + 2}h`;
+  const minuteKey = `n${firstNum}_${secNum + 2}m`;
+  const result = {
+    [ynKey]: ynValue,
+    [dayKey]: noToUndefiend(ynValue, state[dayKey] as number),
+    [hourKey]: noToUndefiend(ynValue, state[hourKey] as number),
+    [minuteKey]: noToUndefiend(ynValue, state[minuteKey] as number),
+  };
+  return result;
+};
+
 const stateCreator: StateCreator<LsExerciseState & Actions> = (set, get) => ({
   ...initialState,
-  setN1_1: (n1_1) => set(() => ({ n1_1 })),
+  setN1_1: (n1_1) => set((state) => remakeGroupValue(state, n1_1, 1, 1)),
   setN1_2: (n1_2) => set(() => ({ n1_2 })),
   setN1_3h: (n1_3h) => set(() => ({ n1_3h })),
   setN1_3m: (n1_3m) => set(() => ({ n1_3m })),
-  setN1_4: (n1_4) => set(() => ({ n1_4 })),
+  setN1_4: (n1_4) => set((state) => remakeGroupValue(state, n1_4, 1, 4)),
   setN1_5: (n1_5) => set(() => ({ n1_5 })),
   setN1_6h: (n1_6h) => set(() => ({ n1_6h })),
   setN1_6m: (n1_6m) => set(() => ({ n1_6m })),
-  setN2_1: (n2_1) => set(() => ({ n2_1 })),
+  setN2_1: (n2_1) => set((state) => remakeGroupValue(state, n2_1, 2, 1)),
   setN2_2: (n2_2) => set(() => ({ n2_2 })),
   setN2_3h: (n2_3h) => set(() => ({ n2_3h })),
   setN2_3m: (n2_3m) => set(() => ({ n2_3m })),
-  setN3_1: (n3_1) => set(() => ({ n3_1 })),
+  setN3_1: (n3_1) => set((state) => remakeGroupValue(state, n3_1, 3, 1)),
   setN3_2: (n3_2) => set(() => ({ n3_2 })),
   setN3_3h: (n3_3h) => set(() => ({ n3_3h })),
   setN3_3m: (n3_3m) => set(() => ({ n3_3m })),
-  setN3_4: (n3_4) => set(() => ({ n3_4 })),
+  setN3_4: (n3_4) => set((state) => remakeGroupValue(state, n3_4, 3, 4)),
   setN3_5: (n3_5) => set(() => ({ n3_5 })),
   setN3_6h: (n3_6h) => set(() => ({ n3_6h })),
   setN3_6m: (n3_6m) => set(() => ({ n3_6m })),
@@ -145,6 +169,11 @@ const stateCreator: StateCreator<LsExerciseState & Actions> = (set, get) => ({
   setN10: (n10) => set(() => ({ n10 })),
   setN11: (n11) => set(() => ({ n11 })),
   setN12: (n12) => set(() => ({ n12 })),
+  setState: (state) =>
+    set(() => {
+      deleteObject(state, (value) => value === null);
+      return { ...state };
+    }),
   validate: () => validateSchema({ state: get(), initialState, schema }),
   clear: () => set(initialState),
 });

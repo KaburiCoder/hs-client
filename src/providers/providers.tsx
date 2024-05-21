@@ -1,6 +1,5 @@
-// app/providers.tsx
 "use client";
-
+import { Toaster } from "react-hot-toast";
 import { NextUIProvider } from "@nextui-org/react";
 import { WindowScrollProvider } from "./window-scroll.context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -18,7 +17,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
           uri={process.env.NEXT_PUBLIC_BACKEND_URL!}
           path="/api/socket.io"
         >
-          <WindowScrollProvider>{children}</WindowScrollProvider>
+          <WindowScrollProvider>
+            {children}
+            <Toaster />
+          </WindowScrollProvider>
         </SocketIOProvider>
       </QueryClientProvider>
     </NextUIProvider>

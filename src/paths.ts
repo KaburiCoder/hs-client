@@ -6,9 +6,10 @@ export const paths = {
   signout: "/signout",
   findPw: "/find-pw",
   questionnaire: "/questionnaire",
-  questionnaireSuccess: "/questionnaire/success",
-  lifestyle: "/lifestyle",  
+  lifestyle: "/lifestyle",
   images: {
+    eClickIco: "/images/eClick48x48.ico",
     mainLogo: "/images/main_logo.png",
   },
+  success: (kind: string) => `/success?kind=${kind}`,
 };

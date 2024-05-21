@@ -14,6 +14,7 @@ import sock from "health-screening-shared/interfaces.socket";
 import { LifestyleKeys } from "@/stores/condition-store";
 
 interface Props extends ChildrenProps {
+  status: sock.QuestionnaireStatus;
   diagnose: sock.QuestionnaireDiagnose;
   isOpen: boolean;
   onOpenChange: () => void;
@@ -21,6 +22,7 @@ interface Props extends ChildrenProps {
 }
 
 export default function LifestyleSelectModal({
+  status,
   diagnose,
   isOpen,
   onOpenChange,
@@ -46,14 +48,20 @@ export default function LifestyleSelectModal({
                 onValueChange={(value) => setSelected(value as LifestyleKeys[])}
               >
                 <BigCheckBox value={"smoking"} isDisabled={!diagnose.smoking}>
-                  흡연
+                  <WrittenText text="흡연" written={status.lifestyle.smoking} />
                 </BigCheckBox>
                 <BigCheckBox value={"drinking"} isDisabled={!diagnose.drinking}>
-                  음주
+                  <WrittenText text="음주" written={status.lifestyle.drinking} />
                 </BigCheckBox>
-                <BigCheckBox value={"exercise"}>운동</BigCheckBox>
-                <BigCheckBox value={"nutrition"}>영양</BigCheckBox>
-                <BigCheckBox value={"overweight"}>비만</BigCheckBox>
+                <BigCheckBox value={"exercise"}>
+                  <WrittenText text="운동" written={status.lifestyle.exercise} />
+                </BigCheckBox>
+                <BigCheckBox value={"nutrition"}>
+                  <WrittenText text="영양" written={status.lifestyle.nutrition} />
+                </BigCheckBox>
+                <BigCheckBox value={"overweight"}>
+                  <WrittenText text="비만" written={status.lifestyle.overweight} />
+                </BigCheckBox>
               </CheckboxGroup>
             </ModalBody>
             <ModalFooter>
@@ -74,6 +82,19 @@ export default function LifestyleSelectModal({
         )}
       </ModalContent>
     </Modal>
+  );
+}
+
+function WrittenText({ text, written }: { text: string; written: boolean }) {
+  return (
+    <div className="flex items-center justify-between">
+      <div>{text}</div>
+      {written && (
+        <div className="rounded border-green-800 bg-green-500 p-1 text-sm text-white">
+          작성됨
+        </div>
+      )}
+    </div>
   );
 }
 

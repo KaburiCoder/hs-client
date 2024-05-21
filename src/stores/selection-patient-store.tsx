@@ -1,10 +1,10 @@
 import { ReceptionPatient } from "health-screening-shared/interfaces.socket";
-import { create } from "zustand";
+import { StateCreator, create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 interface States {
   patient?: ReceptionPatient;
 }
-
 interface Actions {
   setPatient: (patient: ReceptionPatient) => void;
   clearPatient: () => void;
@@ -14,8 +14,10 @@ const initialState: States = {
   patient: undefined,
 };
 
-export const useSelectionPatientStore = create<States & Actions>((set) => ({
+const stateCreator: StateCreator<States & Actions> = (set) => ({
   ...initialState,
   setPatient: (patient) => set(() => ({ patient })),
   clearPatient: () => set(() => ({ patient: undefined })),
-}));
+});
+
+export const useSelectionPatientStore = create(devtools(stateCreator));

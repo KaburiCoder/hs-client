@@ -24,6 +24,7 @@ interface Actions {
   setN6: (n6: string | undefined) => void;
   setN7: (n7: string | undefined) => void;
   setN8: (n8: string | undefined) => void;
+  setState: (state: LsSmokingState) => void;
   validate: () => Joi.ValidationResult<LsSmokingState>;
   clear: () => void;
 }
@@ -49,6 +50,7 @@ const stateCreator: StateCreator<LsSmokingState & Actions> = (set, get) => ({
   setN6: (n6) => set(() => ({ n6 })),
   setN7: (n7) => set(() => ({ n7 })),
   setN8: (n8) => set(() => ({ n8 })),
+  setState: (state) => set(() => ({ ...state })),
   validate: () => validateSchema({ state: get(), initialState, schema }),
   clear: () => set(initialState),
 });

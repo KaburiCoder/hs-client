@@ -30,6 +30,7 @@ interface Actions {
   setN9: (n9: string | undefined) => void;
   setN10: (n10: string | undefined) => void;
   setN11: (n11: string | undefined) => void;
+  setState: (state: LsNutritionState) => void;
   validate: () => Joi.ValidationResult<LsNutritionState>;
   clear: () => void;
 }
@@ -61,6 +62,7 @@ const stateCreator: StateCreator<LsNutritionState & Actions> = (set, get) => ({
   setN9: (n9) => set(() => ({ n9 })),
   setN10: (n10) => set(() => ({ n10 })),
   setN11: (n11) => set(() => ({ n11 })),
+  setState: (state) => set(() => ({ ...state })),
   validate: () => validateSchema({ state: get(), initialState, schema }),
   clear: () => set(initialState),
 });

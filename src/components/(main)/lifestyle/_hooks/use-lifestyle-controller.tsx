@@ -18,12 +18,24 @@ import { LsExerciseState } from "@/stores/lifestyle/ls-exercise-store";
 import { LsNutritionState } from "@/stores/lifestyle/ls-nutrition-store";
 import { LsOverweightState } from "@/stores/lifestyle/ls-overweight-store";
 import { LifestyleKeys } from "@/stores/condition-store";
+import { EmitResultBase } from "health-screening-shared/interfaces.socket";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { paths } from "@/paths";
 
 export const useLifestyleController = () => {
+  const { push } = useRouter();
   const [index, setIndex] = useState(0);
   const argsRef = useRef<SaveQuestionnaireArgs>({});
-  const { data, emitAck } = useEmitX<SaveQuestionnaireArgs, any>({
+  const { emitAck } = useEmitX<SaveQuestionnaireArgs, EmitResultBase<any>>({
     ev: EvPaths.SaveLifestyle,
+    onSuccess: ({ status, message }) => {
+      if (status === "error") {
+        return toast.error(message ?? "알 수 없는 오류가 발생했습니다.");
+      }
+
+      push(paths.success("생활습관"));
+    },
   });
   const { selectedItems, validate, setError, clearError } =
     useLifestyleStoreController();

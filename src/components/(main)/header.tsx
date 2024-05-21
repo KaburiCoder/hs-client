@@ -8,28 +8,21 @@ import {
   Button,
   Link,
 } from "@nextui-org/react";
-import { paths } from "@/paths";
-import { signout } from "@/lib/api/signout";
-import { usePathname, useRouter } from "next/navigation";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
+import ClickIcon from "../images/click-icon";
+import { useNavTitle } from "./root/_hooks/use-nav-title";
+import LogoutButton from "./root/logout-button";
 
 export default function MainHeader() {
-  const pathname = usePathname();
-  const isQuestionnairePath = pathname.startsWith(paths.questionnaire);
+  const { isWriteMode, titleComponent } = useNavTitle();
 
-  const { replace } = useRouter();
   const patient = useSelectionPatientStore((state) => state.patient);
-  function handleSignout(): void {
-    signout().then(() => replace(paths.login));
-  }
 
   return (
     <Navbar shouldHideOnScroll>
-      <NavbarBrand>
-        {!isQuestionnairePath && <p className="font-bold text-inherit">클릭소프트</p>}
-        {isQuestionnairePath && (
-          <p className="font-bold text-inherit">건강검진 문진표</p>
-        )}
+      <NavbarBrand className="gap-2">
+        <ClickIcon />
+        {titleComponent}
       </NavbarBrand>
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         {/* <NavbarItem>
@@ -52,21 +45,12 @@ export default function MainHeader() {
         {/* <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem> */}
-        {isQuestionnairePath && <div>{patient?.name} 님</div>}
-        {!isQuestionnairePath && (
+        {isWriteMode && <div>{patient?.name} 님</div>}
+        {!isWriteMode && (
           <NavbarItem>
-            <Button
-              type="button"
-              as={Link}
-              color="primary"
-              // href={paths.root}
-              variant="flat"
-              onClick={handleSignout}
-            >
-              로그아웃
-            </Button>
+            <LogoutButton />
           </NavbarItem>
-        )}
+        )}         
       </NavbarContent>
     </Navbar>
   );

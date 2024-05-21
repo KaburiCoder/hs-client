@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import { Square, SquareCheck } from "lucide-react";
 import { useRef } from "react";
+import { DisabledProps } from "./(main)/lifestyle/lifestyle-body";
 
-export interface InputBoxWrapperProps {
+export interface InputBoxWrapperProps extends DisabledProps {
   children?: React.ReactNode;
   checked?: boolean;
   className?: string;
@@ -16,6 +17,7 @@ export function InputBoxWrapper({
   children,
   className,
   showCheckIcon,
+  isDisabled,
 }: InputBoxWrapperProps) {
   const labelRef = useRef<HTMLLabelElement>(null);
   const CheckIcon = showCheckIcon
@@ -27,7 +29,7 @@ export function InputBoxWrapper({
   return (
     <label
       ref={labelRef}
-      tabIndex={0}
+      tabIndex={isDisabled ? undefined : 0}
       className={cn(
         "flex min-w-20 items-center rounded-lg border px-2 py-4 transition-all",
         "hover:cursor-pointer ",

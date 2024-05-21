@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NumInput } from "@/components/num-input";
+import { NumInput, NumInputProps } from "@/components/num-input";
 import { cn } from "@/lib/utils";
 import { Description } from "@/components/description";
 import { RadioGroup } from "@/components/radio/radio-group";
@@ -30,7 +30,7 @@ export default function Drinks7() {
   }
 
   return (
-    <QuestionnaireErrorBox errorKeys={['drink.n7', "drink.n7.frequency"]}>
+    <QuestionnaireErrorBox errorKeys={["drink.n7", "drink.n7.frequency"]}>
       <Description
         id={questionIds.drink.n7}
         headmark="7"
@@ -52,20 +52,31 @@ export default function Drinks7() {
           className="flex items-center gap-2"
           blur={!n7 || n7.type === EDrinkingFreqType.DO_NOT}
         >
-          <NumInput
+          <NumInputWrapper
             className={cn("w-14")}
             min={min}
             max={max}
             value={n7?.frequency}
             onChange={handleFrequencyChange}
           />
-          <div>번</div>
         </BlurWrapper>
       </div>
     </QuestionnaireErrorBox>
   );
 }
 
+/**
+ * BlurWrapper에서 재귀함수로 isDisabled를 주입하는데
+ * div부분을 찾지 않기 위해 별도로 생성
+ */
+function NumInputWrapper(props: NumInputProps) {
+  return (
+    <>
+      <NumInput {...props} />
+      <div>번</div>
+    </>
+  );
+}
 function GetMinMaxFreq(freq: EDrinkingFreqType | undefined) {
   switch (freq) {
     case EDrinkingFreqType.MONTHS:

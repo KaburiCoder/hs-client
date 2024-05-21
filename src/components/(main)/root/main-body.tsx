@@ -8,42 +8,52 @@ import {
   GetReceptionPatientsResult,
   ReceptionPatient,
 } from "health-screening-shared/interfaces.socket";
-import { Button, Divider, Input } from "@nextui-org/react";
+import { Button, Divider, Input, UseDisclosureProps } from "@nextui-org/react";
 import { useEffect } from "react";
 import { PatientCard } from "./patient-card";
 import { RefreshCw, Search } from "lucide-react";
+import toast from "react-hot-toast";
+import { useSearchText } from "@/lib/hooks/use-search-text";
+import { useInterval } from "@/lib/hooks/use-interval";
 
 export default function MainBody() {
   const { user } = useServerCookie();
-  const [patients, setPatients] = useState<ReceptionPatient[]>();
-  const [searchText, setSearchText] = useState<string>("");
   const { data, isConnected, emitAck } = useEmit<
     GetReceptionPatientsArgs,
     GetReceptionPatientsResult
   >({
     ev: EvPaths.GetReceptionPatients,
+    onSuccess: ({ status, message }) => {
+      if (status === "error") {
+        toast.error(message ?? "알 수 없는 오류가 발생했습니다.");
+      }
+    },
+  });
+  const { searchedData, setSearchText } = useSearchText<ReceptionPatient>({
+    data: data?.data,
+    filter: ({ searchText, value }) => {
+      const regex = new RegExp(searchText.trim(), "i");
+      return value.name.match(regex);
+    },
   });
 
+  const emitIfConnected = () => {
+    if (isConnected && user?.roomKey) {
+      emitAck({ key: user.roomKey });
+    }
+  };
+
+  useInterval(emitIfConnected, 10000);
+
   useEffect(() => {
-    const patients = data?.data;
-    if (!patients) return setPatients(undefined);
-
-    const regex = new RegExp(searchText.trim(), "i");
-    const searchedPatients = patients.filter((p) => p.name.match(regex));
-    setPatients(searchedPatients);
-  }, [data, searchText]);
-
-  useEffect(() => {
-    if (!isConnected || !user?.roomKey) return;
-
-    emitAck({ key: user.roomKey });
+    emitIfConnected();
   }, [isConnected, user]);
 
   function handleReload(): void {
     if (user) emitAck({ key: user.roomKey });
   }
 
-  const cards = patients?.map((d) => (
+  const cards = searchedData?.map((d) => (
     <PatientCard key={`${d.eiAuto},${d.ejAuto}`} data={d} />
   ));
 
@@ -55,7 +65,7 @@ export default function MainBody() {
     <>
       <div className="sticky top-0 z-10 bg-white ">
         <div>
-          <div className="flex items-center justify-between max-w-screen-lg mx-auto">
+          <div className="mx-auto px-4 flex max-w-screen-lg items-center justify-between">
             <h2 className="mb-2 mt-4 text-2xl font-bold">
               검진 접수 환자 리스트
             </h2>

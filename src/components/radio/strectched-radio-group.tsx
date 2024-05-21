@@ -4,8 +4,9 @@ import { BtnRadio } from "./btn-radio";
 import { RadioGroup } from "./radio-group";
 import { RadioData } from "./interfaces";
 import { cn } from "@/lib/utils";
+import { DisabledProps } from "../(main)/lifestyle/lifestyle-body";
 
-interface StretchedRadioGroupProps extends ClassNameProps {
+interface StretchedRadioGroupProps extends ClassNameProps, DisabledProps {
   value?: InputValueType;
   datas: RadioData[];
   onChange?: (value: InputValueType) => void;
@@ -15,10 +16,12 @@ export function StretchedRadioGroup({
   value,
   datas,
   className,
+  isDisabled,
   onChange,
 }: StretchedRadioGroupProps) {
   const radios = datas.map((data) => (
     <BtnRadio
+      isDisabled={isDisabled}
       key={data.value}
       className="flex-1"
       text={data.text}

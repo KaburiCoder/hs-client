@@ -13,6 +13,7 @@ import {
   ISmokingResult,
 } from "health-screening-shared/interfaces";
 import { devtools } from "zustand/middleware";
+import { deleteObject } from "@/lib/utils/object.util";
 
 type QuestionStates = {
   n1: IHistoryN1;
@@ -149,7 +150,7 @@ const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
   setN15: (n15) => set(() => ({ n15 })),
   setGenState: (state) =>
     set(() => {
-      deleteZeroOrNull(state);
+      deleteObject(state, (value) => value === 0 || value === null);
 
       return {
         ...state,
@@ -178,20 +179,5 @@ const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
     }),
   clearQuestionnaire: () => set(initialState),
 });
-
-function deleteZeroOrNull(obj: any) {
-  if (typeof obj === "object") {
-    for (const key in obj) {
-      const inObj = obj[key];
-      if (inObj === 0 || inObj === null) {
-        delete obj[key];
-      }
-
-      if (typeof inObj === "object") {
-        deleteZeroOrNull(inObj);
-      }
-    }
-  }
-}
 
 export const useQuestionStore = create(devtools(stateCreator));

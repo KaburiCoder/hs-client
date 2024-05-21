@@ -10,7 +10,6 @@ import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 import { QuestionnaireErrorResult } from "@/stores/question-error-store";
-
 interface GroupDescription {
   headmark: string;
   text: string;

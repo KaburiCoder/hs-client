@@ -12,7 +12,6 @@ export function BlurWrapper({ blur, className, children }: BlurWrapperProps) {
   ): React.ReactNode => {
     return React.Children.map(children, (child) => {
       if (isValidElement(child)) {
-        // Check if the child has its own children
         const childProps: any = { isDisabled: blur };
         if (child.props.children) {
           childProps.children = renderChildrenWithDisabled(

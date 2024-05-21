@@ -14,6 +14,7 @@ interface Actions {
   setN1: (n1: string | undefined) => void;
   setN2: (n2: string | undefined) => void;
   setN3: (n3: string | undefined) => void;
+  setState: (state: LsOverweightState) => void;
   validate: () => Joi.ValidationResult<LsOverweightState>;
   clear: () => void;
 }
@@ -29,6 +30,7 @@ const stateCreator: StateCreator<LsOverweightState & Actions> = (set, get) => ({
   setN1: (n1) => set(() => ({ n1 })),
   setN2: (n2) => set(() => ({ n2 })),
   setN3: (n3) => set(() => ({ n3 })),
+  setState: (state) => set(() => ({ ...state })),
   validate: () => validateSchema({ state: get(), initialState, schema }),
   clear: () => set(initialState),
 });
