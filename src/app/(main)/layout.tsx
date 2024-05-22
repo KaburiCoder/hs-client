@@ -1,4 +1,4 @@
-import MainHeader from "@/components/(main)/header";
+import MainHeader from "@/components/(main)/root/header/header";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import React from "react";
 

@@ -9,9 +9,11 @@ import {
   Link,
 } from "@nextui-org/react";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
-import ClickIcon from "../images/click-icon";
-import { useNavTitle } from "./root/_hooks/use-nav-title";
-import LogoutButton from "./root/logout-button";
+import ClickIcon from "../../../images/click-icon";
+import { useNavTitle } from "../_hooks/use-nav-title";
+import LogoutButton from "./logout-button";
+import { Settings } from "lucide-react";
+import SettingButton from "./setting-button";
 
 export default function MainHeader() {
   const { isWriteMode, titleComponent } = useNavTitle();
@@ -41,16 +43,21 @@ export default function MainHeader() {
           </Link>
         </NavbarItem> */}
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent className="gap-1" justify="end">
         {/* <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem> */}
         {isWriteMode && <div>{patient?.name} 님</div>}
         {!isWriteMode && (
-          <NavbarItem>
-            <LogoutButton />
-          </NavbarItem>
-        )}         
+          <>
+            <NavbarItem>
+              <SettingButton />
+            </NavbarItem>
+            <NavbarItem>
+              <LogoutButton />
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );

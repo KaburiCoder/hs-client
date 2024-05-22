@@ -11,14 +11,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.10",
+    "@nextui-org/react": "^2.3.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-query": "^5.32.0",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.4",
-    "framer-motion": "^11.0.28",
+    "framer-motion": "^11.2.5",
     "health-screening-shared": "^0.0.52",
     "joi": "^17.13.0",
     "kbr-nextjs-shared": "^0.0.24",

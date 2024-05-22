@@ -13,6 +13,7 @@ export interface NumInputProps extends ClassNameProps {
   dec?: number;
   inputClassName?: string;
   isDisabled?: boolean;
+  variant?: "flat" | "bordered" | "faded" | "underlined" | undefined;
   onChange: (value: number | undefined) => void;
 }
 

@@ -12,7 +12,7 @@ export default function withSelectPatient(Component: any) {
     }, [patient]);
 
     if (!patient) return null;
-    
+
     return <Component {...props} patient={patient} />;
   };
 }

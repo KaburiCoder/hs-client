@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
+import { useLockpw } from "./_hooks/use-lock-pw";
 
 export const lockScreen = (Component: any) => {
   return function LockScreen(props: any) {
@@ -25,14 +26,11 @@ interface LockCardProps {
 
 function LockCard({ onSuccess }: LockCardProps) {
   const [pwds, setPwds] = useState<number[]>([]);
-
+  const { lockPw } = useLockpw();
   function handleNumClick(num: number): void {
     setPwds((prev) => {
       if (prev.length < 4) {
-        const ddd = prev.concat(num);
-        console.log(ddd);
-
-        return ddd;
+        return prev.concat(num);
       }
       return [num];
     });
@@ -43,12 +41,19 @@ function LockCard({ onSuccess }: LockCardProps) {
   }
 
   useEffect(() => {
-    const ok = pwds.join("") === "1234";
+    const ok = pwds.join("") === lockPw;
     if (ok) onSuccess();
-  }, [pwds]);
+  }, [pwds, lockPw]);
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>): void {
+    console.log(event.key);
+  }
 
   return (
-    <Card className="fixed left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 p-4">
+    <Card
+      className="fixed left-1/2 top-1/2 z-10 min-w-80 -translate-x-1/2 -translate-y-1/2 p-4"
+      onKeyDown={handleKeyDown}
+    >
       <CardHeader>잠금화면</CardHeader>
       <CardBody className="grid grid-cols-3 gap-2">
         <div className="col-span-3 mb-2 grid grid-cols-4 gap-2">
