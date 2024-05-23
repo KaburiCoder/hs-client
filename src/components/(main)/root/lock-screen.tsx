@@ -45,15 +45,8 @@ function LockCard({ onSuccess }: LockCardProps) {
     if (ok) onSuccess();
   }, [pwds, lockPw]);
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>): void {
-    console.log(event.key);
-  }
-
   return (
-    <Card
-      className="fixed left-1/2 top-1/2 z-10 min-w-80 -translate-x-1/2 -translate-y-1/2 p-4"
-      onKeyDown={handleKeyDown}
-    >
+    <Card className="fixed left-1/2 top-1/2 z-10 min-w-80 -translate-x-1/2 -translate-y-1/2 p-4">
       <CardHeader>잠금화면</CardHeader>
       <CardBody className="grid grid-cols-3 gap-2">
         <div className="col-span-3 mb-2 grid grid-cols-4 gap-2">

@@ -22,6 +22,8 @@ function LockPwInputs() {
   const [error, setError] = useState<string>();
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  // 테스트
+  const [myKey, setMyKey] = useState<string>("키입력");
 
   // 입력란에 대한 ref 설정
   const setInputRef = (index: number) => (element: HTMLInputElement | null) => {
@@ -40,10 +42,13 @@ function LockPwInputs() {
 
   function handleKeyDown(
     key: string,
+    code: string,
     index: number,
     preventDefault: () => void,
   ): void {
-    if (key !== "Backspace") preventDefault();
+    setMyKey(`key: ${key}, code: ${code}`);
+    
+    preventDefault();
 
     if (isNumber(key)) {
       setPw((prev) => {
@@ -76,6 +81,7 @@ function LockPwInputs() {
 
   return (
     <div>
+      {myKey}
       <div className="flex gap-1">
         {[0, 1, 2, 3].map((n) => (
           <Input
@@ -86,7 +92,7 @@ function LockPwInputs() {
             min={0}
             max={9}
             value={pw[n] ?? ""}
-            onKeyDown={(e) => handleKeyDown(e.key, n, e.preventDefault)}
+            onKeyDown={(e) => handleKeyDown(e.key, e.code, n, e.preventDefault)}
             ref={setInputRef(n)} // ref 설정
           />
         ))}
