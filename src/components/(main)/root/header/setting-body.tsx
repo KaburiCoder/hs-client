@@ -3,6 +3,7 @@ import { isNumber } from "@/stores/utils/check-util";
 import { Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLockpw } from "../_hooks/use-lock-pw";
+import { NumInput } from "@/components/num-input";
 
 export default function SettingBody() {
   return (
@@ -40,24 +41,24 @@ function LockPwInputs() {
     }
   };
 
-  // function handleKeyDown(
-  //   key: string,
-  //   code: string,
-  //   index: number,
-  //   preventDefault: () => void,
-  // ): void {
-  //   setMyKey(`key: ${key}, code: ${code}`);
+  function handleKeyDown(
+    key: string,
+    code: string,
+    index: number,
+    preventDefault: () => void,
+  ): void {
+    setMyKey(`key: ${key}, code: ${code}`);
 
-  //   preventDefault();
+    preventDefault();
 
-  //   if (isNumber(key)) {
-  //     setPw((prev) => {
-  //       prev[index] = key;
-  //       return [...prev];
-  //     });
-  //     focusNextInput(index);
-  //   }
-  // }
+    if (isNumber(key)) {
+      setPw((prev) => {
+        prev[index] = key;
+        return [...prev];
+      });
+      focusNextInput(index);
+    }
+  }
 
   function handleSave(): void {
     if (!pw.every((p) => isNumber(p))) {
@@ -79,21 +80,23 @@ function LockPwInputs() {
     ]);
   }, [lockPw]);
 
-  useEffect(() => {
-    for (const input of inputRefs.current) {
-      input?.addEventListener("keydown", handleKeyDown.bind(input, setMyKey));
+  function handleChangeKey(
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ): void {
+    const key = e.target.value?.[e.target.value.length - 1];
+    setMyKey(key);
+    if (isNumber(key)) {
+      setPw((prev) => {
+        prev[index] = key;
+        return [...prev];
+      });
+      focusNextInput(index);
     }
-
-    return () => {
-      for (const input of inputRefs.current) {
-        input?.removeEventListener("keydown", handleKeyDown.bind(input, setMyKey));
-      }
-    };
-  }, []);
+  }
 
   return (
     <div>
-      {myKey}
       <div className="flex gap-1">
         {[0, 1, 2, 3].map((n) => (
           <Input
@@ -101,10 +104,11 @@ function LockPwInputs() {
             className="max-w-14 text-base"
             classNames={{ input: "text-center" }}
             variant="bordered"
+            type="number"
             min={0}
             max={9}
             value={pw[n] ?? ""}
-            // onKeyDown={(e) => handleKeyDown(e.key, e.code, n, e.preventDefault)}
+            onChange={handleChangeKey.bind(null, n)}
             ref={setInputRef(n)} // ref 설정
           />
         ))}
@@ -121,25 +125,4 @@ function LockPwInputs() {
       <ErrorBox errorMessage={error} />
     </div>
   );
-}
-
-function handleKeyDown(
-  this: HTMLInputElement,
-  setMyKey: any,
-  ev: KeyboardEvent,
-) {
-  ev.preventDefault();
-
-  // ): void {
-  setMyKey(`key: ${ev.key}, code: ${ev.code}`);
-
-  //   preventDefault();
-
-  //   if (isNumber(key)) {
-  //     setPw((prev) => {
-  //       prev[index] = key;
-  //       return [...prev];
-  //     });
-  //     focusNextInput(index);
-  //   }
 }
