@@ -4,7 +4,7 @@ import { Grids } from "@/components/grids";
 import { n2ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
 import { BtnCheckBox, BtnCheckBoxProps } from "@/components/btn-checkbox";
 import { useNotAppli } from "./use-not-appli";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function Histories2() {
   const { clearToggle, setAppliChecked, NotAppliWrapper } = useNotAppli({

@@ -1,7 +1,7 @@
 import { Description, SparkleDescription } from "@/components/description";
 import React from "react";
 import DrinksCc from "./drinks-cc";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import {
   EDrinkingFreqType,
   IDrinkingFrequency,

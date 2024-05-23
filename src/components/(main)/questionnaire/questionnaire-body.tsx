@@ -1,26 +1,30 @@
 "use client";
-import React from "react";
-import Histories from "@/components/(main)/questionnaire/histories/histories";
-import Smokings from "@/components/(main)/questionnaire/smokings/smokings";
-import Drinks from "@/components/(main)/questionnaire/drinks/drinks";
-import Activities from "@/components/(main)/questionnaire/activities/activities";
-import Confirms from "@/components/(main)/questionnaire/confirms/confirms";
-import ScrollDownAnimation from "@/components/(main)/questionnaire/scroll-down-animation/scroll-down-animation";
-import AddExams from "@/components/(main)/questionnaire/add-exams/add-exams";
+import React, { useEffect } from "react";
 import { useQnClear } from "./_hooks/use-qn-clear";
+import { useQnNav } from "./_hooks/use-qn-nav";
+import { CarouselX } from "@/components/carousel-x/carousel-x";
+import LsNextButtons from "../lifestyle/ls-next-buttons";
 
 const QuestionaireBody = () => {
-  useQnClear();
+  const { index, lastIndex, carouselItems, handleNext, handlePrev } =
+    useQnNav();
+  const { clear } = useQnClear();
+
+  useEffect(() => {
+    return () => {
+      clear();
+    };
+  }, []);
 
   return (
     <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 md:px-20">
-      <Histories />
-      <Smokings />
-      <Drinks />
-      <Activities />
-      <AddExams />
-      <Confirms />
-      <ScrollDownAnimation />
+      <LsNextButtons
+        index={index}
+        lastIndex={lastIndex}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
+      <CarouselX index={index}>{carouselItems}</CarouselX>
     </div>
   );
 };

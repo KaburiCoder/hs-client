@@ -1,4 +1,4 @@
-name: Hs-backend CD
+name: hs-client CD
 
 on:
   push:

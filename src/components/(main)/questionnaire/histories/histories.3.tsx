@@ -5,9 +5,9 @@ import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { EHistoryN3 } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { InputValueType } from "kbr-nextjs-shared/types";
-import { useQuestionStore } from "@/stores/question-store";
 import { TitledRadioGroup } from "@/components/radio/titled-radio-group";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function Histories3() {
   const n3 = useQuestionStore((state) => state.n3);

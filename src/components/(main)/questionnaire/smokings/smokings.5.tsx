@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import SmokingGroup from "./smoking-group";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { scrollById } from "@/lib/utils/scroll.util";

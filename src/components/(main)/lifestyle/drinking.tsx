@@ -5,7 +5,7 @@ import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsDrinkingStore } from "@/stores/lifestyle/ls-drinking-store";
 import React from "react";
-import { DisabledProps } from "./lifestyle-body";
+import { DisabledProps } from "../../../lib/props/disabled-props";
 import { useFocus } from "./_hooks/use-focus";
 
 export default function Drinking({ isDisabled }: DisabledProps) {

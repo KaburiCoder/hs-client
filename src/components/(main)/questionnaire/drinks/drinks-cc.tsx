@@ -5,7 +5,7 @@ import {
   IDrinkingFrequency,
   IDrinkingKind,
 } from "health-screening-shared/interfaces";
-import { DisabledProps } from "../../lifestyle/lifestyle-body";
+import { DisabledProps } from "../../../../lib/props/disabled-props";
 
 interface Props extends DisabledProps {
   value?: IDrinkingKind;

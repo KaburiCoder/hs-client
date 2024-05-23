@@ -6,7 +6,7 @@ import {
   IDrinkingFrequency,
   IDrinkingKind,
 } from "health-screening-shared/interfaces";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { BlurWrapper } from "@/components/blur-wrapper";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";

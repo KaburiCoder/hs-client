@@ -4,14 +4,14 @@ import { Title } from "@/components/title";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { useConditionStore } from "@/stores/condition-store";
-import { useQuestionStore } from "@/stores/question-store";
 import React from "react";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
-import { QuestionnaireErrorResult } from "@/stores/question-error-store";
+import { QuestionnaireErrorResult } from "@/stores/questionnaire/question-error-store";
 import { scrollById } from "@/lib/utils/scroll.util";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function AddExams() {
-  const addExam = useConditionStore((state) => state.isAddExam);
+  const addExam = useConditionStore((state) => state.addList?.some(x=> x==='elderly'));
   const {
     n11,
     n12,

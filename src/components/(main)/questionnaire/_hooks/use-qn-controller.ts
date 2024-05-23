@@ -2,8 +2,8 @@ import { useValidate } from "@/lib/hooks/use-validate";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { useConditionStore } from "@/stores/condition-store";
-import { QuestionnaireErrorResult, useQuestionErrorStore } from "@/stores/question-error-store";
-import { useQuestionStore } from "@/stores/question-store";
+import { QuestionnaireErrorResult, useQuestionErrorStore } from "@/stores/questionnaire/question-error-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { IQuestionnaire } from "health-screening-shared/interfaces";
 import { QuestionnaireSchema } from "health-screening-shared/joi";
 
@@ -37,7 +37,7 @@ export const useQnStoreController = (error: QuestionnaireErrorResult) => {
   const n14 = useQuestionStore((state) => state.n14);
   const n15 = useQuestionStore((state) => state.n15);
   const { validateAndGetResult, validateError } = useValidate<any, QuestionnaireErrorResult>();
-  const { isAddExam } = useConditionStore();
+  const isEldery = useConditionStore(state => state.addList?.some(x => x === 'elderly'))
   const errorResult = validateError?.error ?? error;
 
   function validate() {
@@ -46,8 +46,8 @@ export const useQnStoreController = (error: QuestionnaireErrorResult) => {
       smoking: { n4, n4_1, n5, n5_1, n6, n6_1 },
       drink: { n7, n7_1, n7_2 },
       activity: { n8_1, n8_2, n9_1, n9_2, n10 },
-      addExam: isAddExam ? { n11, n12, n13_1, n13_2, n13_3, n13_4, n13_5, n13_6, n14, n15 } : undefined,
-      isAddExam,
+      addExam: isEldery ? { n11, n12, n13_1, n13_2, n13_3, n13_4, n13_5, n13_6, n14, n15 } : undefined,
+      isAddExam: isEldery,
     });
   }
 

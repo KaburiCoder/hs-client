@@ -1,4 +1,3 @@
-import Overweight from "@/components/(main)/lifestyle/overweight";
 import { LsDrinkingState } from "@/stores/lifestyle/ls-drinking-store";
 import { LsExerciseState } from "@/stores/lifestyle/ls-exercise-store";
 import { LsNutritionState } from "@/stores/lifestyle/ls-nutrition-store";

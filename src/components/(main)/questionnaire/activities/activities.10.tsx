@@ -1,6 +1,6 @@
 import React from "react";
 import ActivityWeek from "./activity-week";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 

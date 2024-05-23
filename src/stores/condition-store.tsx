@@ -1,6 +1,7 @@
 import { StateCreator, create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+export type QnKeys = "gen" | "elderly" | "depression" | "cognitive";
 export type LifestyleKeys =
   | "smoking"
   | "drinking"
@@ -9,23 +10,23 @@ export type LifestyleKeys =
   | "overweight";
 
 interface State {
-  isAddExam?: boolean;
+  addList?: QnKeys[];
   selectedLifestyles: LifestyleKeys[];
 }
 interface Actions {
-  setIsAddExam: (isAddExam?: boolean) => void;
+  setAddList: (addList?: QnKeys[]) => void;
   setSelectedLifestyles: (selectedLifestyles?: LifestyleKeys[]) => void;
   clear: () => void;
 }
 
 const initialState: State = {
-  isAddExam: false,
+  addList: [],
   selectedLifestyles: [],
 };
 
 const stateCreator: StateCreator<State & Actions> = (set) => ({
   ...initialState,
-  setIsAddExam: (isAddExam) => set(() => ({ isAddExam })),
+  setAddList: (addList) => set(() => ({ addList })),
   setSelectedLifestyles: (selectedLifestyles) =>
     set(() => ({ selectedLifestyles })),
   clear: () => set(initialState),

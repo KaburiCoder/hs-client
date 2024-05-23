@@ -7,6 +7,7 @@ import {
   IDrinkN7,
   IDrinkingKind,
   IActivityTerm,
+  IQuestionnaire,
 } from "health-screening-shared/interfaces";
 import {
   ISmokingN6d1,
@@ -14,6 +15,8 @@ import {
 } from "health-screening-shared/interfaces";
 import { devtools } from "zustand/middleware";
 import { deleteObject } from "@/lib/utils/object.util";
+import { QuestionnaireSchema } from "health-screening-shared/joi";
+import Joi from "joi";
 
 type QuestionStates = {
   n1: IHistoryN1;
@@ -74,7 +77,7 @@ type Actions = {
   setN14: (n14?: boolean) => void;
   setN15: (n15?: boolean) => void;
   setGenState: (state: QuestionStates) => void;
-
+  validate: (isEldery?: boolean) => Joi.ValidationResult<IQuestionnaire>;
   clearQuestionnaire: () => void;
 };
 
@@ -108,7 +111,7 @@ const initialState: QuestionStates = {
   n15: undefined,
 };
 
-const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
+const stateCreator: StateCreator<QuestionStates & Actions> = (set, get) => ({
   ...initialState,
   setN1: (n1) => set(() => ({ n1 })),
   setN2: (n2) => set(() => ({ n2 })),
@@ -148,6 +151,48 @@ const stateCreator: StateCreator<QuestionStates & Actions> = (set) => ({
   setN13_6: (n13_6) => set(() => ({ n13_6 })),
   setN14: (n14) => set(() => ({ n14 })),
   setN15: (n15) => set(() => ({ n15 })),
+  validate: (isEldery?: boolean) => {
+    const {
+      n1,
+      n2,
+      n3,
+      n4,
+      n4_1,
+      n5,
+      n5_1,
+      n6,
+      n6_1,
+      n7,
+      n7_1,
+      n7_2,
+      n8_1,
+      n8_2,
+      n9_1,
+      n9_2,
+      n10,
+      n11,
+      n12,
+      n13_1,
+      n13_2,
+      n13_3,
+      n13_4,
+      n13_5,
+      n13_6,
+      n14,
+      n15,
+    } = get();
+
+    return QuestionnaireSchema.validate({
+      history: { n1, n2, n3 },
+      smoking: { n4, n4_1, n5, n5_1, n6, n6_1 },
+      drink: { n7, n7_1, n7_2 },
+      activity: { n8_1, n8_2, n9_1, n9_2, n10 },
+      addExam: isEldery
+        ? { n11, n12, n13_1, n13_2, n13_3, n13_4, n13_5, n13_6, n14, n15 }
+        : undefined,
+      isAddExam: isEldery,
+    });
+  },
   setGenState: (state) =>
     set(() => {
       deleteObject(state, (value) => value === 0 || value === null);

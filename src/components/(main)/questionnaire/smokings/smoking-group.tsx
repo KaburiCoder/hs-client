@@ -9,7 +9,7 @@ import { InputValueType } from "kbr-nextjs-shared/types";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
-import { QuestionnaireErrorResult } from "@/stores/question-error-store";
+import { QuestionnaireErrorResult } from "@/stores/questionnaire/question-error-store";
 interface GroupDescription {
   headmark: string;
   text: string;

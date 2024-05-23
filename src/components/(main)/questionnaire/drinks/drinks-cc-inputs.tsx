@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Center } from "./center";
 import { NumInput } from "@/components/num-input";
 import { IDrinkingFrequency } from "health-screening-shared/interfaces";
-import { DisabledProps } from "../../lifestyle/lifestyle-body";
+import { DisabledProps } from "../../../../lib/props/disabled-props";
 
 interface Props extends DisabledProps {
   header: string;

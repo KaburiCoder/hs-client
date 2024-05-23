@@ -5,11 +5,11 @@ import {
 import {
   QuestionnaireErrorResult,
   useQuestionErrorStore,
-} from "@/stores/question-error-store";
+} from "@/stores/questionnaire/question-error-store";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import { memo } from "react";
 import ErrorBox from "../../error-box";
-import { LifestyleKeys } from "@/stores/condition-store";
+import { LifestyleKeys, QnKeys } from "@/stores/condition-store";
 
 interface ErrorBoxProps<T> extends ChildrenProps {
   errorKeys: (keyof T)[];
@@ -34,15 +34,15 @@ const _QuestionnaireErrorBox = ({
   );
 };
 
-interface LsErrorBoxProps extends ErrorBoxProps<LsErrorResult> {
-  selectedKey: LifestyleKeys;
+interface CommonErrorBoxProps extends ErrorBoxProps<any> {
+  selectedKey: string;
 }
 
-export const LsErrorBox = ({
+const CommonErrorBox = ({
   selectedKey,
   errorKeys,
   children,
-}: LsErrorBoxProps) => {
+}: CommonErrorBoxProps) => {
   const selectedErrorKey = useLsErrorStore((state) => state.selectedKey);
   const error = useLsErrorStore((state) => state.error);
   const errorKey = error ? Object.keys(error)?.[0] : "";
@@ -57,6 +57,22 @@ export const LsErrorBox = ({
       <ErrorBox className="mt-2" errorMessage={errorMessage} />
     </div>
   );
+};
+
+interface LsErrorBoxProps extends ErrorBoxProps<LsErrorResult> {
+  selectedKey: LifestyleKeys;
+}
+
+export const LsErrorBox = (props: LsErrorBoxProps) => {
+  return <CommonErrorBox {...props} />;
+};
+
+interface QnErrorBoxProps extends ErrorBoxProps<any> {
+  selectedKey: QnKeys;
+}
+
+export const QnErrorBox = (props: QnErrorBoxProps) => {
+  return <CommonErrorBox {...props} />;
 };
 
 const QuestionnaireErrorBox = memo(_QuestionnaireErrorBox);

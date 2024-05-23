@@ -3,12 +3,12 @@ import { Description } from "@/components/description";
 import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { ISmokingN6d1 } from "health-screening-shared/interfaces";
-import { useQuestionStore } from "@/stores/question-store";
 import React from "react";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function Smokings6() {
   const n6 = useQuestionStore((state) => state.n6);

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { EvPaths } from "@/socket-io/ev-paths";
 import { useEmit } from "@/socket-io/hooks/use-emit";
@@ -29,8 +29,13 @@ export default function MainBody() {
       }
     },
   });
+
+  const processedData = useMemo(
+    () => (data?.status === "success" ? data?.data : []),
+    [data],
+  );
   const { searchedData, setSearchText } = useSearchText<ReceptionPatient>({
-    data: data?.data,
+    data: processedData,
     filter: ({ searchText, value }) => {
       const regex = new RegExp(searchText.trim(), "i");
       return value.name.match(regex);
@@ -49,6 +54,11 @@ export default function MainBody() {
     emitIfConnected();
   }, [isConnected, user]);
 
+  useEffect(() => {
+    if (data?.error) {
+      toast.error(data.message ?? "");
+    }
+  }, [data?.error]);
   function handleReload(): void {
     if (user) emitAck({ key: user.roomKey });
   }
@@ -65,7 +75,7 @@ export default function MainBody() {
     <>
       <div className="sticky top-0 z-10 bg-white ">
         <div>
-          <div className="mx-auto px-4 flex max-w-screen-lg items-center justify-between">
+          <div className="mx-auto flex max-w-screen-lg items-center justify-between px-4">
             <h2 className="mb-2 mt-4 text-2xl font-bold">
               검진 접수 환자 리스트
             </h2>

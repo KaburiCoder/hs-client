@@ -2,8 +2,7 @@ import ErrorBox from "@/components/error-box";
 import { isNumber } from "@/stores/utils/check-util";
 import { Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";
-import { useLockpw } from "../_hooks/use-lock-pw";
-import { NumInput } from "@/components/num-input";
+import { useLockpw } from "../_hooks/use-lock-pw"; 
 
 export default function SettingBody() {
   return (
@@ -40,25 +39,6 @@ function LockPwInputs() {
       buttonRef.current?.focus();
     }
   };
-
-  function handleKeyDown(
-    key: string,
-    code: string,
-    index: number,
-    preventDefault: () => void,
-  ): void {
-    setMyKey(`key: ${key}, code: ${code}`);
-
-    preventDefault();
-
-    if (isNumber(key)) {
-      setPw((prev) => {
-        prev[index] = key;
-        return [...prev];
-      });
-      focusNextInput(index);
-    }
-  }
 
   function handleSave(): void {
     if (!pw.every((p) => isNumber(p))) {

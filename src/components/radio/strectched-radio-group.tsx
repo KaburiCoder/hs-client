@@ -4,7 +4,7 @@ import { BtnRadio } from "./btn-radio";
 import { RadioGroup } from "./radio-group";
 import { RadioData } from "./interfaces";
 import { cn } from "@/lib/utils";
-import { DisabledProps } from "../(main)/lifestyle/lifestyle-body";
+import { DisabledProps } from "../../lib/props/disabled-props";
 
 interface StretchedRadioGroupProps extends ClassNameProps, DisabledProps {
   value?: InputValueType;

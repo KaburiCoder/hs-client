@@ -1,4 +1,4 @@
-import { DisabledProps } from "./(main)/lifestyle/lifestyle-body";
+import { DisabledProps } from "../lib/props/disabled-props";
 import { CustomRadioGroup } from "./custom-radio-group";
 import { DescriptionWrapper } from "./description";
 

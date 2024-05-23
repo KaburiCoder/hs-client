@@ -9,7 +9,7 @@ import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";
 import React, { useState } from "react";
-import { DisabledProps } from "./lifestyle-body";
+import { DisabledProps } from "../../../lib/props/disabled-props";
 import { useFocus } from "./_hooks/use-focus";
 
 export default function Exercise({ isDisabled }: DisabledProps) {

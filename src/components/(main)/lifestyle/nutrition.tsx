@@ -5,8 +5,8 @@ import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsNutritionStore } from "@/stores/lifestyle/ls-nutrition-store";
 import React from "react";
-import { DisabledProps } from "./lifestyle-body";
 import { useFocus } from "./_hooks/use-focus";
+import { DisabledProps } from "@/lib/props/disabled-props";
 
 export default function Nutrition({ isDisabled }: DisabledProps) {
   const {

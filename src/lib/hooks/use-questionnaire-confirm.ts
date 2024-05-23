@@ -2,7 +2,7 @@
 import { EvPaths } from "@/socket-io/ev-paths";
 import * as sock from "health-screening-shared/interfaces.socket";
 import { useEffect, useRef } from "react";
-import { QuestionnaireErrorResult } from "@/stores/question-error-store";
+import { QuestionnaireErrorResult } from "@/stores/questionnaire/question-error-store";
 import { useEmitX } from "./use-emit-x";
 import { useQnStoreController } from "@/components/(main)/questionnaire/_hooks/use-qn-controller";
 import toast from "react-hot-toast";

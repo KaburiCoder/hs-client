@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Description } from "@/components/description";
 import { RadioGroup } from "@/components/radio/radio-group";
 import { BtnRadio } from "@/components/radio/btn-radio";
-import { useQuestionStore } from "@/stores/question-store";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { EDrinkingFreqType } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";

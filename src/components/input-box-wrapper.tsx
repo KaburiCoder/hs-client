@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Square, SquareCheck } from "lucide-react";
 import { useRef } from "react";
-import { DisabledProps } from "./(main)/lifestyle/lifestyle-body";
+import { DisabledProps } from "../lib/props/disabled-props";
 
 export interface InputBoxWrapperProps extends DisabledProps {
   children?: React.ReactNode;

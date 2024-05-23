@@ -7,8 +7,7 @@ import React from "react";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
-import { DisabledProps } from "./lifestyle-body";
-import { scrollById } from "@/lib/utils/scroll.util";
+import { DisabledProps } from "../../../lib/props/disabled-props";
 import { useFocus } from "./_hooks/use-focus";
 
 export default function Smoking({ isDisabled }: DisabledProps) {

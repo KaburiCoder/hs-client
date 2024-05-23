@@ -1,3 +1,5 @@
+import { QnDepressionState } from "@/stores/questionnaire/gn-depression-store";
+
 export const questionIds = {
   history: {
     head: "historyHead",
@@ -43,6 +45,8 @@ export const questionIds = {
     n15: "addExam_15",
   },
   confirm: "btn-confirm",
+  cognitive: (id: any) => `cognitive_${id}`,
+  depression: (id: keyof QnDepressionState) => `depression_${id}`,
 };
 
 interface IKeyTitle {

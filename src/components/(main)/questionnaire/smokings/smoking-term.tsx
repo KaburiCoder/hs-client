@@ -2,7 +2,7 @@
 import { LabeldNumInput } from "@/components/num-input";
 import { ISmokingTerm } from "health-screening-shared/interfaces";
 import React, { useEffect, useRef, useState } from "react";
-import { DisabledProps } from "../../lifestyle/lifestyle-body";
+import { DisabledProps } from "../../../../lib/props/disabled-props";
 
 interface SmokingTermProps extends DisabledProps {
   value?: ISmokingTerm;

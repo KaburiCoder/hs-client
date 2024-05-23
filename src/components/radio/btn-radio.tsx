@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { InputBoxWrapper } from "../input-box-wrapper";
 import { cn } from "@/lib/utils";
 import { useRadio } from "@/providers/radio.context";
-import { DisabledProps } from "../(main)/lifestyle/lifestyle-body";
+import { DisabledProps } from "../../lib/props/disabled-props";
 
 export interface BtnRadioProps
   extends React.InputHTMLAttributes<HTMLInputElement>,

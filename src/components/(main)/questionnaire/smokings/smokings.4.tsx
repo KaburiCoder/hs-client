@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuestionStore } from "@/stores/question-store";
 import SmokingGroup from "./smoking-group";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { scrollById } from "@/lib/utils/scroll.util";
@@ -8,6 +7,7 @@ import {
   ISmokingResult,
   ISmokingTerm,
 } from "health-screening-shared/interfaces";
+import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function Smokings4() {
   const n4 = useQuestionStore((state) => state.n4);
