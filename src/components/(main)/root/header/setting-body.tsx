@@ -40,24 +40,24 @@ function LockPwInputs() {
     }
   };
 
-  function handleKeyDown(
-    key: string,
-    code: string,
-    index: number,
-    preventDefault: () => void,
-  ): void {
-    setMyKey(`key: ${key}, code: ${code}`);
-    
-    preventDefault();
+  // function handleKeyDown(
+  //   key: string,
+  //   code: string,
+  //   index: number,
+  //   preventDefault: () => void,
+  // ): void {
+  //   setMyKey(`key: ${key}, code: ${code}`);
 
-    if (isNumber(key)) {
-      setPw((prev) => {
-        prev[index] = key;
-        return [...prev];
-      });
-      focusNextInput(index);
-    }
-  }
+  //   preventDefault();
+
+  //   if (isNumber(key)) {
+  //     setPw((prev) => {
+  //       prev[index] = key;
+  //       return [...prev];
+  //     });
+  //     focusNextInput(index);
+  //   }
+  // }
 
   function handleSave(): void {
     if (!pw.every((p) => isNumber(p))) {
@@ -79,6 +79,18 @@ function LockPwInputs() {
     ]);
   }, [lockPw]);
 
+  useEffect(() => {
+    for (const input of inputRefs.current) {
+      input?.addEventListener("keydown", handleKeyDown.bind(input, setMyKey));
+    }
+
+    return () => {
+      for (const input of inputRefs.current) {
+        input?.removeEventListener("keydown", handleKeyDown.bind(input, setMyKey));
+      }
+    };
+  }, []);
+
   return (
     <div>
       {myKey}
@@ -92,7 +104,7 @@ function LockPwInputs() {
             min={0}
             max={9}
             value={pw[n] ?? ""}
-            onKeyDown={(e) => handleKeyDown(e.key, e.code, n, e.preventDefault)}
+            // onKeyDown={(e) => handleKeyDown(e.key, e.code, n, e.preventDefault)}
             ref={setInputRef(n)} // ref 설정
           />
         ))}
@@ -109,4 +121,25 @@ function LockPwInputs() {
       <ErrorBox errorMessage={error} />
     </div>
   );
+}
+
+function handleKeyDown(
+  this: HTMLInputElement,
+  setMyKey: any,
+  ev: KeyboardEvent,
+) {
+  ev.preventDefault();
+
+  // ): void {
+  setMyKey(`key: ${ev.key}, code: ${ev.code}`);
+
+  //   preventDefault();
+
+  //   if (isNumber(key)) {
+  //     setPw((prev) => {
+  //       prev[index] = key;
+  //       return [...prev];
+  //     });
+  //     focusNextInput(index);
+  //   }
 }
