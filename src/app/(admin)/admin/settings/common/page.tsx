@@ -7,7 +7,7 @@ export default async function SettingsCommonPage() {
   const response = await axServer().get(apiPaths.adminSettings);
 
   return (
-    <div className="mx-auto grid w-full sm:grid-cols-2">
+    <div className="mx-auto grid w-full sm:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4">
       <ManagerCodeForm managerCode={response.data.managerCode} />
     </div>
   );

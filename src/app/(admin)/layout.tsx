@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: ChildrenProps) {
       startContent={<h2 className="text-lg font-semibold">관리자 페이지</h2>}
       centerContent={"헬로"}
       navComponent={<AdminNav />}
-      mainComponent={<div className="max-w-screen-lg mx-auto p-4">{children}</div>}
+      mainComponent={<div className="max-w-screen-3xl mx-auto p-4">{children}</div>}
     />
   );
 }

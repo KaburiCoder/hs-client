@@ -19,7 +19,7 @@ const schema = Joi.object<SaveManagerCodeDto>({
 export interface SaveManagerCodeResult extends ActionResultBase<boolean, Partial<SaveManagerCodeDto>> { }
 
 export async function saveManagerCode(_: SaveManagerCodeResult, formData: FormData): Promise<SaveManagerCodeResult> {
-  const { error, value } = schema.validate(Object.fromEntries(formData));
+  const { error, value } = schema.validate({ managerCode: formData.get("managerCode") });
   const result = await catchActionApi(error, () => axServer().post(apiPaths.adminSettings, {
     managerCode: value.managerCode
   }));

@@ -6,6 +6,7 @@ import ButtonL from "@/components/ui/button-l";
 import { useFormState } from "react-dom";
 import { saveManagerCode } from "@/lib/actions/save-manager-code";
 import ErrorBox from "@/components/error-box";
+import toast from "react-hot-toast";
 
 interface Props {
   managerCode: string;
@@ -13,6 +14,12 @@ interface Props {
 export default function ManagerCodeForm({ managerCode }: Props) {
   const [state, action] = useFormState(saveManagerCode, {});
   const [code, setCode] = useState(managerCode);
+
+  useEffect(() => {
+    if (state.status === "success") {
+      toast.success("저장되었어요.");
+    }
+  }, [state]);
 
   return (
     <AdminCard
@@ -30,7 +37,9 @@ export default function ManagerCodeForm({ managerCode }: Props) {
           type="password"
           onChange={(e) => setCode(e.target.value)}
         />
-        <ButtonL type="submit">저장</ButtonL>
+        <ButtonL type="submit" disabled={managerCode === code}>
+          저장
+        </ButtonL>
       </form>
       <ErrorBox className="mt-2" errorMessage={state.errors?.managerCode} />
     </AdminCard>
