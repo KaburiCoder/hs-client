@@ -1,6 +1,6 @@
 "use client";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
+import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsDrinkingStore } from "@/stores/lifestyle/ls-drinking-store";
@@ -39,7 +39,7 @@ export default function Drinking({ isDisabled }: DisabledProps) {
     <section className="flex flex-col gap-4">
       <Title>음주</Title>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n1"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n1"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n1")}
@@ -59,9 +59,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n2_1"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n2_1"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n2_1"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n2_1")}
@@ -82,9 +82,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n2_2"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n2_2"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n2_2"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n2_2")}
@@ -107,9 +107,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n3"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n3"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n3"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n3")}
@@ -126,9 +126,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n4"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n4"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n4"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n4")}
@@ -145,9 +145,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n5"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n5"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n5"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n5")}
@@ -162,9 +162,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n6"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n6"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n6"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n6")}
@@ -181,9 +181,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n7"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n7"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n7"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n7")}
@@ -198,9 +198,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n8"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n8"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n8"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n8")}
@@ -217,9 +217,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n9"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n9"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n9"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n9")}
@@ -236,9 +236,9 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n10"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="drinking" errorKeys={["n10"]}>
+      <QnErrorBox selectedKey="drinking" errorKeys={["n10"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.drinking("n10")}
@@ -255,7 +255,7 @@ export default function Drinking({ isDisabled }: DisabledProps) {
             lifestyleIds.drinking("n10"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
     </section>
   );
 }

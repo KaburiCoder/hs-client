@@ -1,7 +1,4 @@
-import {
-  LsErrorResult,
-  useLsErrorStore,
-} from "@/stores/lifestyle/ls-error-store";
+import { useErrorStore } from "@/stores/error-store";
 import {
   QuestionnaireErrorResult,
   useQuestionErrorStore,
@@ -43,8 +40,8 @@ const CommonErrorBox = ({
   errorKeys,
   children,
 }: CommonErrorBoxProps) => {
-  const selectedErrorKey = useLsErrorStore((state) => state.selectedKey);
-  const error = useLsErrorStore((state) => state.error);
+  const selectedErrorKey = useErrorStore((state) => state.selectedKey);
+  const error = useErrorStore((state) => state.error);
   const errorKey = error ? Object.keys(error)?.[0] : "";
   const isError =
     selectedKey === selectedErrorKey &&
@@ -52,23 +49,15 @@ const CommonErrorBox = ({
     errorKeys.includes(errorKey as any);
   const errorMessage = isError ? (error as any)?.[errorKey] : undefined;
   return (
-    <div className={isError ? "border-b-2 border-rose-300 pb-2 pt-0" : ""}>
+    <div className={isError ? "pb-2 pt-0" : ""}>
       {children}
       <ErrorBox className="mt-2" errorMessage={errorMessage} />
     </div>
   );
 };
 
-interface LsErrorBoxProps extends ErrorBoxProps<LsErrorResult> {
-  selectedKey: LifestyleKeys;
-}
-
-export const LsErrorBox = (props: LsErrorBoxProps) => {
-  return <CommonErrorBox {...props} />;
-};
-
 interface QnErrorBoxProps extends ErrorBoxProps<any> {
-  selectedKey: QnKeys;
+  selectedKey: QnKeys | LifestyleKeys;
 }
 
 export const QnErrorBox = (props: QnErrorBoxProps) => {

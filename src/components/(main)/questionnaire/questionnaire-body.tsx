@@ -1,13 +1,14 @@
 "use client";
 import React, { useEffect } from "react";
 import { useQnClear } from "./_hooks/use-qn-clear";
-import { useQnNav } from "./_hooks/use-qn-nav";
+import { useQnController } from "./_hooks/use-qn-controller";
 import { CarouselX } from "@/components/carousel-x/carousel-x";
 import LsNextButtons from "../lifestyle/ls-next-buttons";
+import ScrollDownAnimation from "./scroll-down-animation/scroll-down-animation";
 
 const QuestionaireBody = () => {
-  const { index, lastIndex, carouselItems, handleNext, handlePrev } =
-    useQnNav();
+  const { isLoading, index, lastIndex, carouselItems, handleNext, handlePrev } =
+    useQnController();
   const { clear } = useQnClear();
 
   useEffect(() => {
@@ -18,13 +19,15 @@ const QuestionaireBody = () => {
 
   return (
     <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 md:px-20">
+      <CarouselX index={index}>{carouselItems}</CarouselX>
       <LsNextButtons
         index={index}
         lastIndex={lastIndex}
+        isLoading={isLoading}
         onPrev={handlePrev}
         onNext={handleNext}
       />
-      <CarouselX index={index}>{carouselItems}</CarouselX>
+      <ScrollDownAnimation />
     </div>
   );
 };

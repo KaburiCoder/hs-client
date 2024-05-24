@@ -4,10 +4,13 @@ import { CustomRadioGroup } from "@/components/custom-radio-group";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { DescriptionWrapper } from "@/components/description";
 import { LabeldNumInput } from "@/components/num-input";
-import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
+import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
-import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";
+import {
+  LsExerciseState,
+  useLsExerciseStore,
+} from "@/stores/lifestyle/ls-exercise-store";
 import React, { useState } from "react";
 import { DisabledProps } from "../../../lib/props/disabled-props";
 import { useFocus } from "./_hooks/use-focus";
@@ -92,11 +95,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             focus: { id: lifestyleIds.exercise("n1_2"), trigger: "1" },
             scroll: { id: lifestyleIds.exercise("n1_4"), trigger: "2" },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_1"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_1"],
         }}
         wrapper2={{
           id: lifestyleIds.exercise("n1_2"),
@@ -109,11 +108,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.weekday,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_2"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_2"],
         }}
         wrapper3={{
           id: lifestyleIds.exercise("n1_3h"),
@@ -129,16 +124,15 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             },
           }),
           onMinuteChange: setNumValueTrg.bind(null, n1_3m, setN1_3m, {
+            blur: {
+              id: lifestyleIds.exercise("n1_3m"),
+            },
             scroll: {
               id: lifestyleIds.exercise("n1_4"),
               condition: conditions.minute,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_3h", "n1_3m"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_3h", "n1_3m"],
         }}
       />
 
@@ -155,11 +149,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             focus: { id: lifestyleIds.exercise("n1_5"), trigger: "1" },
             scroll: { id: lifestyleIds.exercise("n2_1"), trigger: "2" },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_4"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_4"],
         }}
         wrapper2={{
           id: lifestyleIds.exercise("n1_5"),
@@ -172,11 +162,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.weekday,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_5"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_5"],
         }}
         wrapper3={{
           id: lifestyleIds.exercise("n1_6h"),
@@ -192,16 +178,15 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             },
           }),
           onMinuteChange: setNumValueTrg.bind(null, n1_6m, setN1_6m, {
+            blur: {
+              id: lifestyleIds.exercise("n1_6m"),
+            },
             scroll: {
               id: lifestyleIds.exercise("n2_1"),
               condition: conditions.minute,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n1_6h", "n1_6m"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n1_6h", "n1_6m"],
         }}
       />
 
@@ -217,11 +202,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             focus: { id: lifestyleIds.exercise("n2_2"), trigger: "1" },
             scroll: { id: lifestyleIds.exercise("n3_1"), trigger: "2" },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n2_1"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n2_1"],
         }}
         wrapper2={{
           id: lifestyleIds.exercise("n2_2"),
@@ -234,11 +215,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.weekday,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n2_2"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n2_2"],
         }}
         wrapper3={{
           id: lifestyleIds.exercise("n2_3h"),
@@ -254,16 +231,15 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             },
           }),
           onMinuteChange: setNumValueTrg.bind(null, n2_3m, setN2_3m, {
+            blur: {
+              id: lifestyleIds.exercise("n2_3m"),
+            },
             scroll: {
               id: lifestyleIds.exercise("n3_1"),
               condition: conditions.minute,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n2_3h", "n2_3m"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n2_3h", "n2_3m"],
         }}
       />
 
@@ -279,11 +255,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             focus: { id: lifestyleIds.exercise("n3_2"), trigger: "1" },
             scroll: { id: lifestyleIds.exercise("n3_4"), trigger: "2" },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_1"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_1"],
         }}
         wrapper2={{
           id: lifestyleIds.exercise("n3_2"),
@@ -296,11 +268,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.weekday,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_2"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_2"],
         }}
         wrapper3={{
           id: lifestyleIds.exercise("n3_3h"),
@@ -316,16 +284,15 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             },
           }),
           onMinuteChange: setNumValueTrg.bind(null, n3_3m, setN3_3m, {
+            blur: {
+              id: lifestyleIds.exercise("n3_3m"),
+            },
             scroll: {
               id: lifestyleIds.exercise("n3_4"),
               condition: conditions.minute,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_3h", "n3_3m"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_3h", "n3_3m"],
         }}
       />
 
@@ -341,11 +308,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             focus: { id: lifestyleIds.exercise("n3_5"), trigger: "1" },
             scroll: { id: lifestyleIds.exercise("n4_1h"), trigger: "2" },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_4"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_4"],
         }}
         wrapper2={{
           id: lifestyleIds.exercise("n3_5"),
@@ -358,11 +321,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.weekday,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_5"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_5"],
         }}
         wrapper3={{
           id: lifestyleIds.exercise("n3_6h"),
@@ -387,16 +346,12 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               condition: conditions.minute,
             },
           }),
-          wrapperCallback: (c) => (
-            <LsErrorBox selectedKey="exercise" errorKeys={["n3_6h", "n3_6m"]}>
-              {c}
-            </LsErrorBox>
-          ),
+          errorKeys: ["n3_6h", "n3_6m"],
         }}
       />
 
       {/* 4-1 */}
-      <LsErrorBox selectedKey="exercise" errorKeys={["n4_1h", "n4_1m"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n4_1h", "n4_1m"]}>
         <DescriptionWrapper
           headmark={"4-1"}
           text={"평소 하루에 앉아 있거나,누워 있는 시간이 몇 시간 입니까?"}
@@ -416,6 +371,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
               },
             })}
             onMinuteChange={setNumValueTrg.bind(null, n4_1m, setN4_1m, {
+              blur: {
+                id: lifestyleIds.exercise("n4_1m"),
+              },
               scroll: {
                 id: lifestyleIds.exercise("n5"),
                 condition: conditions.minute,
@@ -423,10 +381,10 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             })}
           />
         </DescriptionWrapper>
-      </LsErrorBox>
+      </QnErrorBox>
 
       {/* 5 */}
-      <LsErrorBox selectedKey="exercise" errorKeys={["n5"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n5"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n5")}
@@ -448,9 +406,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
             "6": "5일 이상",
           }}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n6"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n6"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n6")}
@@ -465,9 +423,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n7"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n7"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n7")}
@@ -482,9 +440,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n8"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n8"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n8")}
@@ -499,9 +457,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n9"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n9"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n9")}
@@ -516,9 +474,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n10"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n10"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n10")}
@@ -533,9 +491,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n11"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n11"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n11")}
@@ -550,9 +508,9 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="exercise" errorKeys={["n12"]}>
+      <QnErrorBox selectedKey="exercise" errorKeys={["n12"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.exercise("n12")}
@@ -567,7 +525,7 @@ export default function Exercise({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
     </section>
   );
 }
@@ -646,18 +604,17 @@ interface Wrapper {
   id: string;
   headmark: string;
   text: string;
+  errorKeys: (keyof LsExerciseState)[];
 }
 
 interface QuestionGroupProps {
   wrapper1: Wrapper & {
     value: string | undefined;
     onValueChange: (value: string) => void;
-    wrapperCallback: (component: React.ReactNode) => JSX.Element;
   };
   wrapper2: Wrapper & {
     day: number | undefined;
     onDayChange: (day: number | undefined) => void;
-    wrapperCallback: (component: React.ReactNode) => JSX.Element;
   };
   wrapper3: Wrapper & {
     id2?: string;
@@ -665,7 +622,6 @@ interface QuestionGroupProps {
     minute: number | undefined;
     onHourChange: (h: number | undefined) => void;
     onMinuteChange: (m: number | undefined) => void;
-    wrapperCallback: (component: React.ReactNode) => JSX.Element;
   };
   isDisabled?: boolean;
 }
@@ -676,59 +632,65 @@ function QuestionGroup({
   wrapper3,
   isDisabled,
 }: QuestionGroupProps) {
-  let component1 = wrapper1.wrapperCallback(
-    <DescriptionWrapper
-      id={wrapper1.id}
-      headmark={wrapper1.headmark}
-      text={wrapper1.text}
-    >
-      <CustomRadioGroup
-        row
-        minWidth
-        value={wrapper1.value}
-        onValueChange={wrapper1.onValueChange}
-        isDisabled={isDisabled}
-        items={{
-          "1": "예",
-          "2": "아니오",
-        }}
-      />
-    </DescriptionWrapper>,
+  let component1 = (
+    <QnErrorBox selectedKey="exercise" errorKeys={wrapper1.errorKeys}>
+      <DescriptionWrapper
+        id={wrapper1.id}
+        headmark={wrapper1.headmark}
+        text={wrapper1.text}
+      >
+        <CustomRadioGroup
+          row
+          minWidth
+          value={wrapper1.value}
+          onValueChange={wrapper1.onValueChange}
+          isDisabled={isDisabled}
+          items={{
+            "1": "예",
+            "2": "아니오",
+          }}
+        />
+      </DescriptionWrapper>
+    </QnErrorBox>
   );
 
-  const component2 = wrapper2.wrapperCallback(
-    <DescriptionWrapper
-      headmark={wrapper2.headmark}
-      text={wrapper2.text}
-      wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem] mb-4"
-      className="my-0"
-    >
-      <DayControl
-        id={wrapper2.id}
-        day={wrapper2.day}
-        onChange={wrapper2.onDayChange}
-        isDisabled={isDisabled}
-      />
-    </DescriptionWrapper>,
+  const component2 = (
+    <QnErrorBox selectedKey="exercise" errorKeys={wrapper2.errorKeys}>
+      <DescriptionWrapper
+        headmark={wrapper2.headmark}
+        text={wrapper2.text}
+        wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem] mb-4"
+        className="my-0"
+      >
+        <DayControl
+          id={wrapper2.id}
+          day={wrapper2.day}
+          onChange={wrapper2.onDayChange}
+          isDisabled={isDisabled}
+        />
+      </DescriptionWrapper>
+    </QnErrorBox>
   );
 
-  const component3 = wrapper3.wrapperCallback(
-    <DescriptionWrapper
-      headmark={wrapper3.headmark}
-      text={wrapper3.text}
-      wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem]"
-      className="my-0"
-    >
-      <TimeControl
-        hId={wrapper3.id}
-        mId={wrapper3.id2}
-        hour={wrapper3.hour}
-        minute={wrapper3.minute}
-        onHourChange={wrapper3.onHourChange}
-        onMinuteChange={wrapper3.onMinuteChange}
-        isDisabled={isDisabled}
-      />
-    </DescriptionWrapper>,
+  const component3 = (
+    <QnErrorBox selectedKey="exercise" errorKeys={wrapper3.errorKeys}>
+      <DescriptionWrapper
+        headmark={wrapper3.headmark}
+        text={wrapper3.text}
+        wrapperClassName="flex-row items-center justfy-between overflow-hidden max-w-[50rem]"
+        className="my-0"
+      >
+        <TimeControl
+          hId={wrapper3.id}
+          mId={wrapper3.id2}
+          hour={wrapper3.hour}
+          minute={wrapper3.minute}
+          onHourChange={wrapper3.onHourChange}
+          onMinuteChange={wrapper3.onMinuteChange}
+          isDisabled={isDisabled}
+        />
+      </DescriptionWrapper>
+    </QnErrorBox>
   );
 
   const component = (
@@ -742,6 +704,5 @@ function QuestionGroup({
     </>
   );
 
-  wrapper1.wrapperCallback(component);
   return component;
 }

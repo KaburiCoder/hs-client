@@ -14,4 +14,9 @@ export const paths = {
   },
   settings: (path: "lockpw") => `/settings/${path}`,
   success: (kind: string) => `/success?kind=${kind}`,
+  adminSettings: (path: "common" | "registuser") => `/admin/settings/${path}`
 };
+
+export const apiPaths = {
+  adminSettings: "/admin-settings"
+}

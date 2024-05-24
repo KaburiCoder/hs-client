@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLsDrinkingStore } from '@/stores/lifestyle/ls-drinking-store';
-import { useLsErrorStore } from '@/stores/lifestyle/ls-error-store';
+import { useErrorStore } from '@/stores/error-store';
 import { useLsExerciseStore } from '@/stores/lifestyle/ls-exercise-store';
 import { useLsNutritionStore } from '@/stores/lifestyle/ls-nutrition-store';
 import { useLsOverweightStore } from '@/stores/lifestyle/ls-overweight-store';
@@ -13,8 +13,8 @@ export const useLifestyleStoreController = () => {
   const validateExercise = useLsExerciseStore((state) => state.validate);
   const validateNutrition = useLsNutritionStore((state) => state.validate);
   const validateOverweight = useLsOverweightStore((state) => state.validate);
-  const clearError = useLsErrorStore((state) => state.clearError);
-  const setError = useLsErrorStore((state) => state.setError);
+  const clearError = useErrorStore((state) => state.clearError);
+  const setError = useErrorStore((state) => state.setError);
   const selectedItems = useConditionStore(state => state.selectedLifestyles)
 
   function validate(selectedKey: LifestyleKeys) {

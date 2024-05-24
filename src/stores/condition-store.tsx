@@ -16,6 +16,7 @@ interface State {
 interface Actions {
   setAddList: (addList?: QnKeys[]) => void;
   setSelectedLifestyles: (selectedLifestyles?: LifestyleKeys[]) => void;
+  isEldery: () => boolean | undefined;
   clear: () => void;
 }
 
@@ -24,11 +25,12 @@ const initialState: State = {
   selectedLifestyles: [],
 };
 
-const stateCreator: StateCreator<State & Actions> = (set) => ({
+const stateCreator: StateCreator<State & Actions> = (set, get) => ({
   ...initialState,
   setAddList: (addList) => set(() => ({ addList })),
   setSelectedLifestyles: (selectedLifestyles) =>
     set(() => ({ selectedLifestyles })),
+  isEldery: () => get().addList?.some((x) => x === "elderly"),
   clear: () => set(initialState),
 });
 

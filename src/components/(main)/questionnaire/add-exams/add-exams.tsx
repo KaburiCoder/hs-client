@@ -11,7 +11,7 @@ import { scrollById } from "@/lib/utils/scroll.util";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
 
 export default function AddExams() {
-  const addExam = useConditionStore((state) => state.addList?.some(x=> x==='elderly'));
+  const isEldery = useConditionStore(state => state.isEldery())
   const {
     n11,
     n12,
@@ -46,7 +46,7 @@ export default function AddExams() {
     if (value !== stateValue) scrollById(scrollTargetId);
   }
 
-  if (!addExam) return <></>;
+  if (!isEldery) return <></>;
 
   return (
     <section>

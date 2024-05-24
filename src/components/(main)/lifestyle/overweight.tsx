@@ -1,6 +1,6 @@
 "use client";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
+import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsOverweightStore } from "@/stores/lifestyle/ls-overweight-store";
@@ -15,7 +15,7 @@ export default function Overweight() {
     <section className="flex flex-col gap-4">
       <Title>비만</Title>
 
-      <LsErrorBox selectedKey="overweight" errorKeys={["n1"]}>
+      <QnErrorBox selectedKey="overweight" errorKeys={["n1"]}>
         <DescRadioGroup
           id={lifestyleIds.overweight("n1")}
           headmark="1"
@@ -29,9 +29,9 @@ export default function Overweight() {
             lifestyleIds.smoking("n2"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="overweight" errorKeys={["n2"]}>
+      <QnErrorBox selectedKey="overweight" errorKeys={["n2"]}>
         <DescRadioGroup
           id={lifestyleIds.overweight("n2")}
           headmark="2"
@@ -50,9 +50,9 @@ export default function Overweight() {
             lifestyleIds.smoking("n3"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="overweight" errorKeys={["n3"]}>
+      <QnErrorBox selectedKey="overweight" errorKeys={["n3"]}>
         <DescRadioGroup
           id={lifestyleIds.overweight("n3")}
           headmark="3"
@@ -70,7 +70,7 @@ export default function Overweight() {
             lifestyleIds.smoking("n3"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
     </section>
   );
 }

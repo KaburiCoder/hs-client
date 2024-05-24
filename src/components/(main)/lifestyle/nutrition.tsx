@@ -1,6 +1,6 @@
 "use client";
 import { DescRadioGroup } from "@/components/desc-radio-group";
-import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
+import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { Title } from "@/components/title";
 import { lifestyleIds } from "@/lib/objects/lifestyle-obj";
 import { useLsNutritionStore } from "@/stores/lifestyle/ls-nutrition-store";
@@ -38,7 +38,7 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
   return (
     <section className="flex flex-col gap-4">
       <Title>영양</Title>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n1"]}>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n1"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n1")}
@@ -53,9 +53,9 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n2"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n2"]}>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n2"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n2")}
@@ -70,9 +70,9 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n3"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n3"]}>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n3"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n3")}
@@ -87,9 +87,9 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n4"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n4"]}>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n4"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n4")}
@@ -104,8 +104,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n5"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n5"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n5"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n5")}
@@ -120,8 +120,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n6"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n6"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n6"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n6")}
@@ -136,8 +136,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n7"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n7"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n7"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n7")}
@@ -152,8 +152,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n8"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n8"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n8"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n8")}
@@ -168,8 +168,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n9"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n9"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n9"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n9")}
@@ -184,8 +184,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n10"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n10"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n10"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n10")}
@@ -204,8 +204,8 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n11"),
           )}
         />
-      </LsErrorBox>
-      <LsErrorBox selectedKey="nutrition" errorKeys={["n11"]}>
+      </QnErrorBox>
+      <QnErrorBox selectedKey="nutrition" errorKeys={["n11"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.nutrition("n11")}
@@ -224,7 +224,7 @@ export default function Nutrition({ isDisabled }: DisabledProps) {
             lifestyleIds.nutrition("n11"),
           )}
         />
-      </LsErrorBox>
+      </QnErrorBox>
     </section>
   );
 }

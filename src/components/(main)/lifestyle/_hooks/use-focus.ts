@@ -42,42 +42,44 @@ export const useFocus = () => {
   function setNumValueTrg(
     prevValue: number | undefined,
     setFunc: (value: number | undefined) => void,
-    { focus, scroll }: NumConditionArgs,
+    { focus, scroll, blur }: NumConditionArgs,
     value: number | undefined) {
     if (prevValue === value) return;
 
     setFunc(value);
 
-    if (focus?.condition(value)) {
-      focusById(focus.id);
+    const handleAction = (action: NumCondition | undefined, actionById: (id: string) => void) => {
+      if (action?.condition(value)) {
+        actionById(action.id);
+        if (blur) document.getElementById(blur.id)?.blur();
+      }
     }
-
-    if (scroll?.condition(value)) {
-      scrollById(scroll.id);
-    }
+    
+    handleAction(scroll, scrollById)
+    handleAction(focus, focusById)
   }
 
   return { conditions, setValue, setValueTrg, setNumValueTrg }
 }
 
-interface SetValueCdtArgs {
-  focus: {
-    id: string;
-    trigger: any;
-  };
-  scroll: {
-    id: string;
-    trigger: any;
-  };
+interface Trigger {
+  id: string;
+  trigger: any;
 }
 
+interface SetValueCdtArgs {
+  focus: Trigger;
+  scroll: Trigger;
+}
+
+interface NumCondition {
+  id: string;
+  condition: (value: number | undefined) => boolean;
+}
 interface NumConditionArgs {
-  focus?: {
+  focus?: NumCondition;
+  scroll?: NumCondition;
+  blur?: {
     id: string;
-    condition: (value: number | undefined) => boolean;
-  };
-  scroll?: {
-    id: string;
-    condition: (value: number | undefined) => boolean;
-  };
+  }
 }

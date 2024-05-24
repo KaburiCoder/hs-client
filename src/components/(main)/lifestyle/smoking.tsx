@@ -6,7 +6,7 @@ import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import React from "react";
 import { DescRadioGroup } from "@/components/desc-radio-group";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
-import { LsErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
+import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { DisabledProps } from "../../../lib/props/disabled-props";
 import { useFocus } from "./_hooks/use-focus";
 
@@ -34,7 +34,7 @@ export default function Smoking({ isDisabled }: DisabledProps) {
   return (
     <section className="flex flex-col gap-4">
       <Title>흡연</Title>
-      <LsErrorBox selectedKey="smoking" errorKeys={["n1"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n1"]}>
         <DescriptionWrapper
           id={lifestyleIds.smoking("n1")}
           headmark={"1"}
@@ -57,9 +57,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             }}
           />
         </DescriptionWrapper>
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n2"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n2"]}>
         <DescriptionWrapper
           id={lifestyleIds.smoking("n2")}
           headmark={"2"}
@@ -89,9 +89,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             }}
           />
         </DescriptionWrapper>
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n3"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n3"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n3")}
@@ -111,9 +111,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "4": "60분 이후",
           }}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n4"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n4"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n4")}
@@ -130,9 +130,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n5"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n5"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n5")}
@@ -150,9 +150,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "2": "다른 나머지",
           }}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n6"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n6"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n6")}
@@ -172,9 +172,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
             "4": "31개비 이상",
           }}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n7"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n7"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n7")}
@@ -191,9 +191,9 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
 
-      <LsErrorBox selectedKey="smoking" errorKeys={["n8"]}>
+      <QnErrorBox selectedKey="smoking" errorKeys={["n8"]}>
         <DescRadioGroup
           isDisabled={isDisabled}
           id={lifestyleIds.smoking("n8")}
@@ -210,7 +210,7 @@ export default function Smoking({ isDisabled }: DisabledProps) {
           )}
           items={lsYnItems}
         />
-      </LsErrorBox>
+      </QnErrorBox>
     </section>
   );
 }

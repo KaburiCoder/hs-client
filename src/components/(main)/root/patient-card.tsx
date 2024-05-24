@@ -1,7 +1,7 @@
 "use client";
 import * as sock from "health-screening-shared/interfaces.socket";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
-import { Button, Card, useDisclosure } from "@nextui-org/react";
+import { Button, Card, Chip, useDisclosure } from "@nextui-org/react";
 import { useNavQuestionnaire } from "./_hooks/use-nav-questionnaire";
 import { useNavLifestyle } from "./_hooks/use-nav-lifestyle";
 interface PatientCardProps {
@@ -59,15 +59,18 @@ export function PatientCard({ data }: PatientCardProps) {
       <div className="flex flex-col gap-2">
         {kinds.map((k, i) => {
           const written = getWritten(k, status);
+          const { isEldery, isCognitive, isDepression } = getAddExams(k);
           return (
             <div
               key={i}
               className="flex items-center justify-between border-b border-purple-200 p-2"
             >
-              <h3 className="text-base">
-                {k.name}
-                {k.addExam ? "-추가" : ""}
-              </h3>
+              <div className="flex gap-1">
+                <h3 className="text-base">{k.name}</h3>
+                {isEldery && <Chip size="sm">노인</Chip>}
+                {isCognitive && <Chip size="sm">인지</Chip>}
+                {isDepression && <Chip size="sm">우울</Chip>}
+              </div>
               <Button
                 isLoading={isLoading}
                 color={written ? "success" : "primary"}
@@ -97,4 +100,16 @@ function getWritten(
   }
 
   return false;
+}
+
+function getAddExams(k: sock.QuestionnaireKind) {
+  const isEldery = k.addList?.some((x) => x === "elderly");
+  const isCognitive = k.addList?.some((x) => x === "cognitive");
+  const isDepression = k.addList?.some((x) => x === "depression");
+
+  return {
+    isEldery,
+    isCognitive,
+    isDepression,
+  };
 }

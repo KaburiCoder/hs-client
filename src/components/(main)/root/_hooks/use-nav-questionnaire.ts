@@ -7,11 +7,15 @@ import { QnKeys, useConditionStore } from "@/stores/condition-store";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { useRouter } from "next/navigation";
 import * as sock from "health-screening-shared/interfaces.socket";
+import { useQnDepressionStore } from "@/stores/questionnaire/gn-depression-store";
+import { useQnCognitiveStore } from "@/stores/questionnaire/gn-cognitive-store";
 
 export const useNavQuestionnaire = () => {
   const { setAddList } = useConditionStore();
+  const setGenState = useQuestionStore(state => state.setGenState);
+  const setDepressionState = useQnDepressionStore(state => state.setState)
+  const setCognitiveState = useQnCognitiveStore(state => state.setState)
   const { push } = useRouter();
-  const { setGenState } = useQuestionStore();
   const { user } = useServerCookie();
   const { emitAck } = useEmit<any, any>({
     ev: EvPaths.GetQuestionnaire,
@@ -23,6 +27,10 @@ export const useNavQuestionnaire = () => {
         ...data.activity,
         ...data.addExam,
       });
+
+      setDepressionState(data?.depression)
+      setCognitiveState(data?.cognitive)
+
       push(paths.questionnaire);
     },
   });

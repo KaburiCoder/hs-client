@@ -4,6 +4,7 @@ import React from "react";
 interface LsNextButtons {
   index: number;
   lastIndex: number;
+  isLoading?: boolean;
   onPrev?: () => void;
   onNext?: () => void;
 }
@@ -11,6 +12,7 @@ interface LsNextButtons {
 export default function LsNextButtons({
   index,
   lastIndex,
+  isLoading,
   onPrev,
   onNext,
 }: LsNextButtons) {
@@ -24,7 +26,12 @@ export default function LsNextButtons({
           이전
         </ButtonL>
       )}
-      <ButtonL className="flex-1 text-white" color="success" onClick={onNext}>
+      <ButtonL
+        className="flex-1 text-white"
+        color="success"
+        isLoading={isLoading}
+        onClick={onNext}
+      >
         {isLastPage ? "확인" : "다음"}
       </ButtonL>
     </div>

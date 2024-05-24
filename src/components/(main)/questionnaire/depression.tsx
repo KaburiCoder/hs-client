@@ -27,7 +27,7 @@ export default function Depression({ isDisabled }: DisabledProps) {
           <QnErrorBox key={i} selectedKey="depression" errorKeys={[key]}>
             <DescRadioGroup
               isDisabled={isDisabled}
-              id={questionIds.cognitive(key)}
+              id={questionIds.depression(key)}
               headmark={number.toString()}
               text={text}
               items={baseItems}
@@ -36,7 +36,7 @@ export default function Depression({ isDisabled }: DisabledProps) {
                 null,
                 value,
                 setValueFn,
-                questionIds.cognitive(nextKey),
+                questionIds.depression(nextKey),
               )}
             />
           </QnErrorBox>

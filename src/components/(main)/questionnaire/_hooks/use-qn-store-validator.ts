@@ -1,7 +1,7 @@
 import { questionIds } from '@/lib/objects/questionnaire-obj';
 import { scrollById } from '@/lib/utils/scroll.util';
 import { QnKeys, useConditionStore } from '@/stores/condition-store';
-import { useLsErrorStore } from '@/stores/lifestyle/ls-error-store';
+import { useErrorStore } from '@/stores/error-store';
 import { useQnCognitiveStore } from '@/stores/questionnaire/gn-cognitive-store';
 import { useQnDepressionStore } from '@/stores/questionnaire/gn-depression-store';
 import { useQuestionErrorStore } from '@/stores/questionnaire/question-error-store';
@@ -10,15 +10,15 @@ import { flattenJoiError } from 'health-screening-shared/joi';
 import Joi from 'joi';
 import React, { useMemo } from 'react'
 
-export const useQnStoreController = () => {
+export const useQnStoreValidator = () => {
   const addList = useConditionStore((state) => state.addList);
   const navKeys = useMemo(() => {
     const list = addList ?? [];
     return ["gen", ...list.filter((item) => item !== "elderly")];
   }, [addList]);
-  const { setError, clearError } = useLsErrorStore()
+  const { setError, clearError } = useErrorStore()
   const setGenError = useQuestionErrorStore((state) => state.setError);
-  const isEldery = useConditionStore(state => state.addList?.some(x => x === 'elderly'))
+  const isEldery = useConditionStore(state => state.isEldery())
   const validateGen = useQuestionStore((state) => state.validate);
   const validateCognitive = useQnCognitiveStore((state) => state.validate);
   const validateDepression = useQnDepressionStore((state) => state.validate);

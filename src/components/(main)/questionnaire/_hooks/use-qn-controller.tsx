@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { DisabledProps } from "../../../../lib/props/disabled-props";
-import { QnKeys, useConditionStore } from "@/stores/condition-store";
+import { QnKeys } from "@/stores/condition-store";
 import GenQn from "../gen-qn";
 import Depression from "../depression";
 import Cognitive from "../cognitive";
 import { useCarouselNav } from "@/lib/hooks/use-carousel-nav";
-import { useQnStoreController } from "./use-qn-store-controller";
+import { useQnStoreValidator } from "./use-qn-store-validator";
 import {
   ICognitive,
   IDepression,
@@ -13,8 +13,8 @@ import {
 } from "health-screening-shared/interfaces";
 import { useQnSave } from "./use-qn-save";
 
-export const useQnNav = () => {
-  const { navKeys, validateAndResult } = useQnStoreController();
+export const useQnController = () => {
+  const { navKeys, validateAndResult } = useQnStoreValidator();
   const { isLoading, emitAck } = useQnSave();
   const dataRef = useRef<IQuestionnaire>();
   const { index, lastIndex, carouselItems, toNext, toPrev } = useCarouselNav({
@@ -60,6 +60,7 @@ export const useQnNav = () => {
   }, [index]);
 
   return {
+    isLoading,
     index,
     lastIndex,
     carouselItems,
@@ -69,10 +70,9 @@ export const useQnNav = () => {
 };
 
 const itemGroup: {
-  [key in QnKeys]: (props: DisabledProps) => React.JSX.Element;
+  [key: string]: (props: DisabledProps) => React.JSX.Element;
 } = {
   gen: GenQn,
   cognitive: Cognitive,
   depression: Depression,
-  elderly: GenQn,
 };
