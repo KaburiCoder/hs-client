@@ -9,7 +9,7 @@ import ErrorBox from "@/components/error-box";
 import toast from "react-hot-toast";
 
 interface Props {
-  managerCode: string;
+  managerCode: string | undefined;
 }
 export default function ManagerCodeForm({ managerCode }: Props) {
   const [state, action] = useFormState(saveManagerCode, {});

@@ -18,5 +18,6 @@ export const paths = {
 };
 
 export const apiPaths = {
-  adminSettings: "/admin-settings"
+  adminSettings: "/admin-settings",
+  adminSettingsFind: "/admin-settings/find"
 }

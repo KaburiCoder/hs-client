@@ -1,12 +1,10 @@
 'use server'
-import { axClient } from "@/lib/api/ax-client";
 import { apiPaths, paths } from "@/paths";
-import { flattenJoiError } from "health-screening-shared/joi";
 import Joi from "joi";
 import { ActionResultBase } from "./common/action-result-base";
 import { catchActionApi } from "./common/catch-action-api";
 import { axServer } from "../api/ax-server";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 interface SaveManagerCodeDto {
   managerCode: string;
