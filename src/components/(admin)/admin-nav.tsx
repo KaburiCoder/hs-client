@@ -16,7 +16,7 @@ export default function AdminNav() {
       <User
         className="m-2 my-4"
         name={user?.userId}
-        description="클릭소프트 관리자"
+        description={user?.orgName}        
         avatarProps={{
           src: paths.images.eClickIco,
           className: "p-2",

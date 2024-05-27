@@ -4,15 +4,17 @@ import React from "react";
 
 interface Props extends ClassNameProps {
   errorMessage?: string;
+  noBorder?: boolean;
 }
 
-export default function ErrorBox({ className, errorMessage }: Props) {
+export default function ErrorBox({ className, errorMessage, noBorder }: Props) {
   if (!errorMessage) return <></>;
 
   return (
     <div
       className={cn(
-        "rounded-lg border border-rose-300 bg-red-50 p-2 text-sm text-rose-500",
+        "rounded-lg border-rose-300  text-sm text-rose-500",
+        noBorder ? "px-2" : "border bg-red-50 p-2",
         className,
       )}
     >

@@ -1,11 +1,12 @@
+import { changeEmail } from "./lib/actions/change-email";
+
 export const paths = {
   root: "/",
   login: "/login",
   signin: "/signin",
-  checkPw: "/checkpw",
   signup: "/signup",
   signout: "/signout",
-  findPw: "/find-pw",
+  findPw: "/findpw",
   questionnaire: "/questionnaire",
   lifestyle: "/lifestyle",
   images: {
@@ -19,5 +20,10 @@ export const paths = {
 
 export const apiPaths = {
   adminSettings: "/admin-settings",
-  adminSettingsFind: "/admin-settings/find"
+  adminSettingsFind: "/admin-settings/find",
+  users: {
+    checkpw: (userId: string) => `/users/${userId}/checkpw`,
+    changepw: (userId: string) => `/users/${userId}/changepw`,
+    changeEmail: "/users/change-email",
+  }
 }

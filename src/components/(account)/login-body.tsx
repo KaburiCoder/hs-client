@@ -18,8 +18,11 @@ export default function LoginBody() {
   const { data, mutate, isPending, error } = useMutation({
     mutationKey: [paths.signin],
     mutationFn: signin,
-    onSuccess: (data) => {
-      if (data?.status === 201) replace(paths.root);
+    onSuccess: (response) => {
+      if (response?.status === 201) {
+        const data = response.data;
+        replace(data.admin ? paths.adminSettings("common") : paths.root);
+      }
     },
   });
   const { validateError, validateAndGetResult } = useValidate<Signin, Signin>({

@@ -19,11 +19,15 @@ export default function SignupBody({ managerCode: confirmManagerCode }: Props) {
     confirmPassword,
     roomKey,
     managerCode,
+    email,
+    orgName,
     handleChangeUserId,
     handleChangePassword,
     handleChangeConfirmPassword,
     handleChangeRoomKey,
-    handleChangeManagerCode: handleChangeManagerCode,
+    handleChangeManagerCode,
+    handleChangeEmail,
+    handleChangeOrgName,
   } = useSignupState();
   const { isPending, validateError, handleSignup } = useFetchSignup();
 
@@ -35,6 +39,8 @@ export default function SignupBody({ managerCode: confirmManagerCode }: Props) {
         confirmPassword,
         roomKey,
         managerCode,
+        email,
+        orgName,
         confirmManagerCode: confirmManagerCode || "",
       })}
       title="Sign in to ClickSoft"
@@ -47,6 +53,8 @@ export default function SignupBody({ managerCode: confirmManagerCode }: Props) {
             onChangeConfirmPassword={handleChangeConfirmPassword}
             onChangeRoomKey={handleChangeRoomKey}
             onChangeManagerCode={handleChangeManagerCode}
+            onChangeEmail={handleChangeEmail}
+            onChangeOrgName={handleChangeOrgName}
           />
           <ButtonL
             className="mt-4 text-white"

@@ -1,7 +1,5 @@
-import { fetchCurrentUser } from "@/lib/api/fetch-server";
 import { paths } from "@/paths";
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/models/user";
 import * as UserCookie from "@/server/cookies/user-cookie";
 
 export async function withAuth(req: NextRequest) {

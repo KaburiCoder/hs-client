@@ -1,108 +1,25 @@
-import ErrorBox from "@/components/error-box";
-import { isNumber } from "@/stores/utils/check-util";
-import { Button, Input } from "@nextui-org/react";
+import { Accordion, AccordionItem, Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";
-import { useLockpw } from "../_hooks/use-lock-pw"; 
+import { LockPwInputs } from "./body-components/lock-pw-inputs";
+import { ChangePwInputs } from "./body-components/change-pw-inputs";
+import { ChangeEmailInputs } from "./body-components/change-email-inputs";
 
 export default function SettingBody() {
   return (
     <div>
       <div className="flex items-center gap-2">
-        <div className="whitespace-nowrap">잠금 비밀번호</div>
-        <LockPwInputs />
+        <Accordion onKeyDown={(e) => e.preventDefault()}>
+          <AccordionItem key="1" title="잠금 비밀번호 설정">
+            <LockPwInputs />
+          </AccordionItem>
+          <AccordionItem key="2" title="비밀번호 변경">
+            <ChangePwInputs />
+          </AccordionItem>
+          <AccordionItem key="3" title="Email 변경">
+            <ChangeEmailInputs />
+          </AccordionItem>
+        </Accordion>
       </div>
-    </div>
-  );
-}
-
-function LockPwInputs() {
-  const { isLoading, lockPw, mutate } = useLockpw();
-
-  const [pw, setPw] = useState<string[]>([]);
-  const [error, setError] = useState<string>();
-  const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  // 테스트
-  const [myKey, setMyKey] = useState<string>("키입력");
-
-  // 입력란에 대한 ref 설정
-  const setInputRef = (index: number) => (element: HTMLInputElement | null) => {
-    inputRefs.current[index] = element;
-  };
-
-  // 다음 입력란으로 포커스 이동
-  const focusNextInput = (currentIndex: number) => {
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < inputRefs.current.length) {
-      inputRefs.current[nextIndex]?.focus();
-    } else {
-      buttonRef.current?.focus();
-    }
-  };
-
-  function handleSave(): void {
-    if (!pw.every((p) => isNumber(p))) {
-      setError("잠금 코드를 모두 입력해주세요.");
-      return;
-    }
-    setError(undefined);
-    mutate(pw.join(""));
-  }
-
-  useEffect(() => {
-    if (!lockPw) return;
-
-    setPw([
-      lockPw.slice(0, 1),
-      lockPw.slice(1, 2),
-      lockPw.slice(2, 3),
-      lockPw.slice(3, 4),
-    ]);
-  }, [lockPw]);
-
-  function handleChangeKey(
-    index: number,
-    e: React.ChangeEvent<HTMLInputElement>,
-  ): void {
-    const key = e.target.value?.[e.target.value.length - 1];
-    setMyKey(key);
-    if (isNumber(key)) {
-      setPw((prev) => {
-        prev[index] = key;
-        return [...prev];
-      });
-      focusNextInput(index);
-    }
-  }
-
-  return (
-    <div>
-      <div className="flex gap-1">
-        {[0, 1, 2, 3].map((n) => (
-          <Input
-            key={n}
-            className="max-w-14 text-base"
-            classNames={{ input: "text-center" }}
-            variant="bordered"
-            type="number"
-            min={0}
-            max={9}
-            value={pw[n] ?? ""}
-            onChange={handleChangeKey.bind(null, n)}
-            ref={setInputRef(n)} // ref 설정
-          />
-        ))}
-        <Button
-          ref={buttonRef}
-          className="text-white"
-          isLoading={isLoading}
-          color="success"
-          onClick={handleSave}
-        >
-          저장
-        </Button>
-      </div>
-      <ErrorBox errorMessage={error} />
     </div>
   );
 }

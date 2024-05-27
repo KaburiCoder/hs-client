@@ -24,7 +24,11 @@ export async function catchActionApi<T>(error: Joi.ValidationError | undefined, 
     return { status: 'success', response };
   } catch (err) {
     if (err instanceof AxiosError) {
-      return { status: 'error', errors: err.response?.data?.error, message: err.message };
+      if (err.code === 'ECONNREFUSED') {
+        return { status: 'error', errors: { _form: "서버와 연결에 실패했습니다." } };
+      } else {
+        return { status: 'error', errors: err.response?.data?.error, message: err.message };
+      }
     }
   }
 

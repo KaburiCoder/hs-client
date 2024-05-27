@@ -39,3 +39,20 @@ export async function setUser(res: NextResponse, user: User) {
     secure: true,
   });
 }
+
+export async function updateUser(userKey: keyof User, value: any) {
+  const cookie = cookies().get(key);
+  if (!cookie) return;
+
+  let user = JSON.parse(cookie.value) as User;
+  user = {
+    ...user,
+    [userKey]: value,
+  };
+
+  cookies().set(key, JSON.stringify(user), {
+    maxAge: 60 * 24 * 365 * 60 * 1000,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  });
+}

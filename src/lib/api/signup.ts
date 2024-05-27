@@ -1,21 +1,13 @@
 import { axClient } from "@/lib/api/ax-client";
 import { paths } from "@/paths";
 
-export async function signup({
-  userId,
-  password,
-  roomKey,
-  managerCode,
-}: {
+export async function signup(dto: {
   userId: string;
   password: string;
   roomKey: string;
   managerCode: string;
+  orgName: string;
+  email: string;
 }) {
-  return await axClient.post(paths.signup, {
-    userId,
-    password,
-    roomKey,
-    managerCode,
-  });
+  return await axClient.post(paths.signup, dto);
 }
