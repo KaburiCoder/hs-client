@@ -24,6 +24,7 @@ export const apiPaths = {
   users: {
     checkpw: (userId: string) => `/users/${userId}/checkpw`,
     changepw: (userId: string) => `/users/${userId}/changepw`,
+    findpw: (userId: string) => `/users/${userId}/findpw`,
     changeEmail: "/users/change-email",
   }
 }

@@ -27,10 +27,12 @@ export async function catchActionApi<T>(error: Joi.ValidationError | undefined, 
       if (err.code === 'ECONNREFUSED') {
         return { status: 'error', errors: { _form: "서버와 연결에 실패했습니다." } };
       } else {
-        return { status: 'error', errors: err.response?.data?.error, message: err.message };
+        const errors = err.response?.data?.error;
+        const errorMessage = err.response?.data?.message;
+        return { status: 'error', errors: errors || { _form: errorMessage }, message: errorMessage };
       }
     }
   }
 
-  return { status: 'error', errors: { _form: "서버 통신 오류 발생" } };
+  return { status: 'error', errors: { _form: "알 수 없는 오류 발생" } };
 }

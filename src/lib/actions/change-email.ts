@@ -1,11 +1,10 @@
 'use server'
-import { axClient } from "@/lib/api/ax-client";
-import { apiPaths, paths } from "@/paths";
+import { apiPaths } from "@/paths";
 import Joi from "joi";
 import { ActionResultBase } from "./common/action-result-base";
 import { catchActionApi } from "./common/catch-action-api";
 import { axServer } from "../api/ax-server";
-import { getUser, updateUser } from "@/server/cookies/user-cookie";
+import { updateUser } from "@/server/cookies/user-cookie";
 
 interface ChangeEmailDto {
   email: string;

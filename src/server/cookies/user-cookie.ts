@@ -50,9 +50,5 @@ export async function updateUser(userKey: keyof User, value: any) {
     [userKey]: value,
   };
 
-  cookies().set(key, JSON.stringify(user), {
-    maxAge: 60 * 24 * 365 * 60 * 1000,
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-  });
+  cookies().set(key, JSON.stringify(user));
 }
