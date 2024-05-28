@@ -1,14 +1,15 @@
 import { Accordion, AccordionItem, Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";
 import { LockPwInputs } from "./body-components/lock-pw-inputs";
-import { ChangePwInputs } from "./body-components/change-pw-inputs";
+import { ChangePwForm } from "../../../change-pw-inputs";
 import { ChangeEmailInputs } from "./body-components/change-email-inputs";
+import ChangePwInputs from "./body-components/change-pw-inputs";
 
 export default function SettingBody() {
   return (
     <div>
       <div className="flex items-center gap-2">
-        <Accordion onKeyDown={(e) => e.preventDefault()}>
+        <Accordion>
           <AccordionItem key="1" title="잠금 비밀번호 설정">
             <LockPwInputs />
           </AccordionItem>

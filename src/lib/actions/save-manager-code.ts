@@ -24,7 +24,7 @@ export async function saveManagerCode(_: SaveManagerCodeResult, formData: FormDa
 
   if (result.status === 'error') return result;
 
-  revalidateTag(paths.adminSettings("common"))
+  revalidatePath(paths.adminSettings("common"))
   return { status: 'success' }
 }
 

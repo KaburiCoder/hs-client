@@ -4,7 +4,7 @@ import { withAuth, withoutAuth } from "./middlewares/auth";
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  
+
   if (notAuthPaths(pathname)) {
     return withoutAuth(request);
   }
@@ -25,7 +25,7 @@ function notAuthPaths(pathname: string) {
 }
 
 function allowPaths(pathname: string) {
-  return pathname.startsWith("/images");
+  return pathname.startsWith("/images") || pathname.endsWith("/changepw");
 }
 
 // Routes Middleware should not run on

@@ -1,7 +1,7 @@
 import { paths } from "@/paths";
 import { Link } from "@nextui-org/react";
 
-type AccountType = "findpw" | "signup" | "signin";
+type AccountType = "findpw" | "signup" | "signin" | "changepw";
 interface AccountBottomProps {
   type: AccountType;
 }
@@ -11,7 +11,7 @@ export function AccountBottom({ type }: AccountBottomProps) {
 
   return (
     <>
-      {type !== "findpw" && (
+      {!["findpw", "changepw"].includes(type) && (
         <Link
           className="text-center  font-bold text-blue-500"
           href={paths.findPw}
@@ -20,7 +20,7 @@ export function AccountBottom({ type }: AccountBottomProps) {
         </Link>
       )}
       <div className="space-x-2">
-        <span>{linkMessage}</span>
+        {linkMessage && <span>{linkMessage}</span>}
         <Link className="text-center text-blue-500" href={href}>
           {linkText}
         </Link>
@@ -46,6 +46,12 @@ function getLinkData(type: AccountType): {
         href: paths.login,
         linkMessage: "이미 계정이 존재하나요?",
         linkText: "로그인",
+      };
+    case "changepw":
+      return {
+        href: paths.login,
+        linkMessage: "",
+        linkText: "로그인 화면으로 돌아가기",
       };
     default:
       return {

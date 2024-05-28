@@ -1,5 +1,3 @@
-import { changeEmail } from "./lib/actions/change-email";
-
 export const paths = {
   root: "/",
   login: "/login",
@@ -13,6 +11,7 @@ export const paths = {
     eClickIco: "/images/eClick48x48.ico",
     mainLogo: "/images/main_logo.png",
   },
+  changepw: (token: string) => `/${token}/changepw`,
   settings: (path: "lockpw") => `/settings/${path}`,
   success: (kind: string) => `/success?kind=${kind}`,
   adminSettings: (path: "common" | "registuser") => `/admin/settings/${path}`
@@ -21,6 +20,9 @@ export const paths = {
 export const apiPaths = {
   adminSettings: "/admin-settings",
   adminSettingsFind: "/admin-settings/find",
+  token: {
+    validate: (token: string) => `/token/${token}/validate`
+  },
   users: {
     checkpw: (userId: string) => `/users/${userId}/checkpw`,
     changepw: (userId: string) => `/users/${userId}/changepw`,

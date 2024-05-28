@@ -4,6 +4,8 @@ import { apiPaths, paths } from "@/paths";
 import Joi from "joi";
 import { ActionResultBase } from "./common/action-result-base";
 import { catchActionApi } from "./common/catch-action-api";
+import { revalidateTag } from "next/cache";
+import { RedirectType, redirect } from "next/navigation";
 
 interface ChangePwDto {
   password: string;
@@ -23,7 +25,7 @@ const schema = Joi.object<ChangePwDto>({
 
 interface ChangePwResult extends ActionResultBase<boolean, Partial<ChangePwDto>> { }
 
-export async function changePw(userId: string, _: ChangePwResult, formData: FormData): Promise<ChangePwResult> {
+export async function changePw(userId: string, navToLogin: boolean | undefined, _: ChangePwResult, formData: FormData): Promise<ChangePwResult> {
   const { error, value } = schema.validate({
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword")
@@ -37,6 +39,9 @@ export async function changePw(userId: string, _: ChangePwResult, formData: Form
 
   if (result.status === 'error') return result;
 
+  if (navToLogin) {
+    redirect(paths.login, RedirectType.replace)
+  }
   return { status: 'success' }
 }
 

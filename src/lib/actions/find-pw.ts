@@ -20,7 +20,7 @@ const schema = Joi.object<FindPwDto>({
   }),
 })
 
-interface FindPwResult extends ActionResultBase<boolean, Partial<FindPwDto>> { }
+interface FindPwResult extends ActionResultBase<{ email: string }, Partial<FindPwDto>> { }
 
 export async function findPw(_: FindPwResult, formData: FormData): Promise<FindPwResult> {
   const { error, value } = schema.validate({
@@ -28,10 +28,10 @@ export async function findPw(_: FindPwResult, formData: FormData): Promise<FindP
     email: formData.get("email")
   });
 
-  const result = await catchActionApi(error, () => axClient.put(apiPaths.users.findpw(value.userId), { email: value.email }));
+  const result = await catchActionApi<FindPwResult>(error, () => axClient.put(apiPaths.users.findpw(value.userId), { email: value.email }));
 
   if (result.status === 'error') return result;
 
-  return { status: 'success' }
+  return { status: 'success', data: { email: result.response.data!.email } }
 }
 

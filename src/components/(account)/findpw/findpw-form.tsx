@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import AccountBaseForm from "../account-base-form";
 import { InputX } from "@/components/ui/input-x";
 import ButtonL from "@/components/ui/button-l";
@@ -7,8 +7,18 @@ import { useFormState } from "react-dom";
 import { findPw } from "@/lib/actions/find-pw";
 import ErrorBox from "@/components/error-box";
 
-export default function FindPwForm() {
+interface Props {
+  onSuccess?: (email: string) => void;
+}
+export default function FindPwForm({ onSuccess }: Props) {
   const [state, action] = useFormState(findPw, {});
+
+  useEffect(() => {
+    if (state.status === "success") {
+      onSuccess?.(state.data!.email);
+    }
+  }, [state]);
+  
   return (
     <AccountBaseForm action={action}>
       <InputX
