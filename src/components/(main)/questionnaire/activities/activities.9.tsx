@@ -11,7 +11,7 @@ export default function Activities9() {
   const n9_2 = useQuestionStore((state) => state.n9_2);
   const setN9_1 = useQuestionStore((state) => state.setN9_1);
   const setN9_2 = useQuestionStore((state) => state.setN9_2);
-  
+
   return (
     <>
       <QuoteDescription
@@ -26,6 +26,7 @@ export default function Activities9() {
       <QuestionnaireErrorBox errorKeys={["activity.n9_1"]}>
         <ActivityWeek
           id={questionIds.activity.n9_1}
+          focusNextId={questionIds.activity.n9_2h}
           headmark="9-1"
           text="평소 1주일간, 숨이 약간 차게 만드는 중강도 신체활동을 며칠 하십니까?"
           value={n9_1}
@@ -42,6 +43,9 @@ export default function Activities9() {
       >
         <ActivityDay
           id={questionIds.activity.n9_2}
+          hourId={questionIds.activity.n9_2h}
+          minuteId={questionIds.activity.n9_2m}
+          focusNextId={questionIds.activity.n10}
           headmark="9-2"
           text="평소 하루에 숨이 약간 차게 만드는 중강도 신체활동을 몇 시간 하십니까?"
           value={n9_2}

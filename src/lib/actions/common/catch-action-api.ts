@@ -25,6 +25,7 @@ export async function catchActionApi<T>(error: Joi.ValidationError | undefined, 
   } catch (err) {
     if (err instanceof AxiosError) {
       if (err.code === 'ECONNREFUSED') {
+        console.log('axiosError', err);
         return { status: 'error', errors: { _form: "서버와 연결에 실패했습니다." } };
       } else {
         const errors = err.response?.data?.error;

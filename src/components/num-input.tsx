@@ -76,6 +76,7 @@ export const NumInput = forwardRef<HTMLInputElement, NumInputProps>(
         color="primary"
         value={value?.toString() ?? ""}
         onChange={handleChange}
+        onFocus={(e) => (e.target as HTMLInputElement).select()}
         {...props}
       />
     );

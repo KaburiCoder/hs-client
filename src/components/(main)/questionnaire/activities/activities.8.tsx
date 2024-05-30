@@ -23,6 +23,7 @@ export default function Activities8() {
       <QuestionnaireErrorBox errorKeys={["activity.n8_1"]}>
         <ActivityWeek
           id={questionIds.activity.n8_1}
+          focusNextId={questionIds.activity.n8_2h}
           headmark="8-1"
           text="평소 1주일간, 숨이 많이 차게 만드는 고강도 신체활동을 며칠 하십니까?"
           value={n8_1}
@@ -39,6 +40,9 @@ export default function Activities8() {
       >
         <ActivityDay
           id={questionIds.activity.n8_2}
+          hourId={questionIds.activity.n8_2h}
+          minuteId={questionIds.activity.n8_2m}
+          focusNextId={questionIds.activity.n9_1}
           headmark="8-2"
           text="평소 하루에 숨이 많이 차게 만드는 고강도 신체활동을 몇 시간 하십니까?"
           value={n8_2}

@@ -8,12 +8,14 @@ import {
 import { DisabledProps } from "../../../../lib/props/disabled-props";
 
 interface Props extends DisabledProps {
+  firstComponentId?: string;
   value?: IDrinkingKind;
   onFreqencyChange(key: keyof IDrinkingKind, freq: IDrinkingFrequency): void;
 }
 export default function DrinksCc({
   value,
   isDisabled,
+  firstComponentId,
   onFreqencyChange,
 }: Props) {
   return (
@@ -25,6 +27,7 @@ export default function DrinksCc({
       <Center>CC</Center>
 
       <DrinksCcInputs
+        firstComponentId={firstComponentId}
         header="소주"
         value={value?.soju}
         isDisabled={isDisabled}

@@ -8,7 +8,7 @@ RUN corepack enable pnpm && pnpm i --frozen-lockfile
 
 COPY . .
 
-CMD ["npm", "run", "tb"]
+CMD ["npm", "run", "dev"]
 
 # RUN npm run build
 

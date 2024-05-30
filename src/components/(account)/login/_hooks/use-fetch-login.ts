@@ -22,6 +22,8 @@ export const useFetchLogin = () => {
     error,
   });
 
+  console.log(error);
+
   async function handleSignin(data: Signin, event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (validateAndGetResult(signinSchema, data)) {

@@ -11,11 +11,13 @@ import { scrollById } from "@/lib/utils/scroll.util";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { BlurWrapper } from "@/components/blur-wrapper";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
+import { useFocus } from "../../lifestyle/_hooks/use-focus";
 
 export default function Drinks7() {
   const n7 = useQuestionStore((state) => state.n7);
   const setN7 = useQuestionStore((state) => state.setN7);
   const { min, max } = GetMinMaxFreq(n7?.type);
+  const { conditions } = useFocus();
 
   function handleSelect(_value: InputValueType): void {
     const value = _value as EDrinkingFreqType;
@@ -26,6 +28,20 @@ export default function Drinks7() {
   }
 
   function handleFrequencyChange(value: number | undefined): void {
+    const frequencyConditions: { [key: number]: any } = {
+      [EDrinkingFreqType.WEEKS]: conditions.weekday,
+      [EDrinkingFreqType.MONTHS]: conditions.month,
+      [EDrinkingFreqType.YEARS]: conditions.year,
+    };
+
+    const conditionCallback = n7?.type
+      ? frequencyConditions[n7.type]
+      : undefined;
+
+    if (conditionCallback?.(value)) {
+      document.getElementById(questionIds.drink.n7_1sojuCup)?.focus();
+    }
+
     setN7({ ...n7, frequency: value });
   }
 

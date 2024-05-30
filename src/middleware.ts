@@ -25,7 +25,7 @@ function notAuthPaths(pathname: string) {
 }
 
 function allowPaths(pathname: string) {
-  return pathname.startsWith("/images") || pathname.endsWith("/changepw");
+  return pathname.startsWith("/images") || pathname.endsWith("/changepw") || pathname.startsWith("/test");
 }
 
 // Routes Middleware should not run on

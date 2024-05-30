@@ -7,6 +7,7 @@ import { DisabledProps } from "../../../../lib/props/disabled-props";
 interface Props extends DisabledProps {
   header: string;
   onChange: (freq: IDrinkingFrequency) => void;
+  firstComponentId?: string;
   value?: IDrinkingFrequency;
 }
 
@@ -14,6 +15,7 @@ export default function DrinksCcInputs({
   value,
   header,
   isDisabled,
+  firstComponentId,
   onChange,
 }: Props) {
   function setDrinksCc(obj: IDrinkingFrequency) {
@@ -24,6 +26,7 @@ export default function DrinksCcInputs({
     <>
       <Center>{header}</Center>
       <NumInputX
+        id={firstComponentId}
         value={value?.cup}
         isDisabled={isDisabled}
         onChange={(cup) => setDrinksCc({ cup })}
@@ -48,16 +51,19 @@ export default function DrinksCcInputs({
 }
 
 function NumInputX({
+  id,
   value,
   isDisabled,
   onChange,
 }: {
+  id?: string;
   value?: number;
   onChange: (value?: number) => void;
 } & DisabledProps) {
   return (
     <Center>
       <NumInput
+        id={id}
         isDisabled={isDisabled}
         value={value}
         max={9999.9}

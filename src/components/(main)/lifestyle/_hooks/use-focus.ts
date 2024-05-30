@@ -14,6 +14,8 @@ export const useFocus = () => {
     weekday: (value: number | undefined) => value ? value >= 0 && value <= 7 : false,
     hour: (value: number | undefined) => (value ?? 0) >= 3,
     minute: (value: number | undefined) => (value ?? 0) >= 7,
+    month: (value: number | undefined) => (value ?? 0) >= 4,
+    year: (value: number | undefined) => (value ?? 0) >= 37,
   }
 
   function setValue(
@@ -54,7 +56,7 @@ export const useFocus = () => {
         if (blur) document.getElementById(blur.id)?.blur();
       }
     }
-    
+
     handleAction(scroll, scrollById)
     handleAction(focus, focusById)
   }
