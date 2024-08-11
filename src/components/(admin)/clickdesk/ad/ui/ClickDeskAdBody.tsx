@@ -38,7 +38,7 @@ export const ClickDeskAdBody = () => {
       </div>
       <div
         className={cn(
-          "relative h-full border border-slate-200 bg-slate-50 p-2",
+          "relative h-full border overflow-auto border-slate-200 bg-slate-50 p-2",
           // data.length === 0 ? "h-screen" : "",
           isHover ? "border-2 border-dashed !border-blue-500" : "",
         )}

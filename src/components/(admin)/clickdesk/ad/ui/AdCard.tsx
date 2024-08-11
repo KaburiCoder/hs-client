@@ -8,21 +8,26 @@ interface Props {
   fileName: string;
 }
 export const AdCard = ({ id, fileName }: Props) => {
-  const [imageSrc, setImageSrc] = useState(paths.images.loadingQute); 
+  const [imageSrc, setImageSrc] = useState(paths.images.loadingQute);
   const { deleteFileAndImage, isPending } = useAdDelete();
 
   useEffect(() => {
+    let isMounted = true;
     // 이미지 로드 시작 시
     const img = new Image();
     img.src = `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/images/${fileName}`;
 
-    img.onload = () => { 
-      setImageSrc(img.src); // 이미지 로드 완료 후 실제 이미지 설정
+    img.onload = () => {
+      if (isMounted) setImageSrc(img.src); // 이미지 로드 완료 후 실제 이미지 설정
+    };
+
+    return () => {
+      isMounted = false;
     };
   }, [fileName]);
-  
+
   return (
-    <Card className="relative min-h-[5rem] max-h-[20rem] max-w-[20rem] flex-grow">
+    <Card className="relative max-h-[20rem] min-h-[5rem] max-w-[20rem] flex-grow">
       <img alt=".." className="object-bottom" src={imageSrc} />
       <button
         disabled={isPending}
