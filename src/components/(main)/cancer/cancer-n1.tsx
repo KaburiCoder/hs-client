@@ -1,6 +1,6 @@
 "use client";
 import { CustomRadioGroup } from "@/components/CustomRadioGroup";
-import { DescriptionWrapper } from "@/components/Description-";
+import { DescriptionWrapper } from "@/components/Description";
 import LabelWrapper from "@/components/LabelWrapper";
 import { cn } from "@/lib/utils";
 import { CancerHas, useCancerStore } from "@/stores/cancer/cancer-store";

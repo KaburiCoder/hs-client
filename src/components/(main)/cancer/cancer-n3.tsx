@@ -1,4 +1,4 @@
-import { DescriptionWrapper } from "@/components/Description-";
+import { DescriptionWrapper } from "@/components/Description";
 import { ICancerN3, useCancerStore } from "@/stores/cancer/cancer-store";
 import React, { useState } from "react";
 import CancerN3Group from "./cancer-n3-group";

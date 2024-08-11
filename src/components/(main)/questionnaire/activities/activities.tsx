@@ -1,4 +1,4 @@
-import { Title } from "@/components/Title-";
+import { Title } from "@/components/Title";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import React from "react";
 import Activities8 from "./activities.8";

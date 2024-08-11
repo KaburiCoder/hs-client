@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Description } from "@/components/Description-";
-import { Grids } from "@/components/Grids-";
+import { Description } from "@/components/Description";
+import { Grids } from "@/components/Grids";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { EHistoryN3 } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";

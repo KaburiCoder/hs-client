@@ -1,4 +1,4 @@
-import { Description, SparkleDescription } from "@/components/Description-";
+import { Description, SparkleDescription } from "@/components/Description";
 import React from "react";
 import DrinksCc from "./drinks-cc";
 import {

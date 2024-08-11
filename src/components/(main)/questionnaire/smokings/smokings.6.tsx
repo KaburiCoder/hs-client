@@ -1,5 +1,5 @@
 import { BlurWrapper } from "@/components/BlurWrapper";
-import { Description } from "@/components/Description-";
+import { Description } from "@/components/Description";
 import { StretchedRadioGroup } from "@/components/radio/StrectchedRadioGroup";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { ISmokingN6d1 } from "health-screening-shared/interfaces";

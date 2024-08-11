@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "./Button-";
+import { Button, buttonVariants } from "./Button";
 
 interface Props
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

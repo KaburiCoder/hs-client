@@ -1,7 +1,7 @@
 "use client";
 import { DescRadioGroup } from "@/components/DescRadioGroup";
 import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
-import { Title } from "@/components/Title-";
+import { Title } from "@/components/Title";
 import React from "react";
 import { DisabledProps } from "@/lib/props/disabled-props";
 import { useFocus } from "../../../lib/hooks/use-focus";

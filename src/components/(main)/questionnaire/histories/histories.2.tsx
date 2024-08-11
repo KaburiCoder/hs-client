@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Description } from "@/components/Description-";
-import { Grids } from "@/components/Grids-";
+import { Description } from "@/components/Description";
+import { Grids } from "@/components/Grids";
 import { n2ObjectList, questionIds } from "@/lib/objects/questionnaire-obj";
 import { BtnCheckBox, BtnCheckBoxProps } from "@/components/BtnCheckbox";
 import { useNotAppli } from "./use-not-appli";

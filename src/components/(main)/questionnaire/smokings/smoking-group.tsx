@@ -1,4 +1,4 @@
-import { Description } from "@/components/Description-";
+import { Description } from "@/components/Description";
 import React, { memo } from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
 import {

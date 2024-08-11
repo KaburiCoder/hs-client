@@ -1,6 +1,6 @@
 import { DisabledProps } from "../lib/props/disabled-props";
 import { CustomRadioGroup } from "./CustomRadioGroup";
-import { DescriptionWrapper } from "./Description-";
+import { DescriptionWrapper } from "./Description";
 
 interface DescRadioGroupProps extends DisabledProps {
   id: string;

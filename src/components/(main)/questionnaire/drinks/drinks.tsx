@@ -1,5 +1,5 @@
-import { QuoteDescription } from "@/components/Description-";
-import { Title } from "@/components/Title-";
+import { QuoteDescription } from "@/components/Description";
+import { Title } from "@/components/Title";
 import React from "react";
 import Drinks7 from "./drinks.7";
 import Drinks7d1 from "./drinks.7_1";
