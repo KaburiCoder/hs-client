@@ -29,7 +29,7 @@ export const AdCard = ({ id, fileName }: Props) => {
           />
         )}
         <img
-          className={cn("object-cover", isLoaded ? "" : "hidden")}
+          className={cn("object-cover")}
           alt=".."
           src={`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/images/${fileName}`}
           loading="lazy"
