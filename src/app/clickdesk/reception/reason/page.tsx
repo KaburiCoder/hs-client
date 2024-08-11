@@ -1,4 +1,4 @@
-import { ReasonBody } from "@/components/(clickdesk)/reception/reason/reason-body";
+import { ReasonBody } from "@/components/(clickdesk)/reception/reason/ReasonBody";
 import React from "react";
 
 const ClickdesckReasonPage = () => {

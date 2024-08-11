@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Description } from "@/components/description";
-import { Grids } from "@/components/grids";
-import { BtnCheckBox } from "@/components/btn-checkbox";
+import { Description } from "@/components/Description";
+import { Grids } from "@/components/Grids";
+import { BtnCheckBox } from "@/components/BtnCheckbox";
 import { IHistoryN1Result } from "health-screening-shared/interfaces";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { useNotAppli } from "./use-not-appli";

@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem, Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";
 import { LockPwInputs } from "./body-components/lock-pw-inputs";
-import { ChangePwForm } from "../../../change-pw-inputs";
+import { ChangePwForm } from "../../../ChangePwInputs";
 import { ChangeEmailInputs } from "./body-components/change-email-inputs";
 import ChangePwInputs from "./body-components/change-pw-inputs";
 

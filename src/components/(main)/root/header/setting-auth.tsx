@@ -1,6 +1,6 @@
 "use client";
-import ErrorBox from "@/components/error-box";
-import ButtonL from "@/components/ui/button-l";
+import ErrorBox from "@/components/ErrorBox";
+import ButtonL from "@/components/ui/ButtonL";
 import { checkPw } from "@/lib/actions/check-pw";
 import { Input } from "@nextui-org/react";
 import { LockIcon } from "lucide-react";

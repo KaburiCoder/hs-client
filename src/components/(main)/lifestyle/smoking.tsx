@@ -1,10 +1,10 @@
 "use client";
-import { CustomRadioGroup } from "@/components/custom-radio-group";
-import { DescriptionWrapper } from "@/components/description";
-import { Title } from "@/components/title";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
+import { DescriptionWrapper } from "@/components/Description";
+import { Title } from "@/components/Title";
 import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import React from "react";
-import { DescRadioGroup } from "@/components/desc-radio-group";
+import { DescRadioGroup } from "@/components/DescRadioGroup";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
 import { DisabledProps } from "../../../lib/props/disabled-props";

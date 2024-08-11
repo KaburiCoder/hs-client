@@ -1,4 +1,4 @@
-import ManagerCodeForm from "@/components/(admin)/common/manager-code-form";
+import ManagerCodeForm from "@/components/(admin)/common/ManagerCodeForm";
 import { getAdminSettings } from "@/lib/api/server/get-admin-settings";
 import React from "react";
 

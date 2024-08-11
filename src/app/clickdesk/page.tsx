@@ -1,4 +1,4 @@
-import { ClickDeskBody } from "@/components/(clickdesk)/root/click-desk-body";
+import { ClickDeskBody } from "@/components/(clickdesk)/root/ClickdeskBody";
 import { paths } from "@/paths";
 import { redirect } from "next/navigation";
 import React from "react";

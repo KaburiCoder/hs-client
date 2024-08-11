@@ -11,11 +11,13 @@ export const paths = {
   images: {
     eClickIco: "/images/eClick48x48.ico",
     mainLogo: "/images/main_logo.png",
+    loadingQute: "/images/loading_qute.jpg",
   },
   changepw: (token: string) => `/${token}/changepw`,
   settings: (path: "lockpw") => `/settings/${path}`,
   success: (kind: string) => `/success?kind=${kind}`,
   adminSettings: (path: "common" | "users") => `/admin/settings/${path}`,
+  adminClickDesk: (path: "ad") => `/admin/settings/clickdesk/${path}`,
   clickdesk: {
     root: "/clickdesk",
     reception: function (path: "doctor" | "reason" | "hospinfo") {
@@ -30,6 +32,8 @@ export const apiPaths = {
   token: {
     validate: (token: string) => `/token/${token}/validate`
   },
+  images: { root: "/images", file: (fileName: string) => `/images/${fileName}` },
+  adFile: { root: "/ad-file", id: (id: string) => `/ad-file/${id}` },
   users: {
     root: "/users",
     update: (id: string) => `/users/${id}`,

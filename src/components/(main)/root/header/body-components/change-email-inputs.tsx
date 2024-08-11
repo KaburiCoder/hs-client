@@ -1,7 +1,7 @@
 "use client";
-import ErrorBox from "@/components/error-box";
-import ButtonL from "@/components/ui/button-l";
-import { InputX } from "@/components/ui/input-x";
+import ErrorBox from "@/components/ErrorBox";
+import ButtonL from "@/components/ui/ButtonL";
+import { InputX } from "@/components/ui/InputX";
 import { changeEmail } from "@/lib/actions/change-email";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import React, { useEffect, useState } from "react";

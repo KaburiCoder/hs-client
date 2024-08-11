@@ -1,7 +1,7 @@
 "use client";
-import { DescRadioGroup } from "@/components/desc-radio-group";
+import { DescRadioGroup } from "@/components/DescRadioGroup";
 import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
-import { Title } from "@/components/title";
+import { Title } from "@/components/Title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import { useLsOverweightStore } from "@/stores/lifestyle/ls-overweight-store";
 import React from "react";

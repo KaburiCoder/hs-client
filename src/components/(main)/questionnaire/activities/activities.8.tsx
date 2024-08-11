@@ -1,4 +1,4 @@
-import { QuoteDescription } from "@/components/description";
+import { QuoteDescription } from "@/components/Description";
 import React from "react";
 import ActivityWeek from "./activity-week";
 import ActivityDay from "./activity-day";

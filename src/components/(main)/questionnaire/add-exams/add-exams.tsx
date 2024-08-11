@@ -1,6 +1,6 @@
-import { Description } from "@/components/description";
-import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
-import { Title } from "@/components/title";
+import { Description } from "@/components/Description";
+import { StretchedRadioGroup } from "@/components/radio/StrectchedRadioGroup";
+import { Title } from "@/components/Title";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { useConditionStore } from "@/stores/condition-store";

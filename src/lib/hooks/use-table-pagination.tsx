@@ -1,4 +1,4 @@
-import TablePagination from "@/components/table-pagination";
+import TablePagination from "@/components/TablePagination";
 import { PaginationState } from "@tanstack/react-table";
 import React from "react";
 

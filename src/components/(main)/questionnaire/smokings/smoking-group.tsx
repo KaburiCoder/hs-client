@@ -1,4 +1,4 @@
-import { Description } from "@/components/description";
+import { Description } from "@/components/Description";
 import React, { memo } from "react";
 import { SmokingTermGroup } from "./smoking-term-group";
 import {
@@ -6,7 +6,7 @@ import {
   ISmokingTerm,
 } from "health-screening-shared/interfaces";
 import { InputValueType } from "kbr-nextjs-shared/types";
-import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
+import { StretchedRadioGroup } from "@/components/radio/StrectchedRadioGroup";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 import { QuestionnaireErrorResult } from "@/stores/questionnaire/question-error-store";

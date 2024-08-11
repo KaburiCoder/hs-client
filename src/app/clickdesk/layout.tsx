@@ -1,6 +1,6 @@
 "use client";
-import { ClickdeskNav } from "@/components/(clickdesk)/clickdesk-nav";
-import { Hero } from "@/components/hero";
+import { ClickdeskNav } from "@/components/(clickdesk)/ClickdeskNav";
+import { Hero } from "@/components/Hero";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import React from "react";

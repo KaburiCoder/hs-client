@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { CarouselX } from "@/components/carousel-x/carousel-x";
+import { CarouselX } from "@/components/carousel-x/CarouselX";
 import LsNextButtons from "./ls-next-buttons";
 
 import { useLifestyleController } from "./_hooks/use-lifestyle-controller";

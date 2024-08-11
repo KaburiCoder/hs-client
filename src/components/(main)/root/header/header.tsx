@@ -9,7 +9,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
-import ClickIcon from "../../../images/click-icon";
+import ClickIcon from "../../../images/ClickIcon";
 import { useNavTitle } from "../_hooks/use-nav-title";
 import LogoutButton from "./logout-button";
 import { Settings } from "lucide-react";

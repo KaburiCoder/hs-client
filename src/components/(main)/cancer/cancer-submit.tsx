@@ -6,7 +6,7 @@ import { useErrorStore } from "@/stores/error-store";
 import { useFocus } from "@/lib/hooks/use-focus";
 import { EvPaths } from "@/socket-io/ev-paths";
 import { useEmitX } from "@/lib/hooks/use-emit-x";
-import ErrorBox from "@/components/error-box";
+import ErrorBox from "@/components/ErrorBox";
 import { SocketResponse } from "@/lib/types/socket-response";
 import { useRouter } from "next/navigation";
 import { paths } from "@/paths";

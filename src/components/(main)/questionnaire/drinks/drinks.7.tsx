@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { NumInput, NumInputProps } from "@/components/num-input";
+import { NumInput, NumInputProps } from "@/components/NumInput";
 import { cn } from "@/lib/utils";
-import { Description } from "@/components/description";
-import { RadioGroup } from "@/components/radio/radio-group";
-import { BtnRadio } from "@/components/radio/btn-radio";
+import { Description } from "@/components/Description";
+import { RadioGroup } from "@/components/radio/RadioGroup";
+import { BtnRadio } from "@/components/radio/BtnRadio";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import { EDrinkingFreqType } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
-import { BlurWrapper } from "@/components/blur-wrapper";
+import { BlurWrapper } from "@/components/BlurWrapper";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 import { useFocus } from "../../../../lib/hooks/use-focus";
 

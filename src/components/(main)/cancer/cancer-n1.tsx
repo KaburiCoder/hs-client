@@ -1,7 +1,7 @@
 "use client";
-import { CustomRadioGroup } from "@/components/custom-radio-group";
-import { DescriptionWrapper } from "@/components/description";
-import LabelWrapper from "@/components/label-wrapper";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
+import { DescriptionWrapper } from "@/components/Description";
+import LabelWrapper from "@/components/LabelWrapper";
 import { cn } from "@/lib/utils";
 import { CancerHas, useCancerStore } from "@/stores/cancer/cancer-store";
 import { Input } from "@nextui-org/react";

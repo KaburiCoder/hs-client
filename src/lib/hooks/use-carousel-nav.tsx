@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CarouselItemX } from "@/components/carousel-x/carousel-x";
+import { CarouselItemX } from "@/components/carousel-x/CarouselX";
 import { DisabledProps } from "../props/disabled-props";
 
 interface Args {

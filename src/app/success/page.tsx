@@ -1,4 +1,4 @@
-import SuccessBody from "@/components/success/success-body";
+import SuccessBody from "@/components/success/SuccessBody";
 import React from "react";
 
 export default function SuccessPage() {

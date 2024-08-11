@@ -1,5 +1,5 @@
-import { SaveDialog } from "@/components/save-dialog";
-import { Input } from "@/components/ui/input";
+import { SaveDialog } from "@/components/SaveDialog";
+import { Input } from "@/components/ui/Input";
 import { ModalProps } from "@/lib/props/modal-props";
 import { User } from "@/models/user";
 import { UserSettings } from "@/models/user-settings";

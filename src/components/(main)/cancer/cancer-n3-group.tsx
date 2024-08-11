@@ -1,4 +1,4 @@
-import { CustomRadioGroup } from "@/components/custom-radio-group";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
 import { cancerIds } from "@/lib/objects/cancer-obj";
 import { cn } from "@/lib/utils";
 import {

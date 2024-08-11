@@ -1,6 +1,6 @@
-import { GridTitle } from "@/components/grid-title";
-import { InputEx } from "@/components/index-ex";
-import { LoadingOverlay } from "@/components/loading-overlay";
+import { GridTitle } from "@/components/GridTitle";
+import { InputEx } from "@/components/IndexEx";
+import { LoadingOverlay } from "@/components/LoadingOverlay";
 import { dayMappings } from "@/contants/doctor-constants";
 import { ModalProps } from "@/lib/props/modal-props";
 import { cn } from "@/lib/utils";

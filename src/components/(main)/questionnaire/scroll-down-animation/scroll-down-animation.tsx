@@ -1,4 +1,4 @@
-import { LottieScrollDown } from "@/components/lottie/lottie-scroll-down";
+import { LottieScrollDown } from "@/components/lottie/LottieScrollDown";
 import { useWindowScroll } from "@/providers/window-scroll.context";
 import React from "react";
 

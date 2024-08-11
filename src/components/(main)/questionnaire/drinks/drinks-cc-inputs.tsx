@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Center } from "./center";
-import { NumInput } from "@/components/num-input";
+import { NumInput } from "@/components/NumInput";
 import { IDrinkingFrequency } from "health-screening-shared/interfaces";
 import { DisabledProps } from "../../../../lib/props/disabled-props";
 

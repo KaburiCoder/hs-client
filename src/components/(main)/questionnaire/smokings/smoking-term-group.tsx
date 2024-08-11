@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Description } from "@/components/description";
+import { Description } from "@/components/Description";
 import { SmokingTerm } from "./smoking-term";
 import {
   ISmokingResult,
   ISmokingTerm,
 } from "health-screening-shared/interfaces";
-import { BlurWrapper } from "@/components/blur-wrapper";
-import { StretchedRadioGroup } from "@/components/radio/strectched-radio-group";
+import { BlurWrapper } from "@/components/BlurWrapper";
+import { StretchedRadioGroup } from "@/components/radio/StrectchedRadioGroup";
 import { convertBoolToInt } from "@/lib/utils/convert.util";
 
 interface SmokingTermGroupProps {

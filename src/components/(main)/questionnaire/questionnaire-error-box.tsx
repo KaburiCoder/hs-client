@@ -5,7 +5,7 @@ import {
 } from "@/stores/questionnaire/question-error-store";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import { memo } from "react";
-import ErrorBox from "../../error-box";
+import ErrorBox from "../../ErrorBox";
 import { LifestyleKeys, QnKeys } from "@/stores/condition-store";
 import { cn } from "@/lib/utils";
 

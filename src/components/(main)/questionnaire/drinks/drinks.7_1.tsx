@@ -1,4 +1,4 @@
-import { Description, SparkleDescription } from "@/components/description";
+import { Description, SparkleDescription } from "@/components/Description";
 import React from "react";
 import DrinksCc from "./drinks-cc";
 import {
@@ -7,7 +7,7 @@ import {
   IDrinkingKind,
 } from "health-screening-shared/interfaces";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
-import { BlurWrapper } from "@/components/blur-wrapper";
+import { BlurWrapper } from "@/components/BlurWrapper";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 

@@ -3,7 +3,7 @@ import styles from "./doctor-grid.module.css";
 import { cn } from "@/lib/utils";
 import { Grid, Settings, Trash2 } from "lucide-react";
 import { DoctorState, DoctorWorks, TimeRange } from "@/models/doctor-state";
-import { SortableList } from "@/components/dnd-kit/sortable-list";
+import { SortableList } from "@/components/dnd-kit/SortableList";
 import { dayMappings } from "@/contants/doctor-constants";
 
 export interface DoctorSettingCardProps extends ChildrenProps {

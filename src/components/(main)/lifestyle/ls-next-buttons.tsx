@@ -1,4 +1,4 @@
-import ButtonL from "@/components/ui/button-l";
+import ButtonL from "@/components/ui/ButtonL";
 import React from "react";
 
 interface LsNextButtons {

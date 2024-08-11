@@ -1,5 +1,5 @@
 "use client";
-import { ChangePwForm } from "@/components/change-pw-inputs";
+import { ChangePwForm } from "@/components/ChangePwInputs";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import React from "react";
 

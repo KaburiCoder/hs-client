@@ -1,7 +1,7 @@
 "use client";
-import { ClickBodyWrapper } from "@/components/(clickdesk)/clickdesk-body-wrapper";
-import { GridTitle } from "@/components/grid-title";
-import { InputX } from "@/components/ui/input-x";
+import { ClickBodyWrapper } from "@/components/(clickdesk)/ClickdeskBodyWrapper";
+import { GridTitle } from "@/components/GridTitle";
+import { InputX } from "@/components/ui/InputX";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import React from "react";
 

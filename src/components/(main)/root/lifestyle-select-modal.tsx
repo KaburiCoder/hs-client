@@ -9,7 +9,7 @@ import {
   CheckboxGroup,
 } from "@nextui-org/react";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
-import BigCheckBox from "@/components/big-check-box";
+import BigCheckBox from "@/components/BigCheckBox";
 import sock from "health-screening-shared/interfaces.socket";
 import { LifestyleKeys } from "@/stores/condition-store";
 

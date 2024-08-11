@@ -1,5 +1,5 @@
-import { CustomRadioGroup } from "@/components/custom-radio-group";
-import { DescriptionWrapper } from "@/components/description";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
+import { DescriptionWrapper } from "@/components/Description";
 import { useCancerStore } from "@/stores/cancer/cancer-store";
 import React from "react";
 import { QnErrorBox } from "../questionnaire/questionnaire-error-box";

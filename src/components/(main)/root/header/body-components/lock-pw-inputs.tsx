@@ -1,4 +1,4 @@
-import ErrorBox from "@/components/error-box";
+import ErrorBox from "@/components/ErrorBox";
 import { isNumber } from "@/stores/utils/check-util";
 import { Button, Input } from "@nextui-org/react";
 import React, { useEffect, useRef, useState } from "react";

@@ -1,5 +1,5 @@
-import { Description } from "@/components/description";
-import { LabeldNumInput } from "@/components/num-input";
+import { Description } from "@/components/Description";
+import { LabeldNumInput } from "@/components/NumInput";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import React, { useRef } from "react";
 import { useFocus } from "../../../../lib/hooks/use-focus";

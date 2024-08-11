@@ -1,6 +1,6 @@
-import { DescriptionWrapper, QuoteDescription } from "@/components/description";
+import { DescriptionWrapper, QuoteDescription } from "@/components/Description";
 import React, { useMemo, useState } from "react";
-import { CustomRadioGroup } from "@/components/custom-radio-group";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
 import { ICancerN4, useCancerStore } from "@/stores/cancer/cancer-store";
 import { useSelectionPatientStore } from "@/stores/selection-patient-store";
 import { cancerIds } from "@/lib/objects/cancer-obj";

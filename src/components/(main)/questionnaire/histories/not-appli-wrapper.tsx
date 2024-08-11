@@ -1,4 +1,4 @@
-import { BtnCheckBox } from "@/components/btn-checkbox";
+import { BtnCheckBox } from "@/components/BtnCheckbox";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import React, { useImperativeHandle, useState } from "react";
 

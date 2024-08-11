@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useQnClear } from "./_hooks/use-qn-clear";
 import { useQnController } from "./_hooks/use-qn-controller";
-import { CarouselX } from "@/components/carousel-x/carousel-x";
+import { CarouselX } from "@/components/carousel-x/CarouselX";
 import LsNextButtons from "../lifestyle/ls-next-buttons";
 import ScrollDownAnimation from "./scroll-down-animation/scroll-down-animation";
 

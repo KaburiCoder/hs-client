@@ -1,8 +1,8 @@
 "use client";
 import { Menu } from "lucide-react";
 import React from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import ClickIcon from "@/components/images/click-icon";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
+import ClickIcon from "@/components/images/ClickIcon";
 
 interface Props {
   navComponent: React.ReactNode;

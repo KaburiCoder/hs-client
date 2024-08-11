@@ -1,4 +1,4 @@
-import { LoadingOverlay } from "@/components/loading-overlay";
+import { LoadingOverlay } from "@/components/LoadingOverlay";
 import { cn } from "@/lib/utils";
 import { useDisclosure } from "@nextui-org/react";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
@@ -10,7 +10,7 @@ import styles from "./doctor-grid.module.css";
 import { RegistDoctorRow } from "./regist-doctor-row";
 import { DoctorSettingDialog } from "./doctor-setting-dialog";
 import { useDoctorStore } from "@/stores/clickdesk/doctor/doctor-store";
-import { SortableList } from "@/components/dnd-kit/sortable-list";
+import { SortableList } from "@/components/dnd-kit/SortableList";
 
 export const RegistDoctorPanel = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

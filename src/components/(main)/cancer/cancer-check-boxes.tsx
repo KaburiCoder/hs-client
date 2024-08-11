@@ -1,4 +1,4 @@
-import BigCheckBox from "@/components/big-check-box";
+import BigCheckBox from "@/components/BigCheckBox";
 import { CancerPresence } from "@/stores/cancer/cancer-store";
 
 interface CancerCheckBoxesProps {

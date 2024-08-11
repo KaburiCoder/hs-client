@@ -1,4 +1,4 @@
-import ChangePwBody from "@/components/(account)/changepw/changepw-body";
+import ChangePwBody from "@/components/(account)/changepw/ChangePwBody";
 import { validateToken } from "@/lib/api/server/validate-token";
 import React from "react";
 

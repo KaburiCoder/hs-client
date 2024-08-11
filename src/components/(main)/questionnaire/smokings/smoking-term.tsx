@@ -1,5 +1,5 @@
 "use client";
-import { LabeldNumInput } from "@/components/num-input";
+import { LabeldNumInput } from "@/components/NumInput";
 import { ISmokingTerm } from "health-screening-shared/interfaces";
 import React, { useEffect, useRef, useState } from "react";
 import { DisabledProps } from "../../../../lib/props/disabled-props";

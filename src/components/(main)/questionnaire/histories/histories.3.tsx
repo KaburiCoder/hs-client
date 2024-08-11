@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Description } from "@/components/description";
-import { Grids } from "@/components/grids";
+import { Description } from "@/components/Description";
+import { Grids } from "@/components/Grids";
 import { questionIds } from "@/lib/objects/questionnaire-obj";
 import { EHistoryN3 } from "health-screening-shared/interfaces";
 import { scrollById } from "@/lib/utils/scroll.util";
 import { InputValueType } from "kbr-nextjs-shared/types";
-import { TitledRadioGroup } from "@/components/radio/titled-radio-group";
+import { TitledRadioGroup } from "@/components/radio/TitledRadioGroup";
 import { QuestionnaireErrorBox } from "../questionnaire-error-box";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";
 

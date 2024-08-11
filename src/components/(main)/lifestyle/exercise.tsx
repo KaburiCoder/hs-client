@@ -1,11 +1,11 @@
 "use client";
-import { BlurWrapper } from "@/components/blur-wrapper";
-import { CustomRadioGroup } from "@/components/custom-radio-group";
-import { DescRadioGroup } from "@/components/desc-radio-group";
-import { DescriptionWrapper } from "@/components/description";
-import { LabeldNumInput } from "@/components/num-input";
+import { BlurWrapper } from "@/components/BlurWrapper";
+import { CustomRadioGroup } from "@/components/CustomRadioGroup";
+import { DescRadioGroup } from "@/components/DescRadioGroup";
+import { DescriptionWrapper } from "@/components/Description";
+import { LabeldNumInput } from "@/components/NumInput";
 import { QnErrorBox } from "@/components/(main)/questionnaire/questionnaire-error-box";
-import { Title } from "@/components/title";
+import { Title } from "@/components/Title";
 import { lifestyleIds, lsYnItems } from "@/lib/objects/lifestyle-obj";
 import {
   LsExerciseState,
