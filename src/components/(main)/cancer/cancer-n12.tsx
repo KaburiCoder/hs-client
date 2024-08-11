@@ -1,5 +1,5 @@
 import { CustomRadioGroup } from "@/components/CustomRadioGroup";
-import { DescriptionWrapper } from "@/components/Description";
+import { DescriptionWrapper } from "@/components/Description-";
 import { useCancerStore } from "@/stores/cancer/cancer-store";
 import React from "react";
 import { useCancerState } from "./_hooks/use-cancer-state";

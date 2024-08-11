@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Description } from "@/components/Description";
+import { Description } from "@/components/Description-";
 import { SmokingTerm } from "./smoking-term";
 import {
   ISmokingResult,

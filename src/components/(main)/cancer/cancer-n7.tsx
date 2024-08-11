@@ -1,5 +1,5 @@
 import React from "react";
-import { DescriptionWrapper } from "@/components/Description";
+import { DescriptionWrapper } from "@/components/Description-";
 import { ICancerN7, useCancerStore } from "@/stores/cancer/cancer-store";
 import { CancerCheckBoxes } from "./cancer-check-boxes";
 import useCheckChange from "./_hooks/use-check-change";

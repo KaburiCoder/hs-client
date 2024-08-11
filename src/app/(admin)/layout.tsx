@@ -1,6 +1,6 @@
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import React from "react";
-import { Hero } from "../../components/Hero";
+import { Hero } from "../../components/Hero-";
 import AdminNav from "../../components/(admin)/AdminNav";
 import AdminHeaderCenter from "@/components/(admin)/AdminHeaderCenter";
 

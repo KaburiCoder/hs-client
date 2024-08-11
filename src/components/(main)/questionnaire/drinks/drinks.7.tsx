@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NumInput, NumInputProps } from "@/components/NumInput";
 import { cn } from "@/lib/utils";
-import { Description } from "@/components/Description";
+import { Description } from "@/components/Description-";
 import { RadioGroup } from "@/components/radio/RadioGroup";
 import { BtnRadio } from "@/components/radio/BtnRadio";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";

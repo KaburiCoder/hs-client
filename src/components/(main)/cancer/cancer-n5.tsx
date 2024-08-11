@@ -1,4 +1,4 @@
-import { DescriptionWrapper, QuoteDescription } from "@/components/Description";
+import { DescriptionWrapper, QuoteDescription } from "@/components/Description-";
 import React, { useMemo, useState } from "react";
 import { ICancerN5, useCancerStore } from "@/stores/cancer/cancer-store";
 import { CancerCheckBoxes } from "./cancer-check-boxes";

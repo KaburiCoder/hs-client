@@ -1,7 +1,7 @@
 "use client";
 import { CustomRadioGroup } from "@/components/CustomRadioGroup";
-import { DescriptionWrapper } from "@/components/Description";
-import { Title } from "@/components/Title";
+import { DescriptionWrapper } from "@/components/Description-";
+import { Title } from "@/components/Title-";
 import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import React from "react";
 import { DescRadioGroup } from "@/components/DescRadioGroup";

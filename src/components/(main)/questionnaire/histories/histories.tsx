@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "../../../Title";
+import { Title } from "../../../Title-";
 import { Histories1 } from "./histories.1";
 import Histories2 from "./histories.2";
 import Histories3 from "./histories.3";

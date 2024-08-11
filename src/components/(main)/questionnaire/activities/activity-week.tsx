@@ -1,4 +1,4 @@
-import { Description } from "@/components/Description";
+import { Description } from "@/components/Description-";
 import { LabeldNumInput } from "@/components/NumInput";
 import { InputValueType } from "kbr-nextjs-shared/types";
 import React, { useRef } from "react";
