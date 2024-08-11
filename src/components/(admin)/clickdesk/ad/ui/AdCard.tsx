@@ -14,7 +14,7 @@ export const AdCard = ({ id, fileName }: Props) => {
   useEffect(() => {
     // 이미지 로드 시작 시
     const img = new Image();
-    img.src = `http://localhost:4020/api/images/${fileName}`;
+    img.src = `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/images/${fileName}`;
 
     img.onload = () => { 
       setImageSrc(img.src); // 이미지 로드 완료 후 실제 이미지 설정
