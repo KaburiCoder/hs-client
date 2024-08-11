@@ -11,12 +11,12 @@ import {
   CommandGroup,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command-";
+} from "@/components/ui/Command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/Popover-";
+} from "@/components/ui/Popover";
 import { apiPaths } from "@/paths";
 import { getAllDoctors } from "@/services/clickdesk/doctor/get-all-doctors";
 import { useQuery } from "@tanstack/react-query";
