@@ -28,7 +28,7 @@ export const AdCard = ({ id, fileName }: Props) => {
 
   return (
     <Card className="relative max-h-[20rem] min-h-[5rem] max-w-[20rem] flex-grow">
-      <img alt=".." className="object-bottom" src={imageSrc} />
+      <img alt=".." className="object-bottom" src={imageSrc} loading="lazy" />
       <button
         disabled={isPending}
         className="absolute right-1 top-1 z-10 text-xl"
