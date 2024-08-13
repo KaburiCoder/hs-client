@@ -1,13 +1,15 @@
 export const paths = {
-  root: "/",
   login: "/login",
   signin: "/signin",
   signup: "/signup",
   signout: "/signout",
   findPw: "/findpw",
-  questionnaire: "/questionnaire",
-  lifestyle: "/lifestyle",
-  cancer: "/cancer",
+  qn: {
+    root: "/qn/",
+    questionnaire: "/qn/questionnaire",
+    lifestyle: "/qn/lifestyle",
+    cancer: "/qn/cancer",
+  },
   images: {
     eClickIco: "/images/eClick48x48.ico",
     mainLogo: "/images/main_logo.png",

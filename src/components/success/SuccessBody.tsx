@@ -19,7 +19,7 @@ export default function SuccessBody() {
       </Suspense>
       <LottieSuccess className=" max-w-96" />
       <div className="text-lg">태블릿을 카운터로 가져다 주세요.</div>
-      <Button className="min-w-56" color="primary" href={paths.root} as={Link}>
+      <Button className="min-w-56" color="primary" href={paths.qn.root} as={Link}>
         확인
       </Button>
     </main>

@@ -14,7 +14,7 @@ export default function ClickIcon() {
       alt="클릭 아이콘"
       width={34}
       height={34}
-      onClick={() => push(paths.root)}
+      onClick={() => push(paths.qn.root)}
     />
   );
 }

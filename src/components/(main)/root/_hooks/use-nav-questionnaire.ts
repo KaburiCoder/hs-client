@@ -30,7 +30,7 @@ export const useNavQuestionnaire = () => {
       setDepressionState(data?.depression)
       setCognitiveState(data?.cognitive)
 
-      push(paths.questionnaire);
+      push(paths.qn.questionnaire);
     },
   });
 
@@ -39,7 +39,7 @@ export const useNavQuestionnaire = () => {
 
     setAddList(k.addList as QnKeys[]);
 
-    if (!k.written) return push(paths.questionnaire);
+    if (!k.written) return push(paths.qn.questionnaire);
 
     emitAck({
       eiAuto: eiAuto,

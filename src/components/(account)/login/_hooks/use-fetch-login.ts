@@ -14,7 +14,7 @@ export const useFetchLogin = () => {
     onSuccess: (response) => {
       if (response?.status === 200) {
         const data = response.data;
-        replace(data.admin ? paths.adminSettings("common") : paths.root);
+        replace(data.admin ? paths.adminSettings("common") : paths.qn.root);
       }
     },
   });

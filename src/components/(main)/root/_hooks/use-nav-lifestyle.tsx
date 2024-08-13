@@ -40,7 +40,7 @@ export const useNavLifestyle = ({ eiAuto, status, diagnose }: Args) => {
         if (data?.nutrition) setNutritionState(data.nutrition);
         if (data?.overweight) setOverweightState(data.overweight);
 
-        push(paths.lifestyle);
+        push(paths.qn.lifestyle);
       }
     },
   });

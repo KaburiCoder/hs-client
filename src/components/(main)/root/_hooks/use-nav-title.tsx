@@ -23,6 +23,6 @@ export function useNavTitle() {
 }
 
 const navText = {
-  [paths.questionnaire]: "일반검진 문진표",
-  [paths.lifestyle]: "생활습관 문진표",
+  [paths.qn.questionnaire]: "일반검진 문진표",
+  [paths.qn.lifestyle]: "생활습관 문진표",
 };

@@ -9,7 +9,7 @@ export async function withAuth(req: NextRequest, isAdminPage: boolean) {
     let res: NextResponse;
     if (user) {
       res = isAdminPage && !user.admin
-        ? NextResponse.redirect(new URL(paths.root, req.nextUrl))
+        ? NextResponse.redirect(new URL(paths.qn.root, req.nextUrl))
         : NextResponse.next();
     } else {
       res = NextResponse.redirect(new URL(paths.login, req.nextUrl));
@@ -25,7 +25,7 @@ export async function withoutAuth(req: NextRequest) {
   try {
     const user = await UserCookie.getUser(req);
 
-    if (user) return NextResponse.redirect(new URL(paths.root, req.nextUrl));
+    if (user) return NextResponse.redirect(new URL(paths.qn.root, req.nextUrl));
     if (!user) return NextResponse.next();
   } catch (error) {
     // throw new Error(`Couldn't check authentication`);

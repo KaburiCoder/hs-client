@@ -16,14 +16,14 @@ export const useNavCancer = () => {
   async function nav(eiAuto: number, k: QuestionnaireKind, sex: string) {
     if (!k.written) {
       setSex(sex as any);
-      return push(paths.cancer);
+      return push(paths.qn.cancer);
     }
 
     const response = await emitAck({ eiAuto });
     const { status, data } = response || {};
     if (status === "success") {
       setState({ ...data, sex });
-      push(paths.cancer);
+      push(paths.qn.cancer);
     }
   }
 
