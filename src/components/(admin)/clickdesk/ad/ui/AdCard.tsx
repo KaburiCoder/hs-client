@@ -1,8 +1,8 @@
-import { paths } from "@/paths";
-import { Card, Image as NextImage } from "@nextui-org/react";
-import { useEffect, useState } from "react";
-import { useAdDelete } from "../_hooks/use-ad-delete";
 import { cn } from "@/lib/utils";
+import { paths } from "@/paths";
+import { Card } from "@nextui-org/react";
+import { useState } from "react";
+import { useAdDelete } from "../_hooks/use-ad-delete";
 
 interface Props {
   id: string;
@@ -16,7 +16,7 @@ export const AdCard = ({ id, fileName }: Props) => {
     <Card
       className={cn(
         "relative max-h-[20rem] min-h-[5rem] max-w-[20rem] flex-grow",
-        isLoaded ? "" : "min-h-[20rem] min-w-[20rem]",
+        isLoaded ? "" : "h-[20rem] w-[20rem]",
       )}
     >
       <div>
@@ -28,6 +28,7 @@ export const AdCard = ({ id, fileName }: Props) => {
             loading="lazy"
           />
         )}
+
         <img
           className={cn("object-cover")}
           alt=".."
