@@ -1,9 +1,9 @@
 "use client";
-import MainBody from "@/components/(main)/root/main-body";
-import { lockScreen } from "../../components/(main)/root/lock-screen";
+import QnBody from "@/components/(qn)/root/QnBody";
+import { lockScreen } from "../../components/(qn)/root/lock-screen";
 
 const Home = () => {
-  return <MainBody />;
+  return <QnBody />;
 };
 
 export default lockScreen(Home);

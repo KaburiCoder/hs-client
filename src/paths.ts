@@ -1,12 +1,13 @@
 export const paths = {
+  root: "/",
   login: "/login",
   signin: "/signin",
   signup: "/signup",
   signout: "/signout",
   findPw: "/findpw",
   qn: {
-    root: "/qn/",
-    questionnaire: "/qn/questionnaire",
+    root: "/qn",
+    general: "/qn/general",
     lifestyle: "/qn/lifestyle",
     cancer: "/qn/cancer",
   },
@@ -29,6 +30,7 @@ export const paths = {
 };
 
 export const apiPaths = {
+  currentUser: "/currentuser",
   adminSettings: "/admin-settings",
   adminSettingsFind: "/admin-settings/find",
   token: {

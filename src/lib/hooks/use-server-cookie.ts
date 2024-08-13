@@ -1,20 +1,20 @@
 "use client";
 
-import { DependencyList, useEffect, useState } from "react";
 import { User } from "@/models/user";
-import * as UserCookie from "@/server/cookies/user-cookie";
+import { apiPaths } from "@/paths";
+import { useQuery } from "@tanstack/react-query";
+import { axClient } from "../api/ax-client";
 
-interface Args {
-  deps?: DependencyList
-}
-export const useServerCookie = (args?: Args) => {
-  const [user, setUser] = useState<User>();
+async function fetchCurrentUser(): Promise<User> {
+  const response = await axClient.post("/currentuser");
+  return response.data.currentUser;
+};
 
-  useEffect(() => {
-    UserCookie.getUser()
-      .then((user) => setUser(user))
-      .catch(() => setUser(undefined));
-  }, args?.deps ?? []);
+export const useServerCookie = () => {
+  const { data, refetch } = useQuery({
+    queryFn: fetchCurrentUser,
+    queryKey: [apiPaths.currentUser]
+  })
 
-  return { user };
+  return { user: data, refetch };
 };

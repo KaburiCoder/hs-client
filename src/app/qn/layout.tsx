@@ -1,22 +1,21 @@
-"use client";
-import MainHeader from "@/components/(main)/root/header/header";
+import MainHeader from "@/components/(qn)/root/header/header";
+import { BaseLayout } from "@/components/layouts/MainLayout";
 import { SocketIOProvider } from "@/providers/SocketIOProvider";
-import { useSocketIO } from "kbr-nextjs-shared/hooks";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
-import React from "react";
+import { Metadata } from "next";
 
-export default function MainLayout({ children }: ChildrenProps) {
-  const { socket } = useSocketIO();
-  console.log("socket,", socket);
+export async function generateMetadata() {
+  return {
+    title: "클릭 웹 문진표",
+    description: "클릭 웹 문진표 페이지입니다.",
+  } satisfies Metadata;
+}
 
+export default function QnLayout({ children }: ChildrenProps) {
   return (
     <SocketIOProvider>
       <MainHeader />
-      <main className="w-full select-none">
-        <div className="mx-auto flex max-w-screen-lg2 flex-col gap-8 px-4 md:px-20">
-          {children}
-        </div>
-      </main>
+      <BaseLayout>{children}</BaseLayout>
     </SocketIOProvider>
   );
 }
