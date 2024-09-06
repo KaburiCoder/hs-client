@@ -23,7 +23,7 @@ export const paths = {
   adminClickDesk: (path: "ad") => `/admin/settings/clickdesk/${path}`,
   clickdesk: {
     root: "/clickdesk",
-    reception: function (path: "doctor" | "reason" | "hospinfo") {
+    reception: function (path: "doctor" | "reason" | "hospinfo" | "feature") {
       return `${this.root}/reception/${path}`
     },
   },
@@ -55,6 +55,8 @@ export const apiPaths = {
     reason: "/clickdesk/reason",
     reasonWithDoctorId: function (doctorId: string) { return `${this.reason}/${doctorId}` },
     reasonAll: "/clickdesk/reason/all",
+    settings: "/clickdesk/settings",
+    settingsFeature: "/clickdesk/settings/feature",
     reasonUpdate: (id: string) => `/clickdesk/reason/${id}/update`,
     reasonId: (id: string) => `/clickdesk/reason/${id}`,
   },

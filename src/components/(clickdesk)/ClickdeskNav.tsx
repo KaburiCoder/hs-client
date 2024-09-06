@@ -44,6 +44,9 @@ export const ClickdeskNav = () => {
             <AccLi href={paths.clickdesk.reception("reason")}>
               내원사유 설정
             </AccLi>
+            <AccLi href={paths.clickdesk.reception("feature")}>
+              기능 설정
+            </AccLi>
           </ul>
         </AccItem>
       </Accordion>
