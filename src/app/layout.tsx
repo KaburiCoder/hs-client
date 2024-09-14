@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Providers } from "../providers/providers";
 import { EnvData } from "@/contants/env-data";
 import { unstable_noStore as noStore } from "next/cache";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "클릭소프트 웹",

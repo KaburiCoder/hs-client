@@ -1,7 +1,7 @@
 import { User } from "@/models/user";
 import { useDisclosure } from "@nextui-org/react";
 import { Row, flexRender } from "@tanstack/react-table";
-import { UserSettingsDialog } from "../dialog/user-settings-dialog";
+import { UserSettingsDialog } from "../dialog/UserSettingsDialog";
 
 interface Props {
   row: Row<User>;

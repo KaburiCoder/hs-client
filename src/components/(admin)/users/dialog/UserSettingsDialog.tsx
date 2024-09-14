@@ -2,13 +2,9 @@ import { SaveDialog } from "@/components/SaveDialog";
 import { Input } from "@/components/ui/Input";
 import { ModalProps } from "@/lib/props/modal-props";
 import { User } from "@/models/user";
-import { UserSettings } from "@/models/user-settings";
-import { apiPaths } from "@/paths";
-import { updateUser } from "@/services/users/update-user";
 import { Button, Checkbox } from "@nextui-org/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
-import React, { useEffect, useState } from "react";
+import { RegistMapButton } from ".";
 import { useUserSettings } from "../hooks/use-user-settings";
 
 export interface UserSettingsDialogProps extends ModalProps {
@@ -83,7 +79,7 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
             </Checkbox>
           </div>
         </LabeldItem>
-
+        <RegistMapButton />
         <Button
           onClick={handleDeleteUser}
           color="danger"
@@ -108,3 +104,4 @@ export const LabeldItem = ({ label, children }: LabeldItemProps) => {
     </>
   );
 };
+

@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "@nextui-org/react";
-import { ChildrenClassNameProps, ChildrenProps } from "kbr-nextjs-shared/props";
+import { ChildrenClassNameProps } from "kbr-nextjs-shared/props";
 import React from "react";
 
 interface SaveDialogProps extends ModalProps, ChildrenClassNameProps {

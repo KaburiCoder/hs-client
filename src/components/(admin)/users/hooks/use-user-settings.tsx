@@ -3,7 +3,7 @@ import { apiPaths } from "@/paths";
 import { updateUser } from "@/services/users/update-user";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { UserSettingsDialogProps } from "../dialog/user-settings-dialog";
+import { UserSettingsDialogProps } from "../dialog/UserSettingsDialog";
 import { deleteUser } from "@/services/users/delete-user";
 
 export const useUserSettings = ({

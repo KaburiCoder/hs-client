@@ -13,6 +13,7 @@
     "jsx": "preserve",
     "incremental": true,
     "experimentalDecorators": true,
+    "types": ["kakao.maps.d.ts"],
     "plugins": [
       {
         "name": "next"
