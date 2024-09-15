@@ -40,6 +40,7 @@ export const apiPaths = {
   adFile: { root: "/ad-file", id: (id: string) => `/ad-file/${id}` },
   users: {
     root: "/users",
+    id: (id: string) => `/users/${id}`,
     update: (id: string) => `/users/${id}`,
     delete: (id: string) => `/users/${id}`,
     checkpw: (userId: string) => `/users/${userId}/checkpw`,

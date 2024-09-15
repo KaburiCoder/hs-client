@@ -1,11 +1,9 @@
 import { User } from "@/models/user";
 import { ColumnDef } from "@tanstack/react-table";
 import dayjs from "dayjs";
-import { ChildrenProps } from "kbr-nextjs-shared/props";
 import React from "react";
-import { ServiceBadge } from "./service-badge";
-import { ServiceCell } from "./service-cell";
 import { serviceFilterFn } from "../utils/service-filter-fn";
+import { ServiceCell } from "./service-cell";
 
 export default function useColumns() {
   const columns = React.useMemo<ColumnDef<User>[]>(

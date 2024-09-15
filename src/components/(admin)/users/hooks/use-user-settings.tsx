@@ -1,11 +1,12 @@
 import { UserSettings } from "@/models/user-settings";
 import { apiPaths } from "@/paths";
 import { updateUser } from "@/services/users/update-user";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { UserSettingsDialogProps } from "../dialog/UserSettingsDialog";
 import { deleteUser } from "@/services/users/delete-user";
 import { GeoLocation } from "@/lib/hooks/use-geo-location";
+import { getUserById } from "@/services/users/get-user-by-id";
 
 export const useUserSettings = ({
   user,
@@ -16,12 +17,12 @@ export const useUserSettings = ({
   const [email, setEmail] = useState("");
   const [settings, setSettings] = useState<UserSettings>();
   const queryClient = useQueryClient();
-  const [geoLocation, setGeoLocation] = useState<GeoLocation | undefined>(
-    user.location && {
-      lng: user.location.coordinates[0],
-      lat: user.location.coordinates[1],
-    },
-  );
+  const { data: newUser } = useQuery({
+    queryKey: [apiPaths.users.id(user.id)],
+    queryFn: () => getUserById(user.id),
+    enabled: isOpen,
+  });
+  const [geoLocation, setGeoLocation] = useState<GeoLocation | undefined>();
 
   const { mutate, isPending } = useMutation({
     mutationFn: updateUser,
@@ -30,6 +31,7 @@ export const useUserSettings = ({
       onClose?.();
     },
   });
+  
   const { mutate: deleteMutate, isPending: isDeletePending } = useMutation({
     mutationFn: deleteUser,
     onSuccess: () => {
@@ -42,6 +44,7 @@ export const useUserSettings = ({
     e.preventDefault();
 
     mutate({ id: user.id, data: { email, orgName, settings, geoLocation } });
+    queryClient.removeQueries({ queryKey: [apiPaths.users.id(user.id)] });
   }
 
   function handleServiceSelectedChange(
@@ -52,12 +55,22 @@ export const useUserSettings = ({
   }
 
   useEffect(() => {
+    setGeoLocation(
+      newUser?.location && {
+        lng: newUser.location.coordinates[0],
+        lat: newUser.location.coordinates[1],
+      },
+    );
+  }, [isOpen]);
+
+  useEffect(() => {
     setOrgName(user.orgName);
     setEmail(user.email);
     setSettings(user.settings);
   }, [isOpen]);
 
   return {
+    user: newUser ?? user,
     orgName,
     email,
     settings,
