@@ -6,8 +6,6 @@ import { Button, Checkbox } from "@nextui-org/react";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import { RegistMapButton } from ".";
 import { useUserSettings } from "../hooks/use-user-settings";
-import { GeoLocation } from "@/lib/hooks/use-geo-location";
-import { useState } from "react";
 
 export interface UserSettingsDialogProps extends ModalProps {
   user: User;
