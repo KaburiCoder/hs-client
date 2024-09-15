@@ -1,9 +1,22 @@
+import { GeoLocation } from "@/lib/hooks/use-geo-location";
+import { useGeoSearch } from "@/lib/hooks/use-geo-search";
 import { Input } from "@nextui-org/react";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
-export const AddrSearchInput = () => {
+interface Props {
+  onSelect: (position: GeoLocation) => void;
+}
+
+export const AddrSearchInput = ({ onSelect }: Props) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchWrapperRef = useRef<HTMLDivElement>(null);
+  // 포커스 상태
+  const searchInputFocused = useRef(false);
+  const searchResultFocused = useRef(false);
+  // 검색 상태
+  const [isSearching, setIsSearching] = useState(false);
+  const rect = searchWrapperRef.current?.getBoundingClientRect();
+  const { search, setSearch, markers } = useGeoSearch();
 
   return (
     <>
@@ -59,12 +72,11 @@ export const AddrSearchInput = () => {
                   key={marker.position.lat + marker.position.lng}
                   className="cursor-pointer rounded-md p-2 hover:bg-gray-100"
                   onClick={() => {
-                    const position = {
+                    const position: GeoLocation = {
                       lat: Number(marker.position.lat),
                       lng: Number(marker.position.lng),
                     };
-                    setSelectedPosition(position);
-                    setMarkerPosition(position);
+                    onSelect(position);
                     setIsSearching(false);
                   }}
                 >

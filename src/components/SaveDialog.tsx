@@ -12,8 +12,12 @@ import React from "react";
 
 interface SaveDialogProps extends ModalProps, ChildrenClassNameProps {
   title: string;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isDisabled?: boolean;
+  saveButtonText?: string;
+  closeButtonText?: string;
+  buttonType?: "submit" | "button";
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onClick?: () => void;
 }
 export const SaveDialog = ({
   title,
@@ -21,9 +25,34 @@ export const SaveDialog = ({
   isDisabled,
   className,
   children,
+  saveButtonText = "저장",
+  closeButtonText = "닫기",
+  buttonType = "submit",
   onOpenChange,
   onSubmit,
+  onClick,
 }: SaveDialogProps) => {
+  const modalChildren = (onClose: () => void) => (
+    <>
+      <ModalBody className="relative max-h-[35rem] overflow-y-auto">
+        {children}
+      </ModalBody>
+      <ModalFooter>
+        <Button color="danger" variant="light" onPress={onClose}>
+          {closeButtonText}
+        </Button>
+        <Button
+          type={buttonType}
+          color="primary"
+          isDisabled={isDisabled}
+          onClick={onClick}
+        >
+          {saveButtonText}
+        </Button>
+      </ModalFooter>
+    </>
+  );
+
   return (
     <Modal
       className={className}
@@ -36,19 +65,11 @@ export const SaveDialog = ({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-            <form onSubmit={onSubmit}>
-              <ModalBody className="relative max-h-[35rem] overflow-y-auto">
-                {children}
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  닫기
-                </Button>
-                <Button type="submit" color="primary" isDisabled={isDisabled}>
-                  저장
-                </Button>
-              </ModalFooter>
-            </form>
+            {buttonType === "submit" ? (
+              <form onSubmit={onSubmit}>{modalChildren(onClose)}</form>
+            ) : (
+              modalChildren(onClose)
+            )}
           </>
         )}
       </ModalContent>

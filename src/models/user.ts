@@ -11,6 +11,12 @@ export interface User {
   admin?: boolean;
   iat?: number;
   exp?: number;
-
+  location?: UserLocation;
   settings?: UserSettings;
-} 
+}
+
+export interface UserLocation {
+  type: "Point";
+  coordinates: number[];
+}
+

@@ -6,6 +6,8 @@ import { Button, Checkbox } from "@nextui-org/react";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import { RegistMapButton } from ".";
 import { useUserSettings } from "../hooks/use-user-settings";
+import { GeoLocation } from "@/lib/hooks/use-geo-location";
+import { useState } from "react";
 
 export interface UserSettingsDialogProps extends ModalProps {
   user: User;
@@ -18,6 +20,8 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
     email,
     settings,
     isPending,
+    geoLocation,
+    setGeoLocation,
     deleteMutate,
     setEmail,
     setOrgName,
@@ -79,7 +83,10 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
             </Checkbox>
           </div>
         </LabeldItem>
-        <RegistMapButton />
+        <RegistMapButton
+          onLocationSelected={setGeoLocation}
+          location={geoLocation}
+        />
         <Button
           onClick={handleDeleteUser}
           color="danger"
@@ -99,9 +106,10 @@ export interface LabeldItemProps extends ChildrenProps {
 export const LabeldItem = ({ label, children }: LabeldItemProps) => {
   return (
     <>
-      <div className="rounded bg-purple-100 p-2 text-center">{label}</div>
+      <div className="rounded bg-purple-100 p-2 flex items-center justify-center">
+        {label}
+      </div>
       <div className="col-span-3 flex items-center">{children}</div>
     </>
   );
 };
-

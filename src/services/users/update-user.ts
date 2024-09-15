@@ -9,6 +9,10 @@ interface UpdateUserDto {
     orgName: string;
     email: string;
     settings?: UserSettings;
+    geoLocation?: {
+      lat: number;
+      lng: number;
+    };
   }
 }
 

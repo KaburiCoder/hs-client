@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { UserSettingsDialogProps } from "../dialog/UserSettingsDialog";
 import { deleteUser } from "@/services/users/delete-user";
+import { GeoLocation } from "@/lib/hooks/use-geo-location";
 
 export const useUserSettings = ({
   user,
@@ -15,6 +16,13 @@ export const useUserSettings = ({
   const [email, setEmail] = useState("");
   const [settings, setSettings] = useState<UserSettings>();
   const queryClient = useQueryClient();
+  const [geoLocation, setGeoLocation] = useState<GeoLocation | undefined>(
+    user.location && {
+      lng: user.location.coordinates[0],
+      lat: user.location.coordinates[1],
+    },
+  );
+
   const { mutate, isPending } = useMutation({
     mutationFn: updateUser,
     onSuccess: () => {
@@ -33,7 +41,7 @@ export const useUserSettings = ({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
-    mutate({ id: user.id, data: { email, orgName, settings } });
+    mutate({ id: user.id, data: { email, orgName, settings, geoLocation } });
   }
 
   function handleServiceSelectedChange(
@@ -59,5 +67,7 @@ export const useUserSettings = ({
     setOrgName,
     handleSubmit,
     handleServiceSelectedChange,
+    geoLocation,
+    setGeoLocation,
   };
 };
