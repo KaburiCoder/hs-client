@@ -23,3 +23,5 @@ export const AddrName = forwardRef<HTMLDivElement, Props>(
     );
   },
 );
+
+AddrName.displayName = "AddrName";

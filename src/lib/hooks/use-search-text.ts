@@ -14,7 +14,7 @@ export function useSearchText<T>({ data, filter }: UseSearchTextArgs<T>) {
 
     const searchedData = data.filter((value) => filter({ value, searchText }));
     setSearchedData(searchedData);
-  }, [data, searchText]);
+  }, [data, searchText, filter]);
 
   return {
     searchedData,

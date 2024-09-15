@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { EvPaths } from "@/socket-io/ev-paths";
 import {
@@ -29,12 +29,24 @@ export default function QnBody() {
     () => (data?.status === "success" ? data?.data : []),
     [data],
   );
-  const { searchedData, setSearchText } = useSearchText<ReceptionPatient>({
-    data: processedData,
-    filter: ({ searchText, value }) => {
+  
+  const filter = useCallback(
+    ({
+      searchText,
+      value,
+    }: {
+      searchText: string;
+      value: ReceptionPatient;
+    }) => {
       const regex = new RegExp(searchText.trim(), "i");
       return value.name.match(regex);
     },
+    [],
+  );
+
+  const { searchedData, setSearchText } = useSearchText<ReceptionPatient>({
+    data: processedData,
+    filter,
   });
 
   const emitIfConnected = () => {
