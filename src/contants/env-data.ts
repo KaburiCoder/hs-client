@@ -6,5 +6,7 @@ export class EnvData {
   public static CLIENT_URL: string = process.env.NEXT_PUBLIC_CLIENT_URL!;
   public static SOCKET_URL: string = process.env.NEXT_PUBLIC_SOCKET_URL!;
   public static SERVER_URL: string = process.env.NEXT_PUBLIC_SERVER_URL!;  
-  public static KAKAO_JS_KEY: string = process.env.NEXT_PUBLIC_KAKAO_JS_KEY!; 
+  public static get KAKAO_JS_KEY(): string {
+    return process.env.NEXT_PUBLIC_KAKAO_JS_KEY!;
+  }
 }

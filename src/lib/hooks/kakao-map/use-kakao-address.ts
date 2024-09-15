@@ -7,8 +7,6 @@ export const useKakaoAddress = () => {
   const geocoder = useRef<kakao.maps.services.Geocoder>();
   const [address, setAddress] = useState<string>("");
 
- 
-  
   useEffect(() => {
     if (isKakaoLoading) return;
     geocoder.current = new kakao.maps.services.Geocoder();
