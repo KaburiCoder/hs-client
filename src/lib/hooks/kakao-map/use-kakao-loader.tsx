@@ -1,9 +1,11 @@
-import { EnvData } from "@/contants/env-data";
+import { useEnv } from "@/providers";
 import { useKakaoLoader as useKakaoLoaderOrigin } from "react-kakao-maps-sdk";
 
 export function useKakaoLoader() {
+  const { KAKAO_JS_KEY } = useEnv();
+
   return useKakaoLoaderOrigin({
-    appkey: EnvData.KAKAO_JS_KEY,
+    appkey: KAKAO_JS_KEY,
     libraries: ["clusterer", "drawing", "services"],
   });
 }
