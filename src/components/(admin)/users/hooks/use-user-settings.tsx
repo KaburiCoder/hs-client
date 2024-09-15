@@ -31,7 +31,7 @@ export const useUserSettings = ({
       onClose?.();
     },
   });
-  
+
   const { mutate: deleteMutate, isPending: isDeletePending } = useMutation({
     mutationFn: deleteUser,
     onSuccess: () => {
@@ -55,13 +55,14 @@ export const useUserSettings = ({
   }
 
   useEffect(() => {
+    const currentUser = newUser ?? user;
     setGeoLocation(
-      newUser?.location && {
-        lng: newUser.location.coordinates[0],
-        lat: newUser.location.coordinates[1],
+      currentUser.location && {
+        lng: currentUser.location.coordinates[0],
+        lat: currentUser.location.coordinates[1],
       },
     );
-  }, [isOpen]);
+  }, [isOpen, newUser, user]);
 
   useEffect(() => {
     setOrgName(user.orgName);

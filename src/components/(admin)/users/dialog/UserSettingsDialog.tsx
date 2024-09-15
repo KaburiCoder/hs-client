@@ -12,8 +12,9 @@ export interface UserSettingsDialogProps extends ModalProps {
 }
 
 export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
-  const { isOpen, user } = props;
+  const { isOpen } = props;
   const {
+    user,
     orgName,
     email,
     settings,
