@@ -43,8 +43,7 @@ export const useUserSettings = ({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
-    mutate({ id: user.id, data: { email, orgName, settings, geoLocation } });
-    queryClient.removeQueries({ queryKey: [apiPaths.users.id(user.id)] });
+    mutate({ id: user.id, data: { email, orgName, settings, geoLocation } });    
   }
 
   function handleServiceSelectedChange(
@@ -68,8 +67,11 @@ export const useUserSettings = ({
     setOrgName(user.orgName);
     setEmail(user.email);
     setSettings(user.settings);
+    if(!isOpen){
+      queryClient.removeQueries({ queryKey: [apiPaths.users.id(user.id)] });
+    }
   }, [isOpen]);
-
+  
   return {
     user: newUser ?? user,
     orgName,
