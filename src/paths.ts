@@ -20,6 +20,7 @@ export const paths = {
   settings: (path: "lockpw") => `/settings/${path}`,
   success: (kind: string) => `/success?kind=${kind}`,
   adminSettings: (path: "common" | "users") => `/admin/settings/${path}`,
+  webApp: (path: "users") => `/web-app/${path}`,
   adminClickDesk: (path: "ad") => `/admin/settings/clickdesk/${path}`,
   clickdesk: {
     root: "/clickdesk",
@@ -47,6 +48,9 @@ export const apiPaths = {
     changepw: (userId: string) => `/users/${userId}/changepw`,
     findpw: (userId: string) => `/users/${userId}/findpw`,
     changeEmail: "/users/change-email",
+  },
+  webApp: {
+    hsUserId: (hsUserId: string) => `/user/${hsUserId}`,
   },
   clickdesk: {
     doctor: "/clickdesk/doctor",

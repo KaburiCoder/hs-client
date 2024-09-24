@@ -25,9 +25,10 @@ export const MainBody = () => {
         use: user?.settings?.clickDesk?.use,
       },
       {
-        title: "클립 웹 앱",
+        title: "클릭 웹 앱",
         description: "태블릿을 들고 회진할 때 환자정보를 확인하세요!",
-        to: "https://app.click-soft.co.kr",
+        to: paths.webApp("users"),
+        // to: "https://app.click-soft.co.kr",
         use: user?.settings?.webApp?.use,
       },
     ];

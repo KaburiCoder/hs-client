@@ -5,7 +5,7 @@ import { CustomLinks } from "../custom-link/CustomLinks";
 import { SignoutButton } from "../SignoutButton";
 import { UserCard } from "../UserCard";
 
-export default function AdminNav() {  
+export default function WebAppNav() {
   return (
     <div className="flex h-full flex-col justify-between bg-slate-100">
       <div>
@@ -22,13 +22,6 @@ export default function AdminNav() {
 const links: { header: string; links: LinkPath[] }[] = [
   {
     header: "일반",
-    links: [
-      { href: paths.adminSettings("common"), text: "공통 설정" },
-      { href: paths.adminSettings("users"), text: "사용자 리스트" },
-    ],
-  },
-  {
-    header: "클릭데스크",
-    links: [{ href: paths.adminClickDesk("ad"), text: "광고 설정" }],
+    links: [{ href: paths.webApp("users"), text: "사용자 리스트" }],
   },
 ];
