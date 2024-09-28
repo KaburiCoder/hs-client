@@ -41,14 +41,16 @@ export const SaveDialog = ({
         <Button color="danger" variant="light" onPress={onClose}>
           {closeButtonText}
         </Button>
-        <Button
-          type={buttonType}
-          color="primary"
-          isDisabled={isDisabled}
-          onClick={onClick}
-        >
-          {saveButtonText}
-        </Button>
+        {saveButtonText && (
+          <Button
+            type={buttonType}
+            color="primary"
+            isDisabled={isDisabled}
+            onClick={onClick}
+          >
+            {saveButtonText}
+          </Button>
+        )}
       </ModalFooter>
     </>
   );

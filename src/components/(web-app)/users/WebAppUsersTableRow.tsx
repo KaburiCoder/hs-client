@@ -1,6 +1,7 @@
 import { WebAppUser } from "@/models/web-app-user";
 import { useDisclosure } from "@nextui-org/react";
 import { Row, flexRender } from "@tanstack/react-table";
+import { WebAppUserSettingsDialog } from "./WebAppUserSettingsDialog";
 
 interface Props {
   row: Row<WebAppUser>;
@@ -10,7 +11,7 @@ export const WebAppUsersTableRow = ({ row }: Props) => {
 
   return (
     <>
-      {/* <UserSettingsDialog user={row.original} {...disclosure} /> */}
+      <WebAppUserSettingsDialog user={row.original} {...disclosure} />
       <tr
         key={row.id}
         className="hover:cursor-pointer hover:bg-blue-50"

@@ -49,8 +49,9 @@ export const apiPaths = {
     findpw: (userId: string) => `/users/${userId}/findpw`,
     changeEmail: "/users/change-email",
   },
-  webApp: {
-    hsUserId: (hsUserId: string) => `/user/${hsUserId}`,
+  webAppUsers: {
+    hsUserId: (hsUserId: string) => `/web-app-users/${hsUserId}`,
+    delete: (id: string) => `/web-app-users/${id}`,
   },
   clickdesk: {
     doctor: "/clickdesk/doctor",
