@@ -21,6 +21,8 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
     isPending,
     geoLocation,
     setGeoLocation,
+    allowedDistance,
+    setAllowedDistance,
     deleteMutate,
     setEmail,
     setOrgName,
@@ -39,7 +41,7 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
 
   return (
     <SaveDialog
-      className="min-w-[30rem]"
+      className="min-w-[30rem] max-w-[40rem]"
       title="사용자 설정"
       isOpen={isOpen}
       isDisabled={isPending}
@@ -85,7 +87,22 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
         <RegistMapButton
           onLocationSelected={setGeoLocation}
           location={geoLocation}
+          allowDistanceElement={
+            <LabeldItem label="허용 거리">
+              <Input
+                className="w-16 text-right"
+                value={allowedDistance}
+                type="number"
+                min={50}
+                max={2000}
+                maxLength={4}
+                onChange={(e) => setAllowedDistance(Number(e.target.value))}
+              />
+              <p>m</p>
+            </LabeldItem>
+          }
         />
+
         <Button
           onClick={handleDeleteUser}
           color="danger"
@@ -105,7 +122,7 @@ export interface LabeldItemProps extends ChildrenProps {
 export const LabeldItem = ({ label, children }: LabeldItemProps) => {
   return (
     <>
-      <div className="rounded bg-purple-100 p-2 flex items-center justify-center">
+      <div className="flex items-center justify-center rounded bg-purple-100 p-2 whitespace-nowrap">
         {label}
       </div>
       <div className="col-span-3 flex items-center">{children}</div>

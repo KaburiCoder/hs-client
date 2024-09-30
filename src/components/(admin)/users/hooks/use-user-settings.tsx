@@ -23,6 +23,7 @@ export const useUserSettings = ({
     enabled: isOpen,
   });
   const [geoLocation, setGeoLocation] = useState<GeoLocation | undefined>();
+  const [allowedDistance, setAllowedDistance] = useState<number | undefined>();
 
   const { mutate, isPending } = useMutation({
     mutationFn: updateUser,
@@ -43,7 +44,7 @@ export const useUserSettings = ({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
-    mutate({ id: user.id, data: { email, orgName, settings, geoLocation } });    
+    mutate({ id: user.id, data: { email, orgName, settings, geoLocation, allowedDistance } });    
   }
 
   function handleServiceSelectedChange(
@@ -61,6 +62,7 @@ export const useUserSettings = ({
         lat: currentUser.location.coordinates[1],
       },
     );
+    setAllowedDistance(currentUser.allowedDistance);
   }, [isOpen, newUser, user]);
 
   useEffect(() => {
@@ -85,5 +87,7 @@ export const useUserSettings = ({
     handleServiceSelectedChange,
     geoLocation,
     setGeoLocation,
+    allowedDistance,
+    setAllowedDistance,
   };
 };

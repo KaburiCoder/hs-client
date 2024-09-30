@@ -13,6 +13,7 @@ interface UpdateUserDto {
       lat: number;
       lng: number;
     };
+    allowedDistance?: number;
   }
 }
 

@@ -12,6 +12,7 @@ export interface User {
   iat?: number;
   exp?: number;
   location?: UserLocation;
+  allowedDistance?: number;
   settings?: UserSettings;
 }
 
