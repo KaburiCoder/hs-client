@@ -33,12 +33,12 @@ jobs:
 
       - name: Update YAML file
         run: |
-          sed -i '/hsClient:/,/service:/s/version: ".*"/version: "${{ github.run_number }}"/' hs-client/values.yaml
+          sed -i '/hsClient:/,/service:/s/version: ".*"/version: "${{ github.run_number }}"/' hs/values.yaml
 
       - name: Commit and push changes
         run: |
           git config --global user.name "${{ secrets.USER_NAME }}"
           git config --global user.email "${{ secrets.USER_EMAIL }}"
-          git add hs-client/values.yaml
+          git add hs/values.yaml
           git commit -m "Update version to ${{ github.run_number }}"
           git push
