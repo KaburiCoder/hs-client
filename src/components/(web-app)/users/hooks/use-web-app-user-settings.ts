@@ -1,6 +1,6 @@
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { WebAppUser } from "@/models/web-app-user";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteWebAppUser } from "../api/delete-web-app-user";
 

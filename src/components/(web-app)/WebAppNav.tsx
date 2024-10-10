@@ -1,9 +1,10 @@
 "use client";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { LinkPath } from "../custom-link/CustomLink";
 import { CustomLinks } from "../custom-link/CustomLinks";
 import { SignoutButton } from "../SignoutButton";
 import { UserCard } from "../UserCard";
+import { webAppPathNames } from "@/shared";
 
 export default function WebAppNav() {
   return (
@@ -22,6 +23,15 @@ export default function WebAppNav() {
 const links: { header: string; links: LinkPath[] }[] = [
   {
     header: "일반",
-    links: [{ href: paths.webApp("users"), text: "사용자 리스트" }],
+    links: [
+      {
+        href: paths.webApp("users"),
+        text: webAppPathNames[paths.webApp("users")],
+      },
+      {
+        href: paths.webApp("reading"),
+        text: webAppPathNames[paths.webApp("reading")],
+      },
+    ],
   },
 ];

@@ -1,6 +1,6 @@
 'use server'
 import { axClient } from "@/lib/api/ax-client";
-import { apiPaths, paths } from "@/paths";
+import { apiPaths, paths } from "@/shared/paths";
 import { getUser } from "@/server/cookies/user-cookie";
 import { AxiosError } from "axios";
 import { flattenJoiError } from "health-screening-shared/joi";

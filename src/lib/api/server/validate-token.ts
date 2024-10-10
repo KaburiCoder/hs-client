@@ -1,6 +1,6 @@
 'use server'
 
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { axServer } from "../ax-server";
 
 type TokenType = "changePw";

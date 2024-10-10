@@ -1,6 +1,6 @@
 'use client'
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { EvPaths } from "@/socket-io/ev-paths"; 
 import { QnKeys, useConditionStore } from "@/stores/condition-store";
 import { useQuestionStore } from "@/stores/questionnaire/question-store";

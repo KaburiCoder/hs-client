@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/Popover";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { getAllDoctors } from "@/services/clickdesk/doctor/get-all-doctors";
 import { useQuery } from "@tanstack/react-query";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { User } from "@/models/user";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { useQuery } from "@tanstack/react-query";
 import { axClient } from "../api/ax-client";
 

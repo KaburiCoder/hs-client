@@ -1,6 +1,6 @@
 "use client";
 import { LottieSuccess } from "@/components/lottie/LottieSuccess";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { Button, Link } from "@nextui-org/react";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";

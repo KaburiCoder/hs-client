@@ -1,7 +1,7 @@
 import { axClient } from "@/lib/api/ax-client";
 import { User } from "@/models/user";
 import { UserSettings } from "@/models/user-settings";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 
 interface UpdateUserDto {
   id: string;

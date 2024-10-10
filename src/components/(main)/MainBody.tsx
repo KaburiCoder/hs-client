@@ -1,7 +1,7 @@
 "use client";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { cn } from "@/lib/utils";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

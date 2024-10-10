@@ -1,7 +1,7 @@
 "use client";
 import { LottieLoading } from "@/components/lottie/LottieLoading";
 import { LottieWarning } from "@/components/lottie/LottieWarning";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { signin } from "@/services/sign/signin";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";

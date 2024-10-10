@@ -1,4 +1,4 @@
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { Link } from "@nextui-org/react";
 
 type AccountType = "findpw" | "signup" | "signin" | "changepw";

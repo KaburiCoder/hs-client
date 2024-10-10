@@ -1,5 +1,5 @@
 "use client";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { usePathname } from "next/navigation";
 import React from "react";
 

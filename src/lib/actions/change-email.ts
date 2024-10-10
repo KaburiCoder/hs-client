@@ -1,5 +1,5 @@
 'use server'
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import Joi from "joi";
 import { ActionResultBase } from "./common/action-result-base";
 import { catchActionApi } from "./common/catch-action-api";

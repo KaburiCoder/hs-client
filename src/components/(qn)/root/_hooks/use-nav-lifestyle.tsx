@@ -9,7 +9,7 @@ import {
   QuestionnaireStatus,
 } from "health-screening-shared/interfaces.socket";
 import { useRouter } from "next/navigation";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { useLsSmokingStore } from "@/stores/lifestyle/ls-smoking-store";
 import { useLsDrinkingStore } from "@/stores/lifestyle/ls-drinking-store";
 import { useLsExerciseStore } from "@/stores/lifestyle/ls-exercise-store";

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { signin } from "@/services/sign/signin";
 import { useValidate } from "@/lib/hooks/use-validate";
 import React from 'react'

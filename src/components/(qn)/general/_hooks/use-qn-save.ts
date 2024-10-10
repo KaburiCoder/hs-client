@@ -6,7 +6,7 @@ import {
 import { EvPaths } from "@/socket-io/ev-paths";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 
 export const useQnSave = () => {
   const { push } = useRouter()

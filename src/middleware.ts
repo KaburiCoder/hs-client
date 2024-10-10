@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { paths } from "./paths";
+import { paths } from "./shared/paths";
 import { withAuth, withoutAuth } from "./middlewares/auth";
 
 export async function middleware(request: NextRequest) {

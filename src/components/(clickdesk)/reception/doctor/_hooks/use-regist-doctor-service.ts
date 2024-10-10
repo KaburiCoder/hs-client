@@ -1,5 +1,5 @@
 import { DoctorState } from "@/models/doctor-state";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { deleteDoctor } from "@/services/clickdesk/doctor/delete-doctor";
 import { getAllDoctors } from "@/services/clickdesk/doctor/get-all-doctors";
 import { saveDoctor as fetchSaveDoctor } from "@/services/clickdesk/doctor/save-doctor";

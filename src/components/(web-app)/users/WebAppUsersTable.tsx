@@ -1,7 +1,7 @@
 "use client";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
 import { useTablePagination } from "@/lib/hooks/use-table-pagination";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { useQuery } from "@tanstack/react-query";
 import {
   getCoreRowModel,

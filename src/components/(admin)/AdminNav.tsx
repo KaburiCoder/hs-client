@@ -1,5 +1,5 @@
 "use client";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { LinkPath } from "../custom-link/CustomLink";
 import { CustomLinks } from "../custom-link/CustomLinks";
 import { SignoutButton } from "../SignoutButton";

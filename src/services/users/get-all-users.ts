@@ -1,6 +1,6 @@
 import { axClient } from "@/lib/api/ax-client";
 import { User } from "@/models/user";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 
 export async function getAllUsers(): Promise<User[]> {
   const response = await axClient.get(apiPaths.users.root);

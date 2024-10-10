@@ -1,5 +1,5 @@
 import { axClient } from "@/lib/api/ax-client";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { DeskSettings } from "../_types/desk-settings";
 
 export async function saveDeskFeature(settings: DeskSettings) : Promise<DeskSettings> {

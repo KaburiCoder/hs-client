@@ -1,5 +1,5 @@
 import { ReasonState } from "@/models/reason-state";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { deleteReason } from "@/services/clickdesk/reason/delete-reason";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

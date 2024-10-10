@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { signout } from "../../services/sign/signout";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { useSocketIO } from "kbr-nextjs-shared/hooks";
 
 export const useSignout = () => {

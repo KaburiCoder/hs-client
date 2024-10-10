@@ -1,5 +1,5 @@
 import { axClient } from "@/lib/api/ax-client";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 
 export async function uploadImage({ formData }: { formData: FormData }) {
   const response = await axClient.post(apiPaths.images.root, formData, {

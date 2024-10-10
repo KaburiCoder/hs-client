@@ -1,5 +1,5 @@
 "use client";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { getAdFiles } from "@/services/clickdesk/ad/get-ad-files";
 import { Card, cn } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";

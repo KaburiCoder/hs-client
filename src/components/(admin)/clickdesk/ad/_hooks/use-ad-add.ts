@@ -1,6 +1,6 @@
 import { useDragDrop } from '@/lib/hooks/use-drag-drop';
 import { useIsLoading } from '@/lib/hooks/use-is-loading';
-import { apiPaths } from '@/paths';
+import { apiPaths } from '@/shared/paths';
 import { deleteAdFile } from '@/services/clickdesk/ad/delete-ad-file';
 import { saveAdFile } from '@/services/clickdesk/ad/save-ad-file';
 import { deleteImage } from '@/services/clickdesk/images/delete-image';

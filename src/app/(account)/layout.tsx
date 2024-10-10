@@ -1,4 +1,4 @@
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { ChildrenProps } from "kbr-nextjs-shared/props";
 import Image from "next/image";
 import React from "react";

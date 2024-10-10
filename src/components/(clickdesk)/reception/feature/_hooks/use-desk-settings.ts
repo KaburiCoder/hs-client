@@ -1,4 +1,4 @@
-import { apiPaths } from '@/paths'
+import { apiPaths } from '@/shared/paths'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fetchDeskSettings } from '../_api/fetch-desk-settings'
 import { saveDeskFeature } from '../_api/save-desk-feature'

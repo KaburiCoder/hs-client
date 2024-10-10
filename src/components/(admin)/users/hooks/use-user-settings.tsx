@@ -1,5 +1,5 @@
 import { UserSettings } from "@/models/user-settings";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { updateUser } from "@/services/users/update-user";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";

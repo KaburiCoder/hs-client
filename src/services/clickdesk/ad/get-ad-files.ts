@@ -1,5 +1,5 @@
 import { axClient } from "@/lib/api/ax-client";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 
 export async function getAdFiles() {
   const response = await axClient.get(apiPaths.adFile.root);

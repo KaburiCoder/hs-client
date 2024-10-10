@@ -1,5 +1,5 @@
 import { DoctorWorks } from "@/models/doctor-state";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { getDoctor } from "@/services/clickdesk/doctor/get-doctor";
 import { updateDoctor } from "@/services/clickdesk/doctor/update-doctor";
 import { parseAxError } from "@/shared/error-result";

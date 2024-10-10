@@ -10,7 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { CircleChevronRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { usePathname } from "next/navigation";
 
 export const ClickdeskNav = () => {

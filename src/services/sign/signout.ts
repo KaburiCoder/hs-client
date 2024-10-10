@@ -1,5 +1,5 @@
 import { axClient } from "@/lib/api/ax-client";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import * as UserCookie from "@/server/cookies/user-cookie";
 
 export async function signout() {

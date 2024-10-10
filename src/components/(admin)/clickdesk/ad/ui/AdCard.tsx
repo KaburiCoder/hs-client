@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { Card } from "@nextui-org/react";
 import { useState } from "react";
 import { useAdDelete } from "../_hooks/use-ad-delete";

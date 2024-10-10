@@ -1,6 +1,6 @@
 import { useEmitX } from "@/lib/hooks/use-emit-x";
 import { SocketResponse } from "@/lib/types/socket-response";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { EvPaths } from "@/socket-io/ev-paths";
 import { useCancerStore } from "@/stores/cancer/cancer-store";
 import { QuestionnaireKind } from "health-screening-shared/interfaces.socket";

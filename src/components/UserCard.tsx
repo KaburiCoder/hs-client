@@ -1,6 +1,6 @@
 "use client";
 import { useServerCookie } from "@/lib/hooks/use-server-cookie";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { User } from "@nextui-org/react";
 import React from "react";
 

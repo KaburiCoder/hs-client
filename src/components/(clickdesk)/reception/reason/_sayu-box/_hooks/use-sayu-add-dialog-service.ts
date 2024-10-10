@@ -1,4 +1,4 @@
-import { apiPaths } from '@/paths';
+import { apiPaths } from '@/shared/paths';
 import { SaveReasonArgs, saveReason as fetchSaveReason } from '@/services/clickdesk/reason/save-reason';
 import { parseAxError } from '@/shared/error-result';
 import { useMutation, useQueryClient } from '@tanstack/react-query';

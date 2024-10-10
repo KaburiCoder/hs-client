@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Image } from "@nextui-org/react";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function ClickIcon() {

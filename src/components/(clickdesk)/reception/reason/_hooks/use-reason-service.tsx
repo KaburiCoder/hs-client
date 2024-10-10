@@ -1,4 +1,4 @@
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { getReasonsByDoctorId } from "@/services/clickdesk/reason/get-reasons-by-doctor-id";
 import { updateAllReasons } from "@/services/clickdesk/reason/update-all-reasons";
 import { useMutation, useQuery } from "@tanstack/react-query";

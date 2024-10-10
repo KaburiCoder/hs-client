@@ -1,4 +1,4 @@
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 

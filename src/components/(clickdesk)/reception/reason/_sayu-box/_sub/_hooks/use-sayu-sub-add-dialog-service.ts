@@ -1,5 +1,5 @@
 import { ReasonState } from '@/models/reason-state';
-import { apiPaths } from '@/paths';
+import { apiPaths } from '@/shared/paths';
 import { updateReason } from '@/services/clickdesk/reason/update-reason';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';

@@ -1,4 +1,4 @@
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { axClient } from "../../lib/api/ax-client";
 
 

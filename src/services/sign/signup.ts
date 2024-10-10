@@ -1,5 +1,5 @@
 import { axClient } from "@/lib/api/ax-client";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 
 export async function signup(dto: {
   userId: string;

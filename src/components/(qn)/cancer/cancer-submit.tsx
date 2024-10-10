@@ -9,7 +9,7 @@ import { useEmitX } from "@/lib/hooks/use-emit-x";
 import ErrorBox from "@/components/ErrorBox";
 import { SocketResponse } from "@/lib/types/socket-response";
 import { useRouter } from "next/navigation";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import LsNextButtons from "../lifestyle/ls-next-buttons";
 import toast from "react-hot-toast";
 

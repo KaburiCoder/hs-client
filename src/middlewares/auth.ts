@@ -1,4 +1,4 @@
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { NextRequest, NextResponse } from "next/server";
 import * as UserCookie from "@/server/cookies/user-cookie";
 

@@ -1,7 +1,7 @@
 import { signup } from '@/services/sign/signup';
 import { useValidate } from '@/lib/hooks/use-validate';
 import { Signup, signupSchema } from '@/models/signup';
-import { paths } from '@/paths';
+import { paths } from '@/shared/paths';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import React from 'react'

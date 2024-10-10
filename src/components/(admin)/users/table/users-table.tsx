@@ -1,6 +1,6 @@
 "use client";
 import { useTablePagination } from "@/lib/hooks/use-table-pagination";
-import { apiPaths } from "@/paths";
+import { apiPaths } from "@/shared/paths";
 import { getAllUsers } from "@/services/users/get-all-users";
 import { useQuery } from "@tanstack/react-query";
 import {

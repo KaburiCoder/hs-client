@@ -15,7 +15,7 @@ import { LifestyleKeys } from "@/stores/condition-store";
 import { EmitResultBase } from "health-screening-shared/interfaces.socket";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { useCarouselNav } from "@/lib/hooks/use-carousel-nav";
 
 export const useLifestyleController = () => {

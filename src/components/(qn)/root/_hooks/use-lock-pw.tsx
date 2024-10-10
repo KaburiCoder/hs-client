@@ -1,6 +1,6 @@
 import { getLockPw } from "@/services/settings/get_lock_pw";
 import { saveLockPw } from "@/services/settings/save_lock_pw";
-import { paths } from "@/paths";
+import { paths } from "@/shared/paths";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
