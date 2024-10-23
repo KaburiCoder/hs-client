@@ -19,7 +19,7 @@ export const MainBody = () => {
       },
 
       {
-        title: "클릭데스크",
+        title: "dClick",
         description: "접수실에서 초진, 재진 접수를 쉽게할 수 있는 어플이에요!",
         to: paths.clickdesk.reception("hospinfo"),
         use: user?.settings?.clickDesk?.use,

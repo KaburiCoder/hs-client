@@ -28,7 +28,7 @@ const links: { header: string; links: LinkPath[] }[] = [
     ],
   },
   {
-    header: "클릭데스크",
+    header: "dClick",
     links: [{ href: paths.adminClickDesk("ad"), text: "광고 설정" }],
   },
 ];
