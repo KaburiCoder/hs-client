@@ -9,8 +9,8 @@ interface Props extends ChildrenProps {}
 
 export async function generateMetadata() {
   return {
-    title: "클릭 웹 관리자 페이지",
-    description: "클릭 웹 관리자 페이지입니다.",
+    title: "클릭 부가서비스 관리자 페이지",
+    description: "클릭 부가서비스 관리자 페이지입니다.",
   } satisfies Metadata;
 }
 

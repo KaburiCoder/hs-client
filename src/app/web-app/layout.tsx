@@ -8,8 +8,8 @@ interface Props extends ChildrenProps {}
 
 export async function generateMetadata() {
   return {
-    title: "클릭 웹 관리자 페이지",
-    description: "클릭 웹 관리자 페이지입니다.",
+    title: "tClick 관리자 페이지",
+    description: "tClick 관리자 페이지입니다.",
   } satisfies Metadata;
 }
 
@@ -17,7 +17,7 @@ export default function WebAppLayout({ children }: Props) {
   return (
     <Hero
       startContent={
-        <h2 className="text-lg font-semibold">클릭 웹 앱 관리 페이지</h2>
+        <h2 className="text-lg font-semibold">tClick 관리자 페이지</h2>
       }
       centerContent={<WebAppHeaderCenter />}
       navComponent={<WebAppNav />}

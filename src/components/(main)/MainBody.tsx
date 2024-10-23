@@ -25,7 +25,7 @@ export const MainBody = () => {
         use: user?.settings?.clickDesk?.use,
       },
       {
-        title: "클릭 웹 앱",
+        title: "tClick",
         description: "태블릿을 들고 회진할 때 환자정보를 확인하세요!",
         to: paths.webApp("users"),
         // to: "https://app.click-soft.co.kr",
@@ -42,7 +42,7 @@ export const MainBody = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="py-2 text-2xl font-bold">클릭소프트 웹 부가서비스</h2>
+        <h2 className="py-2 text-2xl font-bold">클릭소프트 부가서비스</h2>
         {user?.admin && (
           <Button
             className="text-base"
