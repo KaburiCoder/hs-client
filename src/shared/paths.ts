@@ -69,4 +69,7 @@ export const apiPaths = {
     reasonUpdate: (id: string) => `/clickdesk/reason/${id}/update`,
     reasonId: (id: string) => `/clickdesk/reason/${id}`,
   },
+  commonSettings: {
+    adMessage: "/common-settings/ad-message",
+  }
 }
