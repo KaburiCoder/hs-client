@@ -90,11 +90,11 @@ export const UserSettingsDialog = (props: UserSettingsDialogProps) => {
           allowDistanceElement={
             <LabeldItem label="허용 거리">
               <Input
-                className="w-16 text-right"
+                className="w-24 text-right"
                 value={allowedDistance}
                 type="number"
                 min={50}
-                max={2000}
+                max={99_999_999}
                 maxLength={4}
                 onChange={(e) => setAllowedDistance(Number(e.target.value))}
               />
